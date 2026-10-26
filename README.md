@@ -9,7 +9,7 @@ This repository measures four things, on a public dataset, with the judging as t
 3. **Inter-judge disagreement.** Five models, identical inputs.
 4. **Planted-error misses.** How often a judge accepts an answer that was built to be wrong, or accepts a correct answer that the retrieved passage does not support.
 
-The harness is Kotlin on the JVM. Answer variants are generated once, deterministically, and checked in. Judge calls go through OpenRouter. Every raw response is cached, so analysis can be rerun without spending anything. A dry-run mode fills that cache with a fake judge, which is what the charts show until a real run replaces them.
+The harness is Kotlin on the JVM. Answer variants are generated once, deterministically, and checked in. Judge calls go through OpenRouter. Every raw response is cached, so analysis can be rerun without spending anything. A dry-run mode fills that cache with a fake judge. The published charts come from the paid run in `results/runs/20261026T143236` (3,750 trials, 1.47 USD ≈ 1.32 EUR).
 
 ## Run it
 
@@ -110,7 +110,8 @@ LICENSE                     MIT, code only
 config/experiment.json      judges, prices, repeats, cap
 data/items.json             50 items and their variants
 data/DATASOURCE.md          SQuAD citation and CC BY-SA 4.0
-results/dry-run/            manifest, responses.jsonl, metrics, scores
+results/dry-run/            manifest, responses.jsonl, metrics, scores (simulator)
+results/runs/20261026T143236/  the paid run: same files, plus RESUME.md
 docs/                       static pages
 docs/data/                  the JSON and CSV the pages fetch
 ```
@@ -162,8 +163,10 @@ Trial order is fixed: items in file order, then `correct` / `subtle_error` / `un
 - Token estimates use characters divided by four. The 1.5 margin and the max-token ceiling exist because that estimate is rough. Reasoning tokens, if a provider ignores `effort: none`, are the main way to spend more than the estimate. The stress row above is that case at +1000 tokens.
 - OpenRouter prices and the euro move. Refresh before a paid run. The cap is enforced in EUR using the pinned FX rate, while the API bills USD.
 - Parse failures are excluded from rates and counted separately. A model that does not return JSON is a failure of compliance, not a miss.
-- The dry-run charts are simulated.
+- The dry-run charts are simulated. The published pages are not: they come from the paid run.
+- Claude Haiku 4.5 sometimes returned only `faithfulness` and left out `correctness` under the strict rubric (27 of its 450 strict calls, 9 of them in the first repeat). This happened mostly on answers it had already marked as weakly supported (faithfulness 2). Those rows count as parse failures, so its subtle-error miss rate is over 43 parsed items, not 50.
+- The paid run was resumed twice into the same directory after HTTP calls hung. Error rows were dropped so they would be retried. No completed trial was requested twice. See `results/runs/20261026T143236/RESUME.md`.
 
 ## Tests
 
-`./gradlew test` covers the variant rules, the score parser, quadratic κ against a hand-computed case, the OpenRouter request shape, the budget refusal and the mid-run stop, cache reuse, the checked-in 50 items, the 10 EUR gate on the real plan, and the published dry-run metrics against the cache.
+`./gradlew test` covers the variant rules, the score parser, quadratic κ against a hand-computed case, the OpenRouter request shape, the budget refusal and the mid-run stop, cache reuse, the checked-in 50 items, the 10 EUR gate on the real plan, and the published metrics against the cache of the run they came from.

@@ -2,6 +2,9 @@ package dev.helfferich.judgelies
 
 import java.net.URI
 import java.net.http.HttpClient
+import java.util.concurrent.ExecutionException
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.TimeoutException
 import java.net.http.HttpRequest
 import java.net.http.HttpResponse
 import java.time.Duration
@@ -123,6 +126,7 @@ class OpenRouterJudge(
     private val http: HttpClient = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(20)).build(),
     private val endpoint: URI = URI.create("https://openrouter.ai/api/v1/chat/completions"),
     private val sleep: (Long) -> Unit = Thread::sleep,
+    private val hardDeadlineSeconds: Long = 120,
 ) : JudgeClient {
     override fun complete(request: JudgeRequest): JudgeRaw {
         val payload = buildChatRequest(
@@ -143,7 +147,25 @@ class OpenRouterJudge(
                 .header("X-Title", "LLM-as-Judge lies")
                 .POST(HttpRequest.BodyPublishers.ofString(payload))
                 .build()
-            val response = http.send(httpRequest, HttpResponse.BodyHandlers.ofString())
+            // The per-request timeout only covers the response headers. OpenRouter can send headers and then
+            // keep the body open with keep-alive padding, so a stalled upstream hangs forever without a hard deadline.
+            val future = http.sendAsync(httpRequest, HttpResponse.BodyHandlers.ofString())
+            val response = try {
+                future.get(hardDeadlineSeconds, TimeUnit.SECONDS)
+            } catch (_: TimeoutException) {
+                future.cancel(true)
+                lastStatus = 504
+                lastBody = "No complete response within $hardDeadlineSeconds s (client-side deadline)."
+                if (attempt == 1) break
+                sleep(5_000)
+                continue
+            } catch (ex: ExecutionException) {
+                lastStatus = 599
+                lastBody = "Transport error: ${ex.cause?.javaClass?.simpleName ?: "unknown"}"
+                if (attempt == 1) break
+                sleep(5_000)
+                continue
+            }
             lastStatus = response.statusCode()
             lastBody = response.body()
             if (lastStatus == 401 || lastStatus == 403) {

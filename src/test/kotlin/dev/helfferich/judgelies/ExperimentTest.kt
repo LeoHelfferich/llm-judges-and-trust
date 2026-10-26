@@ -379,17 +379,24 @@ class CheckedInExperimentTest {
     }
 
     @Test
-    fun publishedDryRunMatchesTheCachedResponses() {
-        val manifest = Jsons.pretty.decodeFromString(
-            RunManifest.serializer(),
-            Path.of("results/dry-run/manifest.json").readText(),
-        )
-        val items = Jsons.pretty.decodeFromString(DatasetFile.serializer(), Path.of("data/items.json").readText()).items
-        val cache = ResponseCache(Path.of("results/dry-run/responses.jsonl")).also { it.load() }
-        val fresh = Analyzer.analyze(items, manifest, cache.rows(), "2026-01-01T00:00:00Z")
+    fun publishedDataMatchesTheCachedResponses() {
         val published = Jsons.pretty.decodeFromString(Metrics.serializer(), Path.of("docs/data/metrics.json").readText())
+        // docs/data is either the simulator output or a paid run under results/runs/<startedAt stamp>.
+        val runDir = if (published.meta.simulated) {
+            Path.of("results/dry-run")
+        } else {
+            Path.of("results/runs").toFile().listFiles()!!.map { it.toPath() }
+                .single { dir ->
+                    Jsons.pretty.decodeFromString(RunManifest.serializer(), dir.resolve("manifest.json").readText())
+                        .startedAt == published.meta.startedAt
+                }
+        }
+        val manifest = Jsons.pretty.decodeFromString(RunManifest.serializer(), runDir.resolve("manifest.json").readText())
+        assertEquals(published.meta.simulated, manifest.simulated)
+        val items = Jsons.pretty.decodeFromString(DatasetFile.serializer(), Path.of("data/items.json").readText()).items
+        val cache = ResponseCache(runDir.resolve("responses.jsonl")).also { it.load() }
+        val fresh = Analyzer.analyze(items, manifest, cache.rows(), "2026-01-01T00:00:00Z")
         assertEquals(50 * 3 * 5 * 5, published.meta.nTrialsCompleted)
-        assertTrue(published.meta.simulated)
         assertEquals(fresh.metrics.headlines, published.headlines)
         assertEquals(
             fresh.metrics.plantedErrors.judges.map { it.subtleMissRate },
