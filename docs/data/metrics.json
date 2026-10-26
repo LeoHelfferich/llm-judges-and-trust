@@ -1,17 +1,17 @@
 {
     "meta": {
         "schemaVersion": 1,
-        "mode": "dry-run",
-        "simulated": true,
-        "startedAt": "2026-10-26T14:24:36.609687309Z",
-        "finishedAt": "2026-10-26T14:24:36.770137429Z",
-        "analyzedAt": "2026-10-26T14:24:37.561632826Z",
+        "mode": "openrouter",
+        "simulated": false,
+        "startedAt": "2026-10-26T14:32:36.722347477Z",
+        "finishedAt": "2026-10-26T17:14:04.200637987Z",
+        "analyzedAt": "2026-10-26T17:15:11.655522912Z",
         "dataset": "SQuAD 1.1 dev subset",
         "datasetLicense": "CC BY-SA 4.0",
         "nItems": 50,
         "nTrialsPlanned": 3750,
         "nTrialsCompleted": 3750,
-        "nParsed": 3750,
+        "nParsed": 3722,
         "temperature": 0.0,
         "seedSent": false,
         "primaryPrompt": "strict",
@@ -83,16 +83,16 @@
         "estimatedCostUsd": 1.9714664,
         "estimatedCostEur": 1.761347511088,
         "estimatedCostEurWithMargin": 2.642021266632,
-        "billedCostUsd": 0.0,
+        "billedCostUsd": 1.47481989,
         "stoppedEarly": false,
         "promptHash": "3b781b568255"
     },
     "headlines": {
-        "meanFaithfulnessSelfDisagreement": 0.07733333333333334,
-        "meanPairwiseFaithfulnessKappa": 0.6242985763414425,
-        "meanSubtleMissRate": 0.144,
-        "meanUnsupportedMissRate": 0.20800000000000002,
-        "meanCorrectFalseRejectRate": 0.04
+        "meanFaithfulnessSelfDisagreement": 0.016,
+        "meanPairwiseFaithfulnessKappa": 0.9274473217110403,
+        "meanSubtleMissRate": 0.12995348837209303,
+        "meanUnsupportedMissRate": 0.0,
+        "meanCorrectFalseRejectRate": 0.028000000000000004
     },
     "selfConsistency": {
         "prompt": "strict",
@@ -102,22 +102,22 @@
                 "label": "Grok 4.3",
                 "nGroups": 150,
                 "faithfulness": {
-                    "pctNotIdentical": 0.03333333333333333,
+                    "pctNotIdentical": 0.013333333333333334,
                     "meanRange": 0.03333333333333333,
                     "rangeHistogram": [
-                        145,
-                        5,
+                        148,
+                        1,
                         0,
                         0,
-                        0
+                        1
                     ]
                 },
                 "correctness": {
-                    "pctNotIdentical": 0.06666666666666667,
-                    "meanRange": 0.06666666666666667,
+                    "pctNotIdentical": 0.006666666666666667,
+                    "meanRange": 0.006666666666666667,
                     "rangeHistogram": [
-                        140,
-                        10,
+                        149,
+                        1,
                         0,
                         0,
                         0
@@ -129,24 +129,24 @@
                 "label": "GPT-5.4 Mini",
                 "nGroups": 150,
                 "faithfulness": {
-                    "pctNotIdentical": 0.09333333333333334,
-                    "meanRange": 0.09333333333333334,
+                    "pctNotIdentical": 0.06,
+                    "meanRange": 0.12666666666666668,
                     "rangeHistogram": [
-                        136,
-                        14,
+                        141,
+                        4,
                         0,
-                        0,
+                        5,
                         0
                     ]
                 },
                 "correctness": {
-                    "pctNotIdentical": 0.17333333333333334,
-                    "meanRange": 0.17333333333333334,
+                    "pctNotIdentical": 0.07333333333333333,
+                    "meanRange": 0.1,
                     "rangeHistogram": [
-                        124,
-                        26,
-                        0,
-                        0,
+                        139,
+                        8,
+                        2,
+                        1,
                         0
                     ]
                 }
@@ -154,24 +154,24 @@
             {
                 "judge": "anthropic/claude-haiku-4.5",
                 "label": "Claude Haiku 4.5",
-                "nGroups": 150,
+                "nGroups": 141,
                 "faithfulness": {
-                    "pctNotIdentical": 0.06666666666666667,
-                    "meanRange": 0.06666666666666667,
+                    "pctNotIdentical": 0.0,
+                    "meanRange": 0.0,
                     "rangeHistogram": [
-                        140,
-                        10,
+                        141,
+                        0,
                         0,
                         0,
                         0
                     ]
                 },
                 "correctness": {
-                    "pctNotIdentical": 0.13333333333333333,
-                    "meanRange": 0.13333333333333333,
+                    "pctNotIdentical": 0.0,
+                    "meanRange": 0.0,
                     "rangeHistogram": [
-                        130,
-                        20,
+                        141,
+                        0,
                         0,
                         0,
                         0
@@ -183,22 +183,22 @@
                 "label": "Gemini 2.5 Flash",
                 "nGroups": 150,
                 "faithfulness": {
-                    "pctNotIdentical": 0.08,
-                    "meanRange": 0.08,
+                    "pctNotIdentical": 0.0,
+                    "meanRange": 0.0,
                     "rangeHistogram": [
-                        138,
-                        12,
+                        150,
+                        0,
                         0,
                         0,
                         0
                     ]
                 },
                 "correctness": {
-                    "pctNotIdentical": 0.14,
-                    "meanRange": 0.14,
+                    "pctNotIdentical": 0.0,
+                    "meanRange": 0.0,
                     "rangeHistogram": [
-                        129,
-                        21,
+                        150,
+                        0,
                         0,
                         0,
                         0
@@ -210,23 +210,23 @@
                 "label": "Llama 3.3 70B",
                 "nGroups": 150,
                 "faithfulness": {
-                    "pctNotIdentical": 0.11333333333333333,
-                    "meanRange": 0.11333333333333333,
+                    "pctNotIdentical": 0.006666666666666667,
+                    "meanRange": 0.013333333333333334,
                     "rangeHistogram": [
-                        133,
-                        17,
+                        149,
                         0,
+                        1,
                         0,
                         0
                     ]
                 },
                 "correctness": {
-                    "pctNotIdentical": 0.08,
-                    "meanRange": 0.08,
+                    "pctNotIdentical": 0.006666666666666667,
+                    "meanRange": 0.013333333333333334,
                     "rangeHistogram": [
-                        138,
-                        12,
+                        149,
                         0,
+                        1,
                         0,
                         0
                     ]
@@ -244,56 +244,56 @@
                         "judge": "x-ai/grok-4.3",
                         "label": "Grok 4.3",
                         "n": 150,
-                        "meanDeltaFaithfulness": 0.4066666666666667,
-                        "meanDeltaCorrectness": 0.07333333333333333,
-                        "pctFaithfulnessChanged": 0.49333333333333335,
-                        "pctFaithfulnessShiftAtLeast2": 0.16666666666666666,
-                        "pctCorrectnessChanged": 0.21333333333333335,
-                        "pctCorrectnessShiftAtLeast2": 0.14
+                        "meanDeltaFaithfulness": 0.19333333333333333,
+                        "meanDeltaCorrectness": 0.12666666666666668,
+                        "pctFaithfulnessChanged": 0.10666666666666667,
+                        "pctFaithfulnessShiftAtLeast2": 0.05333333333333334,
+                        "pctCorrectnessChanged": 0.1,
+                        "pctCorrectnessShiftAtLeast2": 0.03333333333333333
                     },
                     {
                         "judge": "openai/gpt-5.4-mini",
                         "label": "GPT-5.4 Mini",
                         "n": 150,
-                        "meanDeltaFaithfulness": 0.36,
-                        "meanDeltaCorrectness": 0.06,
-                        "pctFaithfulnessChanged": 0.46,
-                        "pctFaithfulnessShiftAtLeast2": 0.21333333333333335,
-                        "pctCorrectnessChanged": 0.3333333333333333,
-                        "pctCorrectnessShiftAtLeast2": 0.20666666666666667
+                        "meanDeltaFaithfulness": 0.21333333333333335,
+                        "meanDeltaCorrectness": 0.13333333333333333,
+                        "pctFaithfulnessChanged": 0.13333333333333333,
+                        "pctFaithfulnessShiftAtLeast2": 0.05333333333333334,
+                        "pctCorrectnessChanged": 0.12,
+                        "pctCorrectnessShiftAtLeast2": 0.04666666666666667
                     },
                     {
                         "judge": "anthropic/claude-haiku-4.5",
                         "label": "Claude Haiku 4.5",
-                        "n": 150,
-                        "meanDeltaFaithfulness": 0.36,
-                        "meanDeltaCorrectness": 0.12,
-                        "pctFaithfulnessChanged": 0.4066666666666667,
-                        "pctFaithfulnessShiftAtLeast2": 0.18666666666666668,
-                        "pctCorrectnessChanged": 0.26,
-                        "pctCorrectnessShiftAtLeast2": 0.12666666666666668
+                        "n": 141,
+                        "meanDeltaFaithfulness": 0.05673758865248227,
+                        "meanDeltaCorrectness": 0.0,
+                        "pctFaithfulnessChanged": 0.07801418439716312,
+                        "pctFaithfulnessShiftAtLeast2": 0.02127659574468085,
+                        "pctCorrectnessChanged": 0.07801418439716312,
+                        "pctCorrectnessShiftAtLeast2": 0.0070921985815602835
                     },
                     {
                         "judge": "google/gemini-2.5-flash",
                         "label": "Gemini 2.5 Flash",
                         "n": 150,
-                        "meanDeltaFaithfulness": 0.5933333333333334,
-                        "meanDeltaCorrectness": 0.10666666666666667,
-                        "pctFaithfulnessChanged": 0.48,
-                        "pctFaithfulnessShiftAtLeast2": 0.26,
-                        "pctCorrectnessChanged": 0.36,
-                        "pctCorrectnessShiftAtLeast2": 0.17333333333333334
+                        "meanDeltaFaithfulness": 0.11333333333333333,
+                        "meanDeltaCorrectness": 0.06666666666666667,
+                        "pctFaithfulnessChanged": 0.12666666666666668,
+                        "pctFaithfulnessShiftAtLeast2": 0.06,
+                        "pctCorrectnessChanged": 0.12,
+                        "pctCorrectnessShiftAtLeast2": 0.03333333333333333
                     },
                     {
                         "judge": "meta-llama/llama-3.3-70b-instruct",
                         "label": "Llama 3.3 70B",
                         "n": 150,
-                        "meanDeltaFaithfulness": 0.58,
-                        "meanDeltaCorrectness": 0.16,
-                        "pctFaithfulnessChanged": 0.4666666666666667,
-                        "pctFaithfulnessShiftAtLeast2": 0.21333333333333335,
-                        "pctCorrectnessChanged": 0.2866666666666667,
-                        "pctCorrectnessShiftAtLeast2": 0.15333333333333332
+                        "meanDeltaFaithfulness": 0.3466666666666667,
+                        "meanDeltaCorrectness": 0.3333333333333333,
+                        "pctFaithfulnessChanged": 0.2,
+                        "pctFaithfulnessShiftAtLeast2": 0.08,
+                        "pctCorrectnessChanged": 0.21333333333333335,
+                        "pctCorrectnessShiftAtLeast2": 0.08
                     }
                 ]
             },
@@ -304,56 +304,56 @@
                         "judge": "x-ai/grok-4.3",
                         "label": "Grok 4.3",
                         "n": 150,
-                        "meanDeltaFaithfulness": -0.12,
-                        "meanDeltaCorrectness": -0.05333333333333334,
-                        "pctFaithfulnessChanged": 0.04,
-                        "pctFaithfulnessShiftAtLeast2": 0.02666666666666667,
-                        "pctCorrectnessChanged": 0.04,
-                        "pctCorrectnessShiftAtLeast2": 0.013333333333333334
+                        "meanDeltaFaithfulness": 0.02,
+                        "meanDeltaCorrectness": 0.06666666666666667,
+                        "pctFaithfulnessChanged": 0.05333333333333334,
+                        "pctFaithfulnessShiftAtLeast2": 0.02,
+                        "pctCorrectnessChanged": 0.04666666666666667,
+                        "pctCorrectnessShiftAtLeast2": 0.02
                     },
                     {
                         "judge": "openai/gpt-5.4-mini",
                         "label": "GPT-5.4 Mini",
                         "n": 150,
-                        "meanDeltaFaithfulness": -0.13333333333333333,
-                        "meanDeltaCorrectness": -0.03333333333333333,
-                        "pctFaithfulnessChanged": 0.18666666666666668,
-                        "pctFaithfulnessShiftAtLeast2": 0.06666666666666667,
-                        "pctCorrectnessChanged": 0.18,
-                        "pctCorrectnessShiftAtLeast2": 0.12
+                        "meanDeltaFaithfulness": -0.013333333333333334,
+                        "meanDeltaCorrectness": -0.05333333333333334,
+                        "pctFaithfulnessChanged": 0.09333333333333334,
+                        "pctFaithfulnessShiftAtLeast2": 0.02666666666666667,
+                        "pctCorrectnessChanged": 0.1,
+                        "pctCorrectnessShiftAtLeast2": 0.02666666666666667
                     },
                     {
                         "judge": "anthropic/claude-haiku-4.5",
                         "label": "Claude Haiku 4.5",
-                        "n": 150,
-                        "meanDeltaFaithfulness": -0.18,
-                        "meanDeltaCorrectness": -0.06666666666666667,
-                        "pctFaithfulnessChanged": 0.16666666666666666,
-                        "pctFaithfulnessShiftAtLeast2": 0.12,
-                        "pctCorrectnessChanged": 0.16,
-                        "pctCorrectnessShiftAtLeast2": 0.05333333333333334
+                        "n": 141,
+                        "meanDeltaFaithfulness": -0.12056737588652482,
+                        "meanDeltaCorrectness": -0.0851063829787234,
+                        "pctFaithfulnessChanged": 0.0851063829787234,
+                        "pctFaithfulnessShiftAtLeast2": 0.03546099290780142,
+                        "pctCorrectnessChanged": 0.07092198581560284,
+                        "pctCorrectnessShiftAtLeast2": 0.028368794326241134
                     },
                     {
                         "judge": "google/gemini-2.5-flash",
                         "label": "Gemini 2.5 Flash",
                         "n": 150,
-                        "meanDeltaFaithfulness": -0.19333333333333333,
-                        "meanDeltaCorrectness": -0.04,
-                        "pctFaithfulnessChanged": 0.32666666666666666,
-                        "pctFaithfulnessShiftAtLeast2": 0.18666666666666668,
-                        "pctCorrectnessChanged": 0.31333333333333335,
-                        "pctCorrectnessShiftAtLeast2": 0.15333333333333332
+                        "meanDeltaFaithfulness": -0.006666666666666667,
+                        "meanDeltaCorrectness": -0.013333333333333334,
+                        "pctFaithfulnessChanged": 0.09333333333333334,
+                        "pctFaithfulnessShiftAtLeast2": 0.04,
+                        "pctCorrectnessChanged": 0.08666666666666667,
+                        "pctCorrectnessShiftAtLeast2": 0.03333333333333333
                     },
                     {
                         "judge": "meta-llama/llama-3.3-70b-instruct",
                         "label": "Llama 3.3 70B",
                         "n": 150,
-                        "meanDeltaFaithfulness": 0.04,
-                        "meanDeltaCorrectness": 0.04,
-                        "pctFaithfulnessChanged": 0.16,
-                        "pctFaithfulnessShiftAtLeast2": 0.1,
-                        "pctCorrectnessChanged": 0.15333333333333332,
-                        "pctCorrectnessShiftAtLeast2": 0.07333333333333333
+                        "meanDeltaFaithfulness": -0.14,
+                        "meanDeltaCorrectness": -0.14,
+                        "pctFaithfulnessChanged": 0.06666666666666667,
+                        "pctFaithfulnessShiftAtLeast2": 0.04,
+                        "pctCorrectnessChanged": 0.06666666666666667,
+                        "pctCorrectnessShiftAtLeast2": 0.04
                     }
                 ]
             }
@@ -362,7 +362,7 @@
     "interJudge": {
         "prompt": "strict",
         "repeat": 0,
-        "nItems": 150,
+        "nItems": 141,
         "judges": [
             "x-ai/grok-4.3",
             "openai/gpt-5.4-mini",
@@ -381,111 +381,111 @@
             "exactAgreement": [
                 [
                     1.0,
-                    0.84,
-                    0.8133333333333334,
-                    0.7533333333333333,
-                    0.8733333333333333
+                    0.950354609929078,
+                    0.8936170212765957,
+                    0.9219858156028369,
+                    0.9219858156028369
                 ],
                 [
-                    0.84,
+                    0.950354609929078,
                     1.0,
-                    0.76,
-                    0.6866666666666666,
-                    0.78
+                    0.8865248226950354,
+                    0.9290780141843972,
+                    0.950354609929078
                 ],
                 [
-                    0.8133333333333334,
-                    0.76,
+                    0.8936170212765957,
+                    0.8865248226950354,
                     1.0,
-                    0.7266666666666667,
-                    0.7666666666666667
+                    0.9078014184397163,
+                    0.8936170212765957
                 ],
                 [
-                    0.7533333333333333,
-                    0.6866666666666666,
-                    0.7266666666666667,
+                    0.9219858156028369,
+                    0.9290780141843972,
+                    0.9078014184397163,
                     1.0,
-                    0.7466666666666667
+                    0.9219858156028369
                 ],
                 [
-                    0.8733333333333333,
-                    0.78,
-                    0.7666666666666667,
-                    0.7466666666666667,
+                    0.9219858156028369,
+                    0.950354609929078,
+                    0.8936170212765957,
+                    0.9219858156028369,
                     1.0
                 ]
             ],
             "meanAbsDiff": [
                 [
                     0.0,
-                    0.37333333333333335,
-                    0.5933333333333334,
-                    0.66,
-                    0.38666666666666666
+                    0.15602836879432624,
+                    0.2198581560283688,
+                    0.2127659574468085,
+                    0.20567375886524822
                 ],
                 [
-                    0.37333333333333335,
+                    0.15602836879432624,
                     0.0,
-                    0.7,
-                    0.86,
-                    0.5333333333333333
+                    0.20567375886524822,
+                    0.1702127659574468,
+                    0.1347517730496454
                 ],
                 [
-                    0.5933333333333334,
-                    0.7,
+                    0.2198581560283688,
+                    0.20567375886524822,
                     0.0,
-                    0.7733333333333333,
-                    0.7
+                    0.1347517730496454,
+                    0.2127659574468085
                 ],
                 [
-                    0.66,
-                    0.86,
-                    0.7733333333333333,
+                    0.2127659574468085,
+                    0.1702127659574468,
+                    0.1347517730496454,
                     0.0,
-                    0.7
+                    0.1773049645390071
                 ],
                 [
-                    0.38666666666666666,
-                    0.5333333333333333,
-                    0.7,
-                    0.7,
+                    0.20567375886524822,
+                    0.1347517730496454,
+                    0.2127659574468085,
+                    0.1773049645390071,
                     0.0
                 ]
             ],
             "quadraticKappa": [
                 [
                     1.0,
-                    0.7931191270081843,
-                    0.6306856450092049,
-                    0.616000362477534,
-                    0.7617156473391581
+                    0.9257545104342765,
+                    0.9148193687322762,
+                    0.9064339870388411,
+                    0.9131587142313415
                 ],
                 [
-                    0.7931191270081843,
+                    0.9257545104342766,
                     1.0,
-                    0.5720155215704177,
-                    0.4826788056477124,
-                    0.7006447651212773
+                    0.9239412939157239,
+                    0.931381137112585,
+                    0.9469609405456423
                 ],
                 [
-                    0.6306856450092049,
-                    0.5720155215704177,
+                    0.9148193687322762,
+                    0.9239412939157239,
                     1.0,
-                    0.5309089220194139,
-                    0.5729513050608117
+                    0.9627854223287466,
+                    0.9188790974405029
                 ],
                 [
-                    0.6160003624775339,
-                    0.4826788056477124,
-                    0.5309089220194139,
+                    0.9064339870388411,
+                    0.931381137112585,
+                    0.9627854223287466,
                     1.0,
-                    0.5822656621607106
+                    0.9303587453304673
                 ],
                 [
-                    0.7617156473391581,
-                    0.7006447651212773,
-                    0.5729513050608117,
-                    0.5822656621607107,
+                    0.9131587142313415,
+                    0.9469609405456423,
+                    0.9188790974405029,
+                    0.9303587453304673,
                     1.0
                 ]
             ]
@@ -494,111 +494,111 @@
             "exactAgreement": [
                 [
                     1.0,
-                    0.84,
-                    0.8133333333333334,
-                    0.7533333333333333,
-                    0.8733333333333333
+                    0.9361702127659575,
+                    0.9078014184397163,
+                    0.9290780141843972,
+                    0.9219858156028369
                 ],
                 [
-                    0.84,
+                    0.9361702127659575,
                     1.0,
-                    0.76,
-                    0.6866666666666666,
-                    0.78
+                    0.8936170212765957,
+                    0.9148936170212766,
+                    0.9290780141843972
                 ],
                 [
-                    0.8133333333333334,
-                    0.76,
+                    0.9078014184397163,
+                    0.8936170212765957,
                     1.0,
-                    0.7266666666666667,
-                    0.7666666666666667
+                    0.9078014184397163,
+                    0.9078014184397163
                 ],
                 [
-                    0.7533333333333333,
-                    0.6866666666666666,
-                    0.7266666666666667,
+                    0.9290780141843972,
+                    0.9148936170212766,
+                    0.9078014184397163,
                     1.0,
-                    0.7466666666666667
+                    0.9219858156028369
                 ],
                 [
-                    0.8733333333333333,
-                    0.78,
-                    0.7666666666666667,
-                    0.7466666666666667,
+                    0.9219858156028369,
+                    0.9290780141843972,
+                    0.9078014184397163,
+                    0.9219858156028369,
                     1.0
                 ]
             ],
             "meanAbsDiff": [
                 [
                     0.0,
-                    0.25333333333333335,
-                    0.24666666666666667,
-                    0.37333333333333335,
-                    0.18
+                    0.14184397163120568,
+                    0.14893617021276595,
+                    0.1773049645390071,
+                    0.2198581560283688
                 ],
                 [
-                    0.25333333333333335,
+                    0.14184397163120568,
                     0.0,
-                    0.34,
-                    0.4666666666666667,
-                    0.35333333333333333
+                    0.14893617021276595,
+                    0.16312056737588654,
+                    0.14893617021276595
                 ],
                 [
-                    0.24666666666666667,
-                    0.34,
+                    0.14893617021276595,
+                    0.14893617021276595,
                     0.0,
-                    0.4066666666666667,
-                    0.3333333333333333
+                    0.1276595744680851,
+                    0.15602836879432624
                 ],
                 [
-                    0.37333333333333335,
-                    0.4666666666666667,
-                    0.4066666666666667,
+                    0.1773049645390071,
+                    0.16312056737588654,
+                    0.1276595744680851,
                     0.0,
-                    0.38
+                    0.1702127659574468
                 ],
                 [
-                    0.18,
-                    0.35333333333333333,
-                    0.3333333333333333,
-                    0.38,
+                    0.2198581560283688,
+                    0.14893617021276595,
+                    0.15602836879432624,
+                    0.1702127659574468,
                     0.0
                 ]
             ],
             "quadraticKappa": [
                 [
                     1.0,
-                    0.8525732666190136,
-                    0.8841519925857275,
-                    0.7930244847630791,
-                    0.9067568739699887
+                    0.9444131561162424,
+                    0.9542356377799416,
+                    0.9287082600428704,
+                    0.9050320448280411
                 ],
                 [
-                    0.8525732666190136,
+                    0.9444131561162424,
                     1.0,
-                    0.8201971172344393,
-                    0.7276313317888674,
-                    0.7884247884247884
+                    0.9606846406280162,
+                    0.9472152569309553,
+                    0.9482912517903972
                 ],
                 [
-                    0.8841519925857275,
-                    0.8201971172344392,
+                    0.9542356377799416,
+                    0.9606846406280162,
                     1.0,
-                    0.7783078228803887,
-                    0.8286644393043776
+                    0.9694262543909102,
+                    0.95019498134961
                 ],
                 [
-                    0.7930244847630791,
-                    0.7276313317888674,
-                    0.7783078228803886,
+                    0.9287082600428704,
+                    0.9472152569309553,
+                    0.9694262543909102,
                     1.0,
-                    0.7868617069011936
+                    0.9369858804798682
                 ],
                 [
-                    0.9067568739699887,
-                    0.7884247884247884,
-                    0.8286644393043776,
-                    0.7868617069011936,
+                    0.9050320448280411,
+                    0.9482912517903972,
+                    0.95019498134961,
+                    0.9369858804798682,
                     1.0
                 ]
             ]
@@ -620,25 +620,25 @@
                 "subtleN": 50,
                 "unsupportedN": 50,
                 "unparsed": 0,
-                "subtleMissRate": 0.04,
-                "unsupportedMissRate": 0.08,
-                "correctFalseRejectRate": 0.0,
+                "subtleMissRate": 0.02,
+                "unsupportedMissRate": 0.0,
+                "correctFalseRejectRate": 0.08,
                 "subtleMissRateByKind": {
                     "year": 0.0,
                     "integer": 0.0,
                     "decimal": 0.0,
                     "ordinal": 0.0,
-                    "entity_swap": 0.1111111111111111
+                    "entity_swap": 0.05555555555555555
                 },
                 "meanFaithfulness": {
-                    "correct": 5.0,
-                    "subtle_error": 2.04,
-                    "unsupported": 1.32
+                    "correct": 4.72,
+                    "subtle_error": 1.24,
+                    "unsupported": 1.0
                 },
                 "meanCorrectness": {
-                    "correct": 5.0,
-                    "subtle_error": 2.08,
-                    "unsupported": 4.08
+                    "correct": 4.72,
+                    "subtle_error": 1.08,
+                    "unsupported": 1.0
                 }
             },
             {
@@ -648,53 +648,53 @@
                 "subtleN": 50,
                 "unsupportedN": 50,
                 "unparsed": 0,
-                "subtleMissRate": 0.22,
-                "unsupportedMissRate": 0.16,
+                "subtleMissRate": 0.16,
+                "unsupportedMissRate": 0.0,
                 "correctFalseRejectRate": 0.02,
                 "subtleMissRateByKind": {
-                    "year": 0.3157894736842105,
-                    "integer": 0.1,
-                    "decimal": 0.0,
-                    "ordinal": 1.0,
+                    "year": 0.10526315789473684,
+                    "integer": 0.2,
+                    "decimal": 0.5,
+                    "ordinal": 0.0,
                     "entity_swap": 0.16666666666666666
                 },
                 "meanFaithfulness": {
-                    "correct": 4.94,
-                    "subtle_error": 2.22,
-                    "unsupported": 1.64
+                    "correct": 4.92,
+                    "subtle_error": 1.62,
+                    "unsupported": 1.0
                 },
                 "meanCorrectness": {
-                    "correct": 4.96,
-                    "subtle_error": 2.44,
-                    "unsupported": 4.16
+                    "correct": 4.9,
+                    "subtle_error": 1.62,
+                    "unsupported": 1.0
                 }
             },
             {
                 "judge": "anthropic/claude-haiku-4.5",
                 "label": "Claude Haiku 4.5",
-                "correctN": 50,
-                "subtleN": 50,
+                "correctN": 48,
+                "subtleN": 43,
                 "unsupportedN": 50,
-                "unparsed": 0,
-                "subtleMissRate": 0.1,
-                "unsupportedMissRate": 0.3,
-                "correctFalseRejectRate": 0.04,
+                "unparsed": 9,
+                "subtleMissRate": 0.06976744186046512,
+                "unsupportedMissRate": 0.0,
+                "correctFalseRejectRate": 0.0,
                 "subtleMissRateByKind": {
-                    "year": 0.10526315789473684,
-                    "integer": 0.1,
+                    "year": 0.0625,
+                    "integer": 0.125,
                     "decimal": 0.0,
                     "ordinal": 0.0,
-                    "entity_swap": 0.1111111111111111
+                    "entity_swap": 0.0625
                 },
                 "meanFaithfulness": {
-                    "correct": 4.88,
-                    "subtle_error": 2.1,
-                    "unsupported": 2.2
+                    "correct": 4.895833333333333,
+                    "subtle_error": 1.5116279069767442,
+                    "unsupported": 1.0
                 },
                 "meanCorrectness": {
-                    "correct": 4.92,
-                    "subtle_error": 2.2,
-                    "unsupported": 4.3
+                    "correct": 4.895833333333333,
+                    "subtle_error": 1.3255813953488371,
+                    "unsupported": 1.0
                 }
             },
             {
@@ -704,25 +704,25 @@
                 "subtleN": 50,
                 "unsupportedN": 50,
                 "unparsed": 0,
-                "subtleMissRate": 0.26,
-                "unsupportedMissRate": 0.36,
-                "correctFalseRejectRate": 0.08,
+                "subtleMissRate": 0.14,
+                "unsupportedMissRate": 0.0,
+                "correctFalseRejectRate": 0.02,
                 "subtleMissRateByKind": {
-                    "year": 0.3157894736842105,
+                    "year": 0.21052631578947367,
                     "integer": 0.3,
                     "decimal": 0.0,
                     "ordinal": 0.0,
-                    "entity_swap": 0.2222222222222222
+                    "entity_swap": 0.0
                 },
                 "meanFaithfulness": {
-                    "correct": 4.76,
-                    "subtle_error": 2.26,
-                    "unsupported": 2.44
+                    "correct": 4.8,
+                    "subtle_error": 1.54,
+                    "unsupported": 1.0
                 },
                 "meanCorrectness": {
-                    "correct": 4.84,
-                    "subtle_error": 2.52,
-                    "unsupported": 4.36
+                    "correct": 4.8,
+                    "subtle_error": 1.52,
+                    "unsupported": 1.0
                 }
             },
             {
@@ -732,25 +732,25 @@
                 "subtleN": 50,
                 "unsupportedN": 50,
                 "unparsed": 0,
-                "subtleMissRate": 0.1,
-                "unsupportedMissRate": 0.14,
-                "correctFalseRejectRate": 0.06,
+                "subtleMissRate": 0.26,
+                "unsupportedMissRate": 0.0,
+                "correctFalseRejectRate": 0.02,
                 "subtleMissRateByKind": {
-                    "year": 0.10526315789473684,
-                    "integer": 0.2,
-                    "decimal": 0.0,
+                    "year": 0.21052631578947367,
+                    "integer": 0.6,
+                    "decimal": 0.5,
                     "ordinal": 0.0,
-                    "entity_swap": 0.05555555555555555
+                    "entity_swap": 0.1111111111111111
                 },
                 "meanFaithfulness": {
-                    "correct": 4.82,
-                    "subtle_error": 2.1,
-                    "unsupported": 1.56
+                    "correct": 4.92,
+                    "subtle_error": 1.92,
+                    "unsupported": 1.0
                 },
                 "meanCorrectness": {
-                    "correct": 4.88,
-                    "subtle_error": 2.2,
-                    "unsupported": 4.14
+                    "correct": 4.9,
+                    "subtle_error": 1.92,
+                    "unsupported": 1.0
                 }
             }
         ]

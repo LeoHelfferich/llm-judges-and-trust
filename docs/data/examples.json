@@ -1,6 +1,6 @@
 {
     "schemaVersion": 1,
-    "simulated": true,
+    "simulated": false,
     "cases": [
         {
             "itemId": "5725b33f6a3fe71400b8952d",
@@ -24,15 +24,15 @@
                     "judge": "x-ai/grok-4.3",
                     "label": "Grok 4.3",
                     "variant": "subtle_error",
-                    "faithfulness": 2,
-                    "correctness": 2
+                    "faithfulness": 1,
+                    "correctness": 1
                 },
                 {
                     "judge": "x-ai/grok-4.3",
                     "label": "Grok 4.3",
                     "variant": "unsupported",
                     "faithfulness": 1,
-                    "correctness": 4
+                    "correctness": 1
                 },
                 {
                     "judge": "openai/gpt-5.4-mini",
@@ -45,15 +45,15 @@
                     "judge": "openai/gpt-5.4-mini",
                     "label": "GPT-5.4 Mini",
                     "variant": "subtle_error",
-                    "faithfulness": 3,
-                    "correctness": 4
+                    "faithfulness": 1,
+                    "correctness": 1
                 },
                 {
                     "judge": "openai/gpt-5.4-mini",
                     "label": "GPT-5.4 Mini",
                     "variant": "unsupported",
                     "faithfulness": 1,
-                    "correctness": 4
+                    "correctness": 1
                 },
                 {
                     "judge": "anthropic/claude-haiku-4.5",
@@ -66,15 +66,15 @@
                     "judge": "anthropic/claude-haiku-4.5",
                     "label": "Claude Haiku 4.5",
                     "variant": "subtle_error",
-                    "faithfulness": 2,
-                    "correctness": 2
+                    "faithfulness": 1,
+                    "correctness": 1
                 },
                 {
                     "judge": "anthropic/claude-haiku-4.5",
                     "label": "Claude Haiku 4.5",
                     "variant": "unsupported",
                     "faithfulness": 1,
-                    "correctness": 4
+                    "correctness": 1
                 },
                 {
                     "judge": "google/gemini-2.5-flash",
@@ -87,15 +87,15 @@
                     "judge": "google/gemini-2.5-flash",
                     "label": "Gemini 2.5 Flash",
                     "variant": "subtle_error",
-                    "faithfulness": 3,
-                    "correctness": 4
+                    "faithfulness": 1,
+                    "correctness": 1
                 },
                 {
                     "judge": "google/gemini-2.5-flash",
                     "label": "Gemini 2.5 Flash",
                     "variant": "unsupported",
-                    "faithfulness": 5,
-                    "correctness": 5
+                    "faithfulness": 1,
+                    "correctness": 1
                 },
                 {
                     "judge": "meta-llama/llama-3.3-70b-instruct",
@@ -108,15 +108,15 @@
                     "judge": "meta-llama/llama-3.3-70b-instruct",
                     "label": "Llama 3.3 70B",
                     "variant": "subtle_error",
-                    "faithfulness": 2,
-                    "correctness": 2
+                    "faithfulness": 1,
+                    "correctness": 1
                 },
                 {
                     "judge": "meta-llama/llama-3.3-70b-instruct",
                     "label": "Llama 3.3 70B",
                     "variant": "unsupported",
-                    "faithfulness": 5,
-                    "correctness": 5
+                    "faithfulness": 1,
+                    "correctness": 1
                 }
             ]
         },
@@ -142,15 +142,15 @@
                     "judge": "x-ai/grok-4.3",
                     "label": "Grok 4.3",
                     "variant": "subtle_error",
-                    "faithfulness": 2,
-                    "correctness": 2
+                    "faithfulness": 1,
+                    "correctness": 1
                 },
                 {
                     "judge": "x-ai/grok-4.3",
                     "label": "Grok 4.3",
                     "variant": "unsupported",
                     "faithfulness": 1,
-                    "correctness": 4
+                    "correctness": 1
                 },
                 {
                     "judge": "openai/gpt-5.4-mini",
@@ -163,15 +163,15 @@
                     "judge": "openai/gpt-5.4-mini",
                     "label": "GPT-5.4 Mini",
                     "variant": "subtle_error",
-                    "faithfulness": 2,
-                    "correctness": 2
+                    "faithfulness": 1,
+                    "correctness": 1
                 },
                 {
                     "judge": "openai/gpt-5.4-mini",
                     "label": "GPT-5.4 Mini",
                     "variant": "unsupported",
                     "faithfulness": 1,
-                    "correctness": 4
+                    "correctness": 1
                 },
                 {
                     "judge": "anthropic/claude-haiku-4.5",
@@ -184,15 +184,15 @@
                     "judge": "anthropic/claude-haiku-4.5",
                     "label": "Claude Haiku 4.5",
                     "variant": "subtle_error",
-                    "faithfulness": 2,
-                    "correctness": 2
+                    "faithfulness": 1,
+                    "correctness": 1
                 },
                 {
                     "judge": "anthropic/claude-haiku-4.5",
                     "label": "Claude Haiku 4.5",
                     "variant": "unsupported",
                     "faithfulness": 1,
-                    "correctness": 4
+                    "correctness": 1
                 },
                 {
                     "judge": "google/gemini-2.5-flash",
@@ -205,15 +205,15 @@
                     "judge": "google/gemini-2.5-flash",
                     "label": "Gemini 2.5 Flash",
                     "variant": "subtle_error",
-                    "faithfulness": 2,
-                    "correctness": 2
+                    "faithfulness": 1,
+                    "correctness": 1
                 },
                 {
                     "judge": "google/gemini-2.5-flash",
                     "label": "Gemini 2.5 Flash",
                     "variant": "unsupported",
                     "faithfulness": 1,
-                    "correctness": 4
+                    "correctness": 1
                 },
                 {
                     "judge": "meta-llama/llama-3.3-70b-instruct",
@@ -226,28 +226,28 @@
                     "judge": "meta-llama/llama-3.3-70b-instruct",
                     "label": "Llama 3.3 70B",
                     "variant": "subtle_error",
-                    "faithfulness": 2,
-                    "correctness": 2
+                    "faithfulness": 1,
+                    "correctness": 1
                 },
                 {
                     "judge": "meta-llama/llama-3.3-70b-instruct",
                     "label": "Llama 3.3 70B",
                     "variant": "unsupported",
                     "faithfulness": 1,
-                    "correctness": 4
+                    "correctness": 1
                 }
             ]
         },
         {
-            "itemId": "5728349dff5b5019007d9f02",
-            "title": "Amazon_rainforest",
-            "question": "How many species of trees can be found in the Amazon rainforest?",
-            "goldAnswer": "16,000",
-            "subtleAnswer": "16,001",
+            "itemId": "57264684708984140094c125",
+            "title": "Black_Death",
+            "question": "How much of the European population did the black death kill?",
+            "goldAnswer": "30–60% of Europe's total population",
+            "subtleAnswer": "31–60% of Europe's total population",
             "subtleKind": "integer",
-            "sourceContext": "The Amazon rainforest (Portuguese: Floresta Amazônica or Amazônia; Spanish: Selva Amazónica, Amazonía or usually Amazonia; French: Forêt amazonienne; Dutch: Amazoneregenwoud), also known in English as Amazonia or the Amazon Jungle, is a moist broadleaf forest that covers most of the Amazon basin of South America. This basin encompasses 7,000,000 square kilometres (2,700,000 sq mi), of which 5,500,000 square kilometres (2,100,000 sq mi) are covered by the rainforest. This region includes territory belonging to nine nations. The majority of the forest is contained within Brazil, with 60% of the rainforest, followed by Peru with 13%, Colombia with 10%, and with minor amounts in Venezuela, Ecuador, Bolivia, Guyana, Suriname and French Guiana. States or departments in four nations contain \"Amazonas\" in their names. The Amazon represents over half of the planet's remaining rainforests, and comprises the largest and most biodiverse tract of tropical rainforest in the world, with an estimated 390 billion individual trees divided into 16,000 species.",
-            "donorTitle": "Private_school",
-            "donorContext": "Although most are non-aligned, some of the best known independent schools also belong to the large, long-established religious foundations, such as the Anglican Church, Uniting Church and Presbyterian Church, but in most cases, they do not insist on their students’ religious allegiance. These schools are typically viewed as 'elite schools'. Many of the 'grammar schools' also fall in this category. They are usually expensive schools that tend to be up-market and traditional in style, some Catholic schools fall into this category as well, e.g. St Joseph's College, Gregory Terrace, Saint Ignatius' College, Riverview, St Gregory's College, Campbelltown, St Aloysius' College (Sydney) and St Joseph's College, Hunters Hill, as well as Loreto Kirribilli, Monte Sant Angelo Mercy College, St Ursula's College and Loreto Normanhurst for girls.",
+            "sourceContext": "The Black Death is thought to have originated in the arid plains of Central Asia, where it then travelled along the Silk Road, reaching Crimea by 1343. From there, it was most likely carried by Oriental rat fleas living on the black rats that were regular passengers on merchant ships. Spreading throughout the Mediterranean and Europe, the Black Death is estimated to have killed 30–60% of Europe's total population. In total, the plague reduced the world population from an estimated 450 million down to 350–375 million in the 14th century. The world population as a whole did not recover to pre-plague levels until the 17th century. The plague recurred occasionally in Europe until the 19th century.",
+            "donorTitle": "American_Broadcasting_Company",
+            "donorContext": "Between May and September 2005, rumors circulated that Disney–ABC was considering a sale of ABC Radio, with Clear Channel Communications and Westwood One (which had earlier purchased NBC's radio division, as well as the distribution rights to CBS's, and the Mutual Broadcasting System during the 1990s) as potential buyers. On October 19, 2005, ABC announced the restructuring of the group into six divisions: Entertainment Communications, Communications Resources, Kids Communications, News Communications, Corporate Communications, and International Communications.",
             "scores": [
                 {
                     "judge": "x-ai/grok-4.3",
@@ -260,15 +260,15 @@
                     "judge": "x-ai/grok-4.3",
                     "label": "Grok 4.3",
                     "variant": "subtle_error",
-                    "faithfulness": 2,
-                    "correctness": 2
+                    "faithfulness": 1,
+                    "correctness": 1
                 },
                 {
                     "judge": "x-ai/grok-4.3",
                     "label": "Grok 4.3",
                     "variant": "unsupported",
                     "faithfulness": 1,
-                    "correctness": 4
+                    "correctness": 1
                 },
                 {
                     "judge": "openai/gpt-5.4-mini",
@@ -281,15 +281,15 @@
                     "judge": "openai/gpt-5.4-mini",
                     "label": "GPT-5.4 Mini",
                     "variant": "subtle_error",
-                    "faithfulness": 2,
-                    "correctness": 2
+                    "faithfulness": 5,
+                    "correctness": 5
                 },
                 {
                     "judge": "openai/gpt-5.4-mini",
                     "label": "GPT-5.4 Mini",
                     "variant": "unsupported",
                     "faithfulness": 1,
-                    "correctness": 4
+                    "correctness": 1
                 },
                 {
                     "judge": "anthropic/claude-haiku-4.5",
@@ -302,15 +302,15 @@
                     "judge": "anthropic/claude-haiku-4.5",
                     "label": "Claude Haiku 4.5",
                     "variant": "subtle_error",
-                    "faithfulness": 2,
-                    "correctness": 2
+                    "faithfulness": 4,
+                    "correctness": 4
                 },
                 {
                     "judge": "anthropic/claude-haiku-4.5",
                     "label": "Claude Haiku 4.5",
                     "variant": "unsupported",
                     "faithfulness": 1,
-                    "correctness": 4
+                    "correctness": 1
                 },
                 {
                     "judge": "google/gemini-2.5-flash",
@@ -323,15 +323,15 @@
                     "judge": "google/gemini-2.5-flash",
                     "label": "Gemini 2.5 Flash",
                     "variant": "subtle_error",
-                    "faithfulness": 2,
-                    "correctness": 2
+                    "faithfulness": 5,
+                    "correctness": 5
                 },
                 {
                     "judge": "google/gemini-2.5-flash",
                     "label": "Gemini 2.5 Flash",
                     "variant": "unsupported",
                     "faithfulness": 1,
-                    "correctness": 4
+                    "correctness": 1
                 },
                 {
                     "judge": "meta-llama/llama-3.3-70b-instruct",
@@ -344,15 +344,15 @@
                     "judge": "meta-llama/llama-3.3-70b-instruct",
                     "label": "Llama 3.3 70B",
                     "variant": "subtle_error",
-                    "faithfulness": 3,
-                    "correctness": 4
+                    "faithfulness": 5,
+                    "correctness": 5
                 },
                 {
                     "judge": "meta-llama/llama-3.3-70b-instruct",
                     "label": "Llama 3.3 70B",
                     "variant": "unsupported",
                     "faithfulness": 1,
-                    "correctness": 4
+                    "correctness": 1
                 }
             ]
         }
