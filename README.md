@@ -6,7 +6,7 @@ This repository measures four things, on a public dataset, with the judging as t
 
 1. **Self-consistency.** Same judge, same input, repeated calls. How far do the scores drift?
 2. **Prompt sensitivity.** Same judge, three rubrics. How far do the scores move?
-3. **Inter-judge disagreement.** Four models, identical inputs.
+3. **Inter-judge disagreement.** Five models, identical inputs.
 4. **Planted-error misses.** How often a judge accepts an answer that was built to be wrong, or accepts a correct answer that the retrieved passage does not support.
 
 The harness is Kotlin on the JVM. Answer variants are generated once, deterministically, and checked in. Judge calls go through OpenRouter. Every raw response is cached, so analysis can be rerun without spending anything. A dry-run mode fills that cache with a fake judge, which is what the charts show until a real run replaces them.
@@ -58,7 +58,7 @@ The judge returns JSON: `faithfulness` and `correctness`, each an integer from 1
 - `concise`, once. A short instruction.
 - `cot`, once. At most two sentences of rationale before the scores.
 
-Temperature is **0** for every model that accepts it. No seed is sent, so whatever nondeterminism the provider still has is part of the measurement. Calls are sequential on purpose: the budget check happens between them.
+Temperature is **0** for every model whose OpenRouter card advertises `temperature`. GPT-5.4 Mini does not, so those calls omit the parameter and the repeats measure whatever sampling OpenAI applies in that case. No seed is sent. Calls are sequential on purpose: the budget check happens between them.
 
 On the strict rubric's first repeat, a planted error is a **miss** when:
 
@@ -76,33 +76,37 @@ Prices below are USD per 1M tokens, read from `https://openrouter.ai/api/v1/mode
 | Judge | OpenRouter id | Input | Output | This experiment |
 | --- | --- | ---: | ---: | ---: |
 | Grok 4.3 | `x-ai/grok-4.3` | $1.25 | $2.50 | $0.5169 |
-| GPT-4o mini (2024-07-18) | `openai/gpt-4o-mini-2024-07-18` | $0.15 | $0.60 | $0.0832 |
+| GPT-5.4 Mini | `openai/gpt-5.4-mini` | $0.75 | $4.50 | $0.5217 |
 | Claude Haiku 4.5 | `anthropic/claude-haiku-4.5` | $1.00 | $5.00 | $0.6250 |
 | Gemini 2.5 Flash | `google/gemini-2.5-flash` | $0.30 | $2.50 | $0.2580 |
+| Llama 3.3 70B | `meta-llama/llama-3.3-70b-instruct` | $0.10 | $0.32 | $0.0498 |
 
-The dated GPT-4o mini snapshot is there so the id cannot silently move. Haiku 4.5 is the Haiku that still advertises a `temperature` parameter. Haiku 5.5 is cheaper ($0.10 / $0.50) but the OpenRouter listing does not advertise `temperature`, which would make the repeat arm incomparable. Gemini 2.5 Flash is the Flash model, not Flash Lite.
+`openai/gpt-5.4-mini` is the current OpenAI mini on the public model list (26 October 2026). There is no `gpt-5.5-mini` or `gpt-5.6-mini` id. The moving alias `~openai/gpt-mini-latest` is the same list price and is not used. GPT-5.4 Mini’s `supported_parameters` include `reasoning` and do not include `temperature`, on the model and on every listed endpoint (OpenAI standard, flex, and fast, plus Azure). The request therefore sends `reasoning.effort = none` and omits `temperature`. The pin is the catalog price, which matches the standard OpenAI route. Flex is half of that ($0.375 / $2.25) and fast is double ($1.50 / $9.00). The request does not select a service tier.
 
-Call count: 50 questions × 3 variants × 4 judges × (3 + 1 + 1) prompts-and-repeats = **3000 calls**.
+Llama 3.3 70B is pinned to the DeepInfra route (`provider.only = ["deepinfra"]`, `allow_fallbacks = false`). That route advertises `temperature` and its price matches the catalog ($0.10 / $0.32, fp8). Other routes also advertise temperature and cost more, up to about $0.72 / $0.72 on Google. Haiku 4.5 is the Haiku that still advertises `temperature`. Haiku 5.5 is cheaper ($0.10 / $0.50) and its listing does not. Gemini 2.5 Flash is the Flash model, not Flash Lite.
 
-Input tokens are `ceil(chars / 4)` on the exact system and user text (about 1.09M tokens for the full plan). Expected output is 80 / 70 / 160 tokens for strict / concise / cot. `max_tokens` is 160 / 140 / 280, and that ceiling is what the in-run guard uses. Models that advertise reasoning are sent `reasoning.effort = none`, because reasoning tokens are billed as output.
+Call count: 50 questions × 3 variants × 5 judges × (3 + 1 + 1) prompts-and-repeats = **3750 calls**.
+
+Input tokens are `ceil(chars / 4)` on the exact system and user text (1,362,730 tokens for the full plan). Expected output is 80 / 70 / 160 tokens for strict / concise / cot (352,500 tokens). `max_tokens` is 160 / 140 / 280, and that ceiling is what the in-run guard uses. Models that advertise reasoning are sent `reasoning.effort = none`, because reasoning tokens are billed as output.
 
 FX pin: **1 USD = 0.89342 EUR** on 23 October 2026, from the Frankfurter API (`https://api.frankfurter.app/2026-10-23?from=USD&to=EUR`).
 
 | | USD | EUR |
 | --- | ---: | ---: |
-| Expected | 1.4832 | 1.3251 |
-| Expected × 1.5 safety margin (this is the gate) | 2.2248 | **1.9876** |
-| Ceiling if every call hits `max_tokens` | 2.1669 | 1.9359 |
-| Stress: that ceiling, plus 1000 extra output tokens on models that support reasoning | 9.6669 | 8.6366 |
+| Expected | 1.9715 | 1.7613 |
+| Expected × 1.5 safety margin (this is the gate) | 2.9572 | **2.6420** |
+| Ceiling if every call hits `max_tokens` | 2.9274 | 2.6154 |
+| Stress: that ceiling, plus 1000 extra output tokens on models that support reasoning | 13.8024 | 12.3313 |
 | Cap (default) | | **10.00** |
 
-The run is allowed. The stress row is not the gate. It is the "reasoning was not actually turned off, and every call grew by a thousand tokens" case, and it still fits under 10 EUR. If a provider bills more than that, the runner stops before the next call once actual spend plus the next ceiling would pass the cap. One in-flight call can overshoot the cap by its own bill. Actual cost comes from OpenRouter's `usage.cost` when the response includes it, otherwise from the token estimate.
+The gate allows the run. The stress row is not the gate. It is the case where `reasoning.effort = none` is ignored and every reasoning-model call grows by a thousand output tokens. That case is 12.33 EUR, above the cap, mostly because GPT-5.4 Mini bills output at $4.50 per million. The runner then stops before the next call once actual spend plus the next max-token ceiling would pass 10 EUR. One in-flight call can overshoot the cap by its own bill. Actual cost comes from OpenRouter's `usage.cost` when the response includes it, otherwise from the token estimate.
 
 Change the set, the repeats, or `capEur` in `config/experiment.json`. Vendors must stay unique, and the primary prompt needs at least two repeats.
 
 ## What is checked in
 
 ```
+LICENSE                     MIT, code only
 config/experiment.json      judges, prices, repeats, cap
 data/items.json             50 items and their variants
 data/DATASOURCE.md          SQuAD citation and CC BY-SA 4.0
@@ -121,7 +125,7 @@ The pages are `docs/index.html` (charts), `docs/examples.html` (three items), an
 
 ## Dataset
 
-SQuAD 1.1 dev, 50 questions, passages of 480–1400 characters. License **CC BY-SA 4.0**. Citation, source URL, and the regenerate command are in [`data/DATASOURCE.md`](data/DATASOURCE.md). The passages are Wikipedia text, which is also CC BY-SA. This subset is a derivative and stays under that license.
+SQuAD 1.1 dev, 50 questions, passages of 480–1400 characters. The subset is **CC BY-SA 4.0**. The code is **MIT**, copyright Leo Helfferich, 2026 (`LICENSE`). The code license does not cover `data/items.json`. Citation, source URL, and the regenerate command are in [`data/DATASOURCE.md`](data/DATASOURCE.md). The passages are Wikipedia text, which is also CC BY-SA. This subset is a derivative and stays under CC BY-SA 4.0.
 
 Regenerate after a rule change:
 
@@ -152,7 +156,8 @@ Trial order is fixed: items in file order, then `correct` / `subtle_error` / `un
 - The questions are short English Wikipedia factoids. This does not say how a judge behaves on long answers, multi-hop questions, or a messy retriever.
 - Numeric edits are obvious to a careful reader. They are easier than a real hallucination that keeps the right shape. Entity swaps are other names from the same paragraph, and some of those names are a different kind of thing (a place swapped for a person).
 - The unsupported passage is a different article, not a near-miss chunk from the same page. A judge that fails here is failing an easy case. A judge that passes may still fail on near misses.
-- Temperature 0 measures provider nondeterminism, not sampling noise. A temperature of 0.7 would move the scores more and would cost the same per call only if you do not add repeats. This design spends its repeats on the strict rubric at temperature 0.
+- Temperature 0 measures provider nondeterminism, not sampling noise, on the models that accept the parameter. GPT-5.4 Mini does not advertise `temperature`, so its three strict repeats are not the same knob as the other four judges. A temperature of 0.7 on the models that accept it would move the scores more and would cost the same per call only if you do not add repeats. This design spends its repeats on the strict rubric.
+- Llama calls that cannot be served by DeepInfra fail instead of falling through to a more expensive route. GPT-5.4 Mini is not pinned to a service tier. A fast-tier route is about twice the pin.
 - There is no human rater. The planted labels are the reference, not an agreement with a person.
 - Token estimates use characters divided by four. The 1.5 margin and the max-token ceiling exist because that estimate is rough. Reasoning tokens, if a provider ignores `effort: none`, are the main way to spend more than the estimate. The stress row above is that case at +1000 tokens.
 - OpenRouter prices and the euro move. Refresh before a paid run. The cap is enforced in EUR using the pinned FX rate, while the API bills USD.

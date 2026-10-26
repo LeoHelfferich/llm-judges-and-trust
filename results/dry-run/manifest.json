@@ -2,8 +2,8 @@
     "schemaVersion": 1,
     "mode": "dry-run",
     "simulated": true,
-    "startedAt": "2026-10-26T13:35:16.379125036Z",
-    "finishedAt": "2026-10-26T13:35:16.557070278Z",
+    "startedAt": "2026-10-26T14:24:36.609687309Z",
+    "finishedAt": "2026-10-26T14:24:36.770137429Z",
     "datasetPath": "data/items.json",
     "datasetName": "SQuAD 1.1 dev subset",
     "datasetLicense": "CC BY-SA 4.0",
@@ -33,13 +33,13 @@
             "supportsReasoning": true
         },
         {
-            "id": "openai/gpt-4o-mini-2024-07-18",
-            "label": "GPT-4o mini (2024-07-18)",
+            "id": "openai/gpt-5.4-mini",
+            "label": "GPT-5.4 Mini",
             "vendor": "OpenAI",
-            "promptUsdPerMillion": 0.15,
-            "completionUsdPerMillion": 0.6,
-            "supportsTemperature": true,
-            "supportsReasoning": false
+            "promptUsdPerMillion": 0.75,
+            "completionUsdPerMillion": 4.5,
+            "supportsTemperature": false,
+            "supportsReasoning": true
         },
         {
             "id": "anthropic/claude-haiku-4.5",
@@ -58,6 +58,16 @@
             "completionUsdPerMillion": 2.5,
             "supportsTemperature": true,
             "supportsReasoning": true
+        },
+        {
+            "id": "meta-llama/llama-3.3-70b-instruct",
+            "label": "Llama 3.3 70B",
+            "vendor": "Meta",
+            "promptUsdPerMillion": 0.1,
+            "completionUsdPerMillion": 0.32,
+            "supportsTemperature": true,
+            "supportsReasoning": false,
+            "providerOnly": "deepinfra"
         }
     ],
     "promptOrder": [
@@ -81,9 +91,9 @@
     "capEur": 10.0,
     "safetyMargin": 1.5,
     "estimate": {
-        "trials": 3000,
-        "inputTokens": 1090184,
-        "outputTokens": 282000,
+        "trials": 3750,
+        "inputTokens": 1362730,
+        "outputTokens": 352500,
         "perModel": [
             {
                 "id": "x-ai/grok-4.3",
@@ -94,12 +104,12 @@
                 "usd": 0.5169325000000002
             },
             {
-                "id": "openai/gpt-4o-mini-2024-07-18",
-                "label": "GPT-4o mini (2024-07-18)",
+                "id": "openai/gpt-5.4-mini",
+                "label": "GPT-5.4 Mini",
                 "trials": 750,
                 "inputTokens": 272546,
                 "outputTokens": 70500,
-                "usd": 0.08318189999999975
+                "usd": 0.521659500000001
             },
             {
                 "id": "anthropic/claude-haiku-4.5",
@@ -116,26 +126,34 @@
                 "inputTokens": 272546,
                 "outputTokens": 70500,
                 "usd": 0.2580137999999999
+            },
+            {
+                "id": "meta-llama/llama-3.3-70b-instruct",
+                "label": "Llama 3.3 70B",
+                "trials": 750,
+                "inputTokens": 272546,
+                "outputTokens": 70500,
+                "usd": 0.04981459999999999
             }
         ],
-        "totalUsd": 1.4831741999999986,
-        "totalEur": 1.3250974937639988,
-        "withMarginUsd": 2.2247612999999977,
-        "withMarginEur": 1.987646240645998,
-        "ceilingUsd": 2.1668742000000054,
-        "ceilingEur": 1.9359287477640048,
+        "totalUsd": 1.9714664,
+        "totalEur": 1.761347511088,
+        "withMarginUsd": 2.9571996,
+        "withMarginEur": 2.642021266632,
+        "ceilingUsd": 2.9273564000000043,
+        "ceilingEur": 2.6153587548880037,
         "stressExtraReasoningTokens": 1000,
-        "stressUsd": 9.666874200000022,
-        "stressEur": 8.63657874776402,
+        "stressUsd": 13.80235640000003,
+        "stressEur": 12.331301254888025,
         "capEur": 10.0,
         "safetyMargin": 1.5,
         "eurPerUsd": 0.89342,
         "allowed": true
     },
-    "plannedTrials": 3000,
-    "completedTrials": 3000,
+    "plannedTrials": 3750,
+    "completedTrials": 3750,
     "cacheHits": 0,
     "stoppedEarly": false,
     "spentUsd": 0.0,
-    "gitCommit": "8679ede"
+    "gitCommit": "4c7cf33"
 }

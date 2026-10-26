@@ -23,6 +23,7 @@ data class PlannedTrial(
         variant.wire(),
         repeat.toString(),
         if (judge.supportsTemperature) temperature.toString() else "provider-default",
+        judge.providerOnly ?: "any-provider",
         call.maxOutputTokens.toString(),
     ).joinToString("|")
 }

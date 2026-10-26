@@ -46,8 +46,12 @@ function render(root, metrics) {
   root.appendChild(stats);
   root.appendChild(el("p", "note", costLine(meta)));
 
+  const omitted = (meta.judges || []).filter((judge) => judge.supportsTemperature === false).map((judge) => judge.label);
+  const temperatureNote = omitted.length
+    ? " Temperature is " + meta.temperature + " when the model accepts it. " + omitted.join(", ") + " does not, so those calls omit it."
+    : " Temperature is " + meta.temperature + ".";
   root.appendChild(section("Self-consistency",
-    "The strict rubric is scored " + (meta.repeats.strict || 3) + " times at temperature " + meta.temperature + ". The bars count how far faithfulness moves between those repeats. A range of 0 means the judge repeated itself.",
+    "The strict rubric is scored " + (meta.repeats.strict || 3) + " times." + temperatureNote + " The bars count how far faithfulness moves between those repeats. A range of 0 means the judge repeated itself.",
     driftChart(metrics),
     consistencyTable(metrics),
   ));

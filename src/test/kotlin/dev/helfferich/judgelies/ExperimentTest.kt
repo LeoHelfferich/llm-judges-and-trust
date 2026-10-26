@@ -173,13 +173,34 @@ class OpenRouterContractTest {
     @Test
     fun requestOmitsTemperatureWhenUnsupportedAndDisablesReasoningWhenSupported() {
         val grok = judge("x-ai/grok-4.3", temperature = true, reasoning = true)
-        val mini = judge("openai/gpt-4o-mini-2024-07-18", temperature = true, reasoning = false)
+        val plain = judge("example/plain", temperature = true, reasoning = false)
+        val mini = judge("openai/gpt-5.4-mini", temperature = false, reasoning = true)
+        val llama = JudgeModel(
+            "meta-llama/llama-3.3-70b-instruct",
+            "Llama 3.3 70B",
+            "Meta",
+            0.1,
+            0.32,
+            true,
+            false,
+            providerOnly = "deepinfra",
+        )
         val grokJson = Jsons.compact.parseToJsonElement(buildChatRequest(grok, 0.0, 160, "sys", "user")).jsonObject()
+        val plainJson = Jsons.compact.parseToJsonElement(buildChatRequest(plain, 0.0, 160, "sys", "user")).jsonObject()
         val miniJson = Jsons.compact.parseToJsonElement(buildChatRequest(mini, 0.0, 160, "sys", "user")).jsonObject()
+        val llamaJson = Jsons.compact.parseToJsonElement(buildChatRequest(llama, 0.0, 160, "sys", "user")).jsonObject()
         assertEquals("none", grokJson["reasoning"]!!.jsonObject()["effort"]!!.jsonPrimitive().content)
         assertEquals(0.0, grokJson["temperature"]!!.jsonPrimitive().content.toDouble())
-        assertFalse(miniJson.containsKey("reasoning"))
-        assertTrue(miniJson.containsKey("temperature"))
+        assertFalse(grokJson.containsKey("provider"))
+        assertFalse(plainJson.containsKey("reasoning"))
+        assertTrue(plainJson.containsKey("temperature"))
+        assertEquals("none", miniJson["reasoning"]!!.jsonObject()["effort"]!!.jsonPrimitive().content)
+        assertFalse(miniJson.containsKey("temperature"))
+        assertEquals(0.0, llamaJson["temperature"]!!.jsonPrimitive().content.toDouble())
+        assertFalse(llamaJson.containsKey("reasoning"))
+        val pin = llamaJson["provider"]!!.jsonObject()
+        assertEquals("deepinfra", pin["only"]!!.jsonArray()[0].jsonPrimitive().content)
+        assertEquals(false, pin["allow_fallbacks"]!!.jsonPrimitive().content.toBoolean())
     }
 
     @Test
@@ -367,7 +388,7 @@ class CheckedInExperimentTest {
         val cache = ResponseCache(Path.of("results/dry-run/responses.jsonl")).also { it.load() }
         val fresh = Analyzer.analyze(items, manifest, cache.rows(), "2026-01-01T00:00:00Z")
         val published = Jsons.pretty.decodeFromString(Metrics.serializer(), Path.of("docs/data/metrics.json").readText())
-        assertEquals(3000, published.meta.nTrialsCompleted)
+        assertEquals(50 * 3 * 5 * 5, published.meta.nTrialsCompleted)
         assertTrue(published.meta.simulated)
         assertEquals(fresh.metrics.headlines, published.headlines)
         assertEquals(
@@ -382,7 +403,23 @@ class CheckedInExperimentTest {
         config.validate()
         val items = Jsons.pretty.decodeFromString(DatasetFile.serializer(), Path.of("data/items.json").readText()).items
         val estimate = CostModel.estimate(config, Planner.plan(config, items).map { it.call })
-        assertEquals(50 * 3 * 4 * 5, estimate.trials)
+        assertEquals(
+            listOf(
+                "x-ai/grok-4.3",
+                "openai/gpt-5.4-mini",
+                "anthropic/claude-haiku-4.5",
+                "google/gemini-2.5-flash",
+                "meta-llama/llama-3.3-70b-instruct",
+            ),
+            config.judges.map { it.id },
+        )
+        val mini = config.judges.first { it.id == "openai/gpt-5.4-mini" }
+        assertFalse(mini.supportsTemperature)
+        assertTrue(mini.supportsReasoning)
+        val llama = config.judges.first { it.id == "meta-llama/llama-3.3-70b-instruct" }
+        assertEquals("deepinfra", llama.providerOnly)
+        assertTrue(llama.supportsTemperature)
+        assertEquals(50 * 3 * 5 * 5, estimate.trials)
         assertTrue(estimate.allowed, CostModel.format(estimate))
         assertTrue(estimate.withMarginEur < 10.0)
         assertTrue(estimate.totalEur > 0.05)
@@ -454,4 +491,5 @@ private fun countingJudge(calls: MutableList<String>) = JudgeClient { request ->
 }
 
 private fun kotlinx.serialization.json.JsonElement.jsonObject() = this as kotlinx.serialization.json.JsonObject
+private fun kotlinx.serialization.json.JsonElement.jsonArray() = this as kotlinx.serialization.json.JsonArray
 private fun kotlinx.serialization.json.JsonElement.jsonPrimitive() = this as kotlinx.serialization.json.JsonPrimitive

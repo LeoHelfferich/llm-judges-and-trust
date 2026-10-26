@@ -3,15 +3,15 @@
         "schemaVersion": 1,
         "mode": "dry-run",
         "simulated": true,
-        "startedAt": "2026-10-26T13:35:16.379125036Z",
-        "finishedAt": "2026-10-26T13:35:16.557070278Z",
-        "analyzedAt": "2026-10-26T13:38:17.060364942Z",
+        "startedAt": "2026-10-26T14:24:36.609687309Z",
+        "finishedAt": "2026-10-26T14:24:36.770137429Z",
+        "analyzedAt": "2026-10-26T14:24:37.561632826Z",
         "dataset": "SQuAD 1.1 dev subset",
         "datasetLicense": "CC BY-SA 4.0",
         "nItems": 50,
-        "nTrialsPlanned": 3000,
-        "nTrialsCompleted": 3000,
-        "nParsed": 3000,
+        "nTrialsPlanned": 3750,
+        "nTrialsCompleted": 3750,
+        "nParsed": 3750,
         "temperature": 0.0,
         "seedSent": false,
         "primaryPrompt": "strict",
@@ -38,13 +38,13 @@
                 "supportsReasoning": true
             },
             {
-                "id": "openai/gpt-4o-mini-2024-07-18",
-                "label": "GPT-4o mini (2024-07-18)",
+                "id": "openai/gpt-5.4-mini",
+                "label": "GPT-5.4 Mini",
                 "vendor": "OpenAI",
-                "promptUsdPerMillion": 0.15,
-                "completionUsdPerMillion": 0.6,
-                "supportsTemperature": true,
-                "supportsReasoning": false
+                "promptUsdPerMillion": 0.75,
+                "completionUsdPerMillion": 4.5,
+                "supportsTemperature": false,
+                "supportsReasoning": true
             },
             {
                 "id": "anthropic/claude-haiku-4.5",
@@ -63,6 +63,16 @@
                 "completionUsdPerMillion": 2.5,
                 "supportsTemperature": true,
                 "supportsReasoning": true
+            },
+            {
+                "id": "meta-llama/llama-3.3-70b-instruct",
+                "label": "Llama 3.3 70B",
+                "vendor": "Meta",
+                "promptUsdPerMillion": 0.1,
+                "completionUsdPerMillion": 0.32,
+                "supportsTemperature": true,
+                "supportsReasoning": false,
+                "providerOnly": "deepinfra"
             }
         ],
         "capEur": 10.0,
@@ -70,18 +80,18 @@
         "eurPerUsd": 0.89342,
         "fxAsOf": "2026-10-23",
         "pricingAsOf": "2026-10-26",
-        "estimatedCostUsd": 1.4831741999999986,
-        "estimatedCostEur": 1.3250974937639988,
-        "estimatedCostEurWithMargin": 1.987646240645998,
+        "estimatedCostUsd": 1.9714664,
+        "estimatedCostEur": 1.761347511088,
+        "estimatedCostEurWithMargin": 2.642021266632,
         "billedCostUsd": 0.0,
         "stoppedEarly": false,
         "promptHash": "3b781b568255"
     },
     "headlines": {
-        "meanFaithfulnessSelfDisagreement": 0.07333333333333333,
-        "meanPairwiseFaithfulnessKappa": 0.6492528007692511,
-        "meanSubtleMissRate": 0.195,
-        "meanUnsupportedMissRate": 0.22,
+        "meanFaithfulnessSelfDisagreement": 0.07733333333333334,
+        "meanPairwiseFaithfulnessKappa": 0.6242985763414425,
+        "meanSubtleMissRate": 0.144,
+        "meanUnsupportedMissRate": 0.20800000000000002,
         "meanCorrectFalseRejectRate": 0.04
     },
     "selfConsistency": {
@@ -115,26 +125,26 @@
                 }
             },
             {
-                "judge": "openai/gpt-4o-mini-2024-07-18",
-                "label": "GPT-4o mini (2024-07-18)",
+                "judge": "openai/gpt-5.4-mini",
+                "label": "GPT-5.4 Mini",
                 "nGroups": 150,
                 "faithfulness": {
-                    "pctNotIdentical": 0.11333333333333333,
-                    "meanRange": 0.11333333333333333,
+                    "pctNotIdentical": 0.09333333333333334,
+                    "meanRange": 0.09333333333333334,
                     "rangeHistogram": [
-                        133,
-                        17,
+                        136,
+                        14,
                         0,
                         0,
                         0
                     ]
                 },
                 "correctness": {
-                    "pctNotIdentical": 0.21333333333333335,
-                    "meanRange": 0.21333333333333335,
+                    "pctNotIdentical": 0.17333333333333334,
+                    "meanRange": 0.17333333333333334,
                     "rangeHistogram": [
-                        118,
-                        32,
+                        124,
+                        26,
                         0,
                         0,
                         0
@@ -194,6 +204,33 @@
                         0
                     ]
                 }
+            },
+            {
+                "judge": "meta-llama/llama-3.3-70b-instruct",
+                "label": "Llama 3.3 70B",
+                "nGroups": 150,
+                "faithfulness": {
+                    "pctNotIdentical": 0.11333333333333333,
+                    "meanRange": 0.11333333333333333,
+                    "rangeHistogram": [
+                        133,
+                        17,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "correctness": {
+                    "pctNotIdentical": 0.08,
+                    "meanRange": 0.08,
+                    "rangeHistogram": [
+                        138,
+                        12,
+                        0,
+                        0,
+                        0
+                    ]
+                }
             }
         ]
     },
@@ -215,15 +252,15 @@
                         "pctCorrectnessShiftAtLeast2": 0.14
                     },
                     {
-                        "judge": "openai/gpt-4o-mini-2024-07-18",
-                        "label": "GPT-4o mini (2024-07-18)",
+                        "judge": "openai/gpt-5.4-mini",
+                        "label": "GPT-5.4 Mini",
                         "n": 150,
-                        "meanDeltaFaithfulness": 0.2733333333333333,
-                        "meanDeltaCorrectness": -0.05333333333333334,
-                        "pctFaithfulnessChanged": 0.48,
-                        "pctFaithfulnessShiftAtLeast2": 0.24,
-                        "pctCorrectnessChanged": 0.36,
-                        "pctCorrectnessShiftAtLeast2": 0.22666666666666666
+                        "meanDeltaFaithfulness": 0.36,
+                        "meanDeltaCorrectness": 0.06,
+                        "pctFaithfulnessChanged": 0.46,
+                        "pctFaithfulnessShiftAtLeast2": 0.21333333333333335,
+                        "pctCorrectnessChanged": 0.3333333333333333,
+                        "pctCorrectnessShiftAtLeast2": 0.20666666666666667
                     },
                     {
                         "judge": "anthropic/claude-haiku-4.5",
@@ -246,6 +283,17 @@
                         "pctFaithfulnessShiftAtLeast2": 0.26,
                         "pctCorrectnessChanged": 0.36,
                         "pctCorrectnessShiftAtLeast2": 0.17333333333333334
+                    },
+                    {
+                        "judge": "meta-llama/llama-3.3-70b-instruct",
+                        "label": "Llama 3.3 70B",
+                        "n": 150,
+                        "meanDeltaFaithfulness": 0.58,
+                        "meanDeltaCorrectness": 0.16,
+                        "pctFaithfulnessChanged": 0.4666666666666667,
+                        "pctFaithfulnessShiftAtLeast2": 0.21333333333333335,
+                        "pctCorrectnessChanged": 0.2866666666666667,
+                        "pctCorrectnessShiftAtLeast2": 0.15333333333333332
                     }
                 ]
             },
@@ -264,15 +312,15 @@
                         "pctCorrectnessShiftAtLeast2": 0.013333333333333334
                     },
                     {
-                        "judge": "openai/gpt-4o-mini-2024-07-18",
-                        "label": "GPT-4o mini (2024-07-18)",
+                        "judge": "openai/gpt-5.4-mini",
+                        "label": "GPT-5.4 Mini",
                         "n": 150,
-                        "meanDeltaFaithfulness": -0.06,
-                        "meanDeltaCorrectness": -0.12666666666666668,
-                        "pctFaithfulnessChanged": 0.25333333333333335,
-                        "pctFaithfulnessShiftAtLeast2": 0.1,
-                        "pctCorrectnessChanged": 0.24666666666666667,
-                        "pctCorrectnessShiftAtLeast2": 0.16
+                        "meanDeltaFaithfulness": -0.13333333333333333,
+                        "meanDeltaCorrectness": -0.03333333333333333,
+                        "pctFaithfulnessChanged": 0.18666666666666668,
+                        "pctFaithfulnessShiftAtLeast2": 0.06666666666666667,
+                        "pctCorrectnessChanged": 0.18,
+                        "pctCorrectnessShiftAtLeast2": 0.12
                     },
                     {
                         "judge": "anthropic/claude-haiku-4.5",
@@ -295,6 +343,17 @@
                         "pctFaithfulnessShiftAtLeast2": 0.18666666666666668,
                         "pctCorrectnessChanged": 0.31333333333333335,
                         "pctCorrectnessShiftAtLeast2": 0.15333333333333332
+                    },
+                    {
+                        "judge": "meta-llama/llama-3.3-70b-instruct",
+                        "label": "Llama 3.3 70B",
+                        "n": 150,
+                        "meanDeltaFaithfulness": 0.04,
+                        "meanDeltaCorrectness": 0.04,
+                        "pctFaithfulnessChanged": 0.16,
+                        "pctFaithfulnessShiftAtLeast2": 0.1,
+                        "pctCorrectnessChanged": 0.15333333333333332,
+                        "pctCorrectnessShiftAtLeast2": 0.07333333333333333
                     }
                 ]
             }
@@ -306,92 +365,127 @@
         "nItems": 150,
         "judges": [
             "x-ai/grok-4.3",
-            "openai/gpt-4o-mini-2024-07-18",
+            "openai/gpt-5.4-mini",
             "anthropic/claude-haiku-4.5",
-            "google/gemini-2.5-flash"
+            "google/gemini-2.5-flash",
+            "meta-llama/llama-3.3-70b-instruct"
         ],
         "labels": [
             "Grok 4.3",
-            "GPT-4o mini (2024-07-18)",
+            "GPT-5.4 Mini",
             "Claude Haiku 4.5",
-            "Gemini 2.5 Flash"
+            "Gemini 2.5 Flash",
+            "Llama 3.3 70B"
         ],
         "faithfulness": {
             "exactAgreement": [
                 [
                     1.0,
+                    0.84,
                     0.8133333333333334,
-                    0.8133333333333334,
-                    0.7533333333333333
+                    0.7533333333333333,
+                    0.8733333333333333
+                ],
+                [
+                    0.84,
+                    1.0,
+                    0.76,
+                    0.6866666666666666,
+                    0.78
                 ],
                 [
                     0.8133333333333334,
+                    0.76,
                     1.0,
-                    0.7466666666666667,
-                    0.7133333333333334
-                ],
-                [
-                    0.8133333333333334,
-                    0.7466666666666667,
-                    1.0,
-                    0.7266666666666667
+                    0.7266666666666667,
+                    0.7666666666666667
                 ],
                 [
                     0.7533333333333333,
-                    0.7133333333333334,
+                    0.6866666666666666,
                     0.7266666666666667,
+                    1.0,
+                    0.7466666666666667
+                ],
+                [
+                    0.8733333333333333,
+                    0.78,
+                    0.7666666666666667,
+                    0.7466666666666667,
                     1.0
                 ]
             ],
             "meanAbsDiff": [
                 [
                     0.0,
-                    0.35333333333333333,
+                    0.37333333333333335,
                     0.5933333333333334,
-                    0.66
+                    0.66,
+                    0.38666666666666666
                 ],
                 [
-                    0.35333333333333333,
+                    0.37333333333333335,
                     0.0,
-                    0.5866666666666667,
-                    0.68
+                    0.7,
+                    0.86,
+                    0.5333333333333333
                 ],
                 [
                     0.5933333333333334,
-                    0.5866666666666667,
+                    0.7,
                     0.0,
-                    0.7733333333333333
+                    0.7733333333333333,
+                    0.7
                 ],
                 [
                     0.66,
-                    0.68,
+                    0.86,
                     0.7733333333333333,
+                    0.0,
+                    0.7
+                ],
+                [
+                    0.38666666666666666,
+                    0.5333333333333333,
+                    0.7,
+                    0.7,
                     0.0
                 ]
             ],
             "quadraticKappa": [
                 [
                     1.0,
-                    0.8285701136729716,
+                    0.7931191270081843,
                     0.6306856450092049,
-                    0.616000362477534
+                    0.616000362477534,
+                    0.7617156473391581
                 ],
                 [
-                    0.8285701136729716,
+                    0.7931191270081843,
                     1.0,
-                    0.6763305127849448,
-                    0.6130212486514377
+                    0.5720155215704177,
+                    0.4826788056477124,
+                    0.7006447651212773
                 ],
                 [
                     0.6306856450092049,
-                    0.6763305127849448,
+                    0.5720155215704177,
                     1.0,
-                    0.5309089220194139
+                    0.5309089220194139,
+                    0.5729513050608117
                 ],
                 [
                     0.6160003624775339,
-                    0.6130212486514377,
+                    0.4826788056477124,
                     0.5309089220194139,
+                    1.0,
+                    0.5822656621607106
+                ],
+                [
+                    0.7617156473391581,
+                    0.7006447651212773,
+                    0.5729513050608117,
+                    0.5822656621607107,
                     1.0
                 ]
             ]
@@ -400,78 +494,111 @@
             "exactAgreement": [
                 [
                     1.0,
+                    0.84,
                     0.8133333333333334,
-                    0.8133333333333334,
-                    0.7533333333333333
+                    0.7533333333333333,
+                    0.8733333333333333
+                ],
+                [
+                    0.84,
+                    1.0,
+                    0.76,
+                    0.6866666666666666,
+                    0.78
                 ],
                 [
                     0.8133333333333334,
+                    0.76,
                     1.0,
-                    0.7466666666666667,
-                    0.7133333333333334
-                ],
-                [
-                    0.8133333333333334,
-                    0.7466666666666667,
-                    1.0,
-                    0.7266666666666667
+                    0.7266666666666667,
+                    0.7666666666666667
                 ],
                 [
                     0.7533333333333333,
-                    0.7133333333333334,
+                    0.6866666666666666,
                     0.7266666666666667,
+                    1.0,
+                    0.7466666666666667
+                ],
+                [
+                    0.8733333333333333,
+                    0.78,
+                    0.7666666666666667,
+                    0.7466666666666667,
                     1.0
                 ]
             ],
             "meanAbsDiff": [
                 [
                     0.0,
-                    0.32666666666666666,
+                    0.25333333333333335,
                     0.24666666666666667,
-                    0.37333333333333335
+                    0.37333333333333335,
+                    0.18
                 ],
                 [
-                    0.32666666666666666,
+                    0.25333333333333335,
                     0.0,
-                    0.41333333333333333,
-                    0.46
+                    0.34,
+                    0.4666666666666667,
+                    0.35333333333333333
                 ],
                 [
                     0.24666666666666667,
-                    0.41333333333333333,
+                    0.34,
                     0.0,
-                    0.4066666666666667
+                    0.4066666666666667,
+                    0.3333333333333333
                 ],
                 [
                     0.37333333333333335,
-                    0.46,
+                    0.4666666666666667,
                     0.4066666666666667,
+                    0.0,
+                    0.38
+                ],
+                [
+                    0.18,
+                    0.35333333333333333,
+                    0.3333333333333333,
+                    0.38,
                     0.0
                 ]
             ],
             "quadraticKappa": [
                 [
                     1.0,
-                    0.7843397478433974,
+                    0.8525732666190136,
                     0.8841519925857275,
-                    0.7930244847630791
+                    0.7930244847630791,
+                    0.9067568739699887
                 ],
                 [
-                    0.7843397478433976,
+                    0.8525732666190136,
                     1.0,
-                    0.7396572943292625,
-                    0.693918850551452
+                    0.8201971172344393,
+                    0.7276313317888674,
+                    0.7884247884247884
                 ],
                 [
                     0.8841519925857275,
-                    0.7396572943292625,
+                    0.8201971172344392,
                     1.0,
-                    0.7783078228803887
+                    0.7783078228803887,
+                    0.8286644393043776
                 ],
                 [
                     0.7930244847630791,
-                    0.693918850551452,
+                    0.7276313317888674,
                     0.7783078228803886,
+                    1.0,
+                    0.7868617069011936
+                ],
+                [
+                    0.9067568739699887,
+                    0.7884247884247884,
+                    0.8286644393043776,
+                    0.7868617069011936,
                     1.0
                 ]
             ]
@@ -515,31 +642,31 @@
                 }
             },
             {
-                "judge": "openai/gpt-4o-mini-2024-07-18",
-                "label": "GPT-4o mini (2024-07-18)",
+                "judge": "openai/gpt-5.4-mini",
+                "label": "GPT-5.4 Mini",
                 "correctN": 50,
                 "subtleN": 50,
                 "unsupportedN": 50,
                 "unparsed": 0,
-                "subtleMissRate": 0.38,
-                "unsupportedMissRate": 0.14,
-                "correctFalseRejectRate": 0.04,
+                "subtleMissRate": 0.22,
+                "unsupportedMissRate": 0.16,
+                "correctFalseRejectRate": 0.02,
                 "subtleMissRateByKind": {
                     "year": 0.3157894736842105,
-                    "integer": 0.6,
-                    "decimal": 0.5,
-                    "ordinal": 0.0,
-                    "entity_swap": 0.3333333333333333
+                    "integer": 0.1,
+                    "decimal": 0.0,
+                    "ordinal": 1.0,
+                    "entity_swap": 0.16666666666666666
                 },
                 "meanFaithfulness": {
-                    "correct": 4.88,
-                    "subtle_error": 2.38,
-                    "unsupported": 1.56
+                    "correct": 4.94,
+                    "subtle_error": 2.22,
+                    "unsupported": 1.64
                 },
                 "meanCorrectness": {
-                    "correct": 4.92,
-                    "subtle_error": 2.76,
-                    "unsupported": 4.14
+                    "correct": 4.96,
+                    "subtle_error": 2.44,
+                    "unsupported": 4.16
                 }
             },
             {
@@ -596,6 +723,34 @@
                     "correct": 4.84,
                     "subtle_error": 2.52,
                     "unsupported": 4.36
+                }
+            },
+            {
+                "judge": "meta-llama/llama-3.3-70b-instruct",
+                "label": "Llama 3.3 70B",
+                "correctN": 50,
+                "subtleN": 50,
+                "unsupportedN": 50,
+                "unparsed": 0,
+                "subtleMissRate": 0.1,
+                "unsupportedMissRate": 0.14,
+                "correctFalseRejectRate": 0.06,
+                "subtleMissRateByKind": {
+                    "year": 0.10526315789473684,
+                    "integer": 0.2,
+                    "decimal": 0.0,
+                    "ordinal": 0.0,
+                    "entity_swap": 0.05555555555555555
+                },
+                "meanFaithfulness": {
+                    "correct": 4.82,
+                    "subtle_error": 2.1,
+                    "unsupported": 1.56
+                },
+                "meanCorrectness": {
+                    "correct": 4.88,
+                    "subtle_error": 2.2,
+                    "unsupported": 4.14
                 }
             }
         ]

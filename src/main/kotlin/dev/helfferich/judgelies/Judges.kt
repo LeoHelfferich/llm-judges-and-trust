@@ -36,9 +36,10 @@ object SimulatedJudge : JudgeClient {
 
     val profiles: Map<String, Profile> = mapOf(
         "x-ai/grok-4.3" to Profile(8, 6, 6, 2),
-        "openai/gpt-4o-mini-2024-07-18" to Profile(26, 18, 16, 4),
+        "openai/gpt-5.4-mini" to Profile(26, 18, 16, 4),
         "anthropic/claude-haiku-4.5" to Profile(16, 30, 12, 3),
         "google/gemini-2.5-flash" to Profile(22, 36, 15, 5),
+        "meta-llama/llama-3.3-70b-instruct" to Profile(14, 22, 11, 3),
     )
 
     override fun complete(request: JudgeRequest): JudgeRaw {

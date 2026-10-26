@@ -2,6 +2,7 @@ package dev.helfferich.judgelies
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import java.util.Locale
 
 @Serializable
 enum class VariantKind {
@@ -77,6 +78,8 @@ data class JudgeModel(
     val completionUsdPerMillion: Double,
     val supportsTemperature: Boolean,
     val supportsReasoning: Boolean,
+    /** OpenRouter provider slug. When set, the request allows that provider only. */
+    val providerOnly: String? = null,
 ) {
     fun promptUsdPerToken(): Double = promptUsdPerMillion / 1_000_000.0
 
@@ -118,6 +121,11 @@ data class ExperimentConfig(
         judges.forEach { judge ->
             require(judge.promptUsdPerMillion > 0.0 && judge.completionUsdPerMillion > 0.0) {
                 "prices for ${judge.id} must be positive"
+            }
+            judge.providerOnly?.let { slug ->
+                require(slug.isNotBlank() && slug == slug.lowercase(Locale.ROOT) && slug.none { it.isWhitespace() }) {
+                    "providerOnly for ${judge.id} must be an OpenRouter provider slug"
+                }
             }
         }
         require(promptOrder.isNotEmpty()) { "promptOrder is empty" }

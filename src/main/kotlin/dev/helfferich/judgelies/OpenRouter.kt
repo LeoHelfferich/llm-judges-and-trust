@@ -1,5 +1,7 @@
 package dev.helfferich.judgelies
 
+import kotlinx.serialization.EncodeDefault
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
@@ -16,6 +18,15 @@ data class ChatMessage(val role: String, val content: String)
 @Serializable
 data class ReasoningControl(val effort: String)
 
+@OptIn(ExperimentalSerializationApi::class)
+@Serializable
+data class ProviderPin(
+    val only: List<String>,
+    @EncodeDefault(EncodeDefault.Mode.ALWAYS)
+    @SerialName("allow_fallbacks")
+    val allowFallbacks: Boolean = false,
+)
+
 @Serializable
 data class ChatRequest(
     val model: String,
@@ -23,6 +34,7 @@ data class ChatRequest(
     val temperature: Double? = null,
     @SerialName("max_tokens") val maxTokens: Int,
     val reasoning: ReasoningControl? = null,
+    val provider: ProviderPin? = null,
 )
 
 data class JudgeRaw(
@@ -40,6 +52,7 @@ fun buildChatRequest(model: JudgeModel, temperature: Double?, maxTokens: Int, sy
         temperature = temperature?.takeIf { model.supportsTemperature },
         maxTokens = maxTokens,
         reasoning = if (model.supportsReasoning) ReasoningControl("none") else null,
+        provider = model.providerOnly?.let { ProviderPin(only = listOf(it)) },
     )
     return Jsons.compact.encodeToString(ChatRequest.serializer(), request)
 }
