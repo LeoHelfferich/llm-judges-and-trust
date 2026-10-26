@@ -110,6 +110,7 @@ LICENSE                     MIT, code only
 config/experiment.json      judges, prices, repeats, cap
 data/items.json             50 items and their variants
 data/DATASOURCE.md          SQuAD citation and CC BY-SA 4.0
+data/disputed.json          planted cases that are arguably not wrong, reported with and without
 results/dry-run/            manifest, responses.jsonl, metrics, scores (simulator)
 results/runs/20261026T143236/  the paid run: same files, plus RESUME.md
 docs/                       static pages
@@ -118,7 +119,7 @@ docs/data/                  the JSON and CSV the pages fetch
 
 `responses.jsonl` is the cache. A line holds the model, prompt id, item, variant, repeat, the raw completion text, token counts, and cost. The manifest records model ids, the prompt text, the prompt hash, temperature, the fact that no seed was sent, the price pin, the FX pin, and the cost estimate. Analysis parses the raw text again, so a parser change is a re-analysis, not a new paid run.
 
-The pages are `docs/index.html` (charts), `docs/examples.html` (three items), and `docs/method.html`. Chart.js is loaded from a CDN. The tables do not need it. GitHub Pages can serve the `docs/` directory on `main` with no build.
+The pages are `docs/index.html` (charts), `docs/examples.html` (three items), `docs/misses.html` (every missed planted case, filterable, from `docs/data/misses.json` / `misses.csv`), and `docs/method.html`. Chart.js is loaded from a CDN. The tables do not need it. GitHub Pages can serve the `docs/` directory on `main` with no build.
 
 ## Dry run
 
@@ -162,7 +163,9 @@ Trial order is fixed: items in file order, then `correct` / `subtle_error` / `un
 - There is no human rater. The planted labels are the reference, not an agreement with a person.
 - Token estimates use characters divided by four. The 1.5 margin and the max-token ceiling exist because that estimate is rough. Reasoning tokens, if a provider ignores `effort: none`, are the main way to spend more than the estimate. The stress row above is that case at +1000 tokens.
 - OpenRouter prices and the euro move. Refresh before a paid run. The cap is enforced in EUR using the pinned FX rate, while the API bills USD.
-- Parse failures are excluded from rates and counted separately. A model that does not return JSON is a failure of compliance, not a miss.
+- Parse failures are excluded from rates and counted separately, with a reason (`parse_failure` in `scores.csv`, `parseFailures` in `metrics.json`). A model that does not return JSON is a failure of compliance, not a miss.
+- The subtle-error miss rate is reported at two cutoffs: correctness ≥ 4 (the headline, `missThreshold`) and correctness = 5 only. A 4 means "minor error" in the rubric, so ≥ 4 counts a judge that noticed something but still passed the answer.
+- One planted case is listed in `data/disputed.json`: the entity swap turned "Archangel Michael" into "Monte Gargano", the place of his shrine, which is arguably an acceptable answer to "Whose shrine…?". It stays in the data. Every subtle rate is also reported without it.
 - The dry-run charts are simulated. The published pages are not: they come from the paid run.
 - Claude Haiku 4.5 sometimes returned only `faithfulness` and left out `correctness` under the strict rubric (27 of its 450 strict calls, 9 of them in the first repeat). This happened mostly on answers it had already marked as weakly supported (faithfulness 2). Those rows count as parse failures, so its subtle-error miss rate is over 43 parsed items, not 50.
 - The paid run was resumed twice into the same directory after HTTP calls hung. Error rows were dropped so they would be retried. No completed trial was requested twice. See `results/runs/20261026T143236/RESUME.md`.
