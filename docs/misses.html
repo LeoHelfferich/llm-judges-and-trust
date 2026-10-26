@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Every miss — LLM-as-Judge lügt</title>
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <div class="wrap wide">
+    <header class="top">
+      <a class="brand" href="index.html">JUDGE DRIFT</a>
+      <nav>
+        <a href="index.html">Results</a>
+        <a href="examples.html">Cases</a>
+        <a href="misses.html">Misses</a>
+        <a href="method.html">Method</a>
+      </nav>
+    </header>
+    <p class="kicker">Every planted case a judge let through</p>
+    <h1>The misses, row by row</h1>
+    <p class="lede">A subtly wrong answer scored correct, or the right answer next to an unrelated passage scored faithful. All prompts, all repeats, with the judge’s own rationale. Download: <a href="data/misses.csv">misses.csv</a>.</p>
+    <div id="controls" class="controls"></div>
+    <div id="misses">
+      <p class="note">Loading <span class="mono">data/misses.json</span>…</p>
+    </div>
+    <footer>Passages and questions are from the SQuAD 1.1 development set (CC BY-SA 4.0). The code is MIT.</footer>
+  </div>
+  <script src="js/misses.js"></script>
+</body>
+</html>

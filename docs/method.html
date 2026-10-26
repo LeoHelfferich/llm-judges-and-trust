@@ -13,6 +13,7 @@
       <nav>
         <a href="index.html">Results</a>
         <a href="examples.html">Cases</a>
+        <a href="misses.html">Misses</a>
         <a href="method.html">Method</a>
       </nav>
     </header>
@@ -22,6 +23,8 @@
 
     <h2>Four measurements</h2>
     <p>Self-consistency uses one rubric, one model, and three calls. Temperature is 0 when the model advertises it. GPT-5.4 Mini does not, so those calls omit the parameter. The chart is the distribution of score ranges. Prompt sensitivity rescores the same pairs with a short rubric and a two-sentence chain-of-thought rubric. Inter-judge agreement is quadratic weighted κ between models on the strict rubric’s first repeat. Planted-error misses use a threshold of 4 on a 1–5 scale: a subtly wrong answer is missed when correctness is at least 4, and an unsupported answer is missed when faithfulness is at least 4.</p>
+    <p>Because 4 means “minor error” in the rubric, the subtle-error rate is also reported at a stricter cutoff that counts only a perfect correctness of 5. One planted case is marked disputed (<span class="mono">data/disputed.json</span>): the entity swap produced “Monte Gargano”, the place of the shrine, for “Whose shrine did the pilgrims go to in 1016?”. It stays in the data, and every subtle rate is also shown without it. Replies that do not parse are left out of every rate and listed by reason. Claude Haiku 4.5 sometimes returned faithfulness without correctness under the strict rubric, always with faithfulness 2.</p>
+    <p>Who judges the judges: nobody’s opinion. Each planted error is a deterministic edit of the gold answer, so the reference label is known before any model is called. Agreement and drift are computed from the cached scores by the analyzer in <span class="mono">Analyze.kt</span>.</p>
 
     <h2>Answers</h2>
     <p>Fifty questions come from the SQuAD 1.1 development set. Thirty-two gold answers are edited by a deterministic numeric rule (a year, ordinal, decade, decimal, or integer that does not occur in the passage). Eighteen gold answers are multi-word proper names swapped with another name from the same passage. The unsupported condition keeps the gold answer and substitutes a passage from a different article that does not contain the answer or its salient numbers.</p>
