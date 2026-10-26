@@ -41,6 +41,7 @@ function render(root, metrics) {
     stat(pct(h.meanFaithfulnessSelfDisagreement), "Same judge, same input, faithfulness not identical across repeats"),
     stat(num(h.meanPairwiseFaithfulnessKappa), "Mean pairwise quadratic κ on faithfulness"),
     stat(pct(h.meanSubtleMissRate), "Subtly wrong answers scored correct (≥ " + metrics.plantedErrors.missThreshold + ")"),
+    stat(pct(h.meanSubtleMissRateAt5), "Subtly wrong answers scored a perfect 5"),
     stat(pct(h.meanUnsupportedMissRate), "Unsupported answers scored faithful (≥ " + metrics.plantedErrors.missThreshold + ")"),
   );
   root.appendChild(stats);
@@ -68,14 +69,19 @@ function render(root, metrics) {
   ));
 
   root.appendChild(section("Planted errors",
-    metrics.plantedErrors.subtleMiss + ". " + metrics.plantedErrors.unsupportedMiss + ". " + metrics.plantedErrors.correctFalseReject + ".",
+    metrics.plantedErrors.subtleMiss + ". Stricter cutoff: " + (metrics.plantedErrors.subtleMissAt5 || "correctness == 5") + ". " +
+      metrics.plantedErrors.unsupportedMiss + ". " + metrics.plantedErrors.correctFalseReject + ". Strict rubric, first repeat.",
     plantedChart(metrics),
     plantedTable(metrics),
+    disputedNote(metrics),
+    parseNote(metrics),
   ));
 
   const more = el("p", "note");
   more.append("Three worked items are on the ");
   more.append(link("examples.html", "cases page"));
+  more.append(". Every missed planted case is on the ");
+  more.append(link("misses.html", "misses page"));
   more.append(". Row-level scores: ");
   more.append(link("data/scores.csv", "scores.csv"));
   more.append(".");
@@ -141,7 +147,8 @@ function plantedChart(metrics) {
     data: {
       labels: judges.map((j) => j.label),
       datasets: [
-        { label: "Subtle miss", data: judges.map((j) => (j.subtleMissRate || 0) * 100), backgroundColor: "#8f3418" },
+        { label: "Subtle miss (≥ " + metrics.plantedErrors.missThreshold + ")", data: judges.map((j) => (j.subtleMissRate || 0) * 100), backgroundColor: "#8f3418" },
+        { label: "Subtle miss (= 5)", data: judges.map((j) => (j.subtleMissRateAt5 || 0) * 100), backgroundColor: "#d08a6a" },
         { label: "Unsupported miss", data: judges.map((j) => (j.unsupportedMissRate || 0) * 100), backgroundColor: "#1e3a5f" },
         { label: "False reject", data: judges.map((j) => (j.correctFalseRejectRate || 0) * 100), backgroundColor: "#c4a574" },
       ],
@@ -250,9 +257,39 @@ function kappaTable(inter, matrix) {
   return table;
 }
 
+function disputedNote(metrics) {
+  const disputed = metrics.plantedErrors.disputed || [];
+  const h = metrics.headlines;
+  const box = el("div", "note");
+  if (!disputed.length) return box;
+  box.append(el("p", null,
+    "Disputed: " + disputed.length + " planted case" + (disputed.length > 1 ? "s are" : " is") + " arguably not wrong. " +
+    disputed.map((d) => d.reason).join(" ") +
+    " Mean subtle miss with it: " + pct(h.meanSubtleMissRate) + " (≥ " + metrics.plantedErrors.missThreshold + "), " + pct(h.meanSubtleMissRateAt5) + " (= 5). " +
+    "Without it: " + pct(h.meanSubtleMissRateExcludingDisputed) + " (≥ " + metrics.plantedErrors.missThreshold + "), " + pct(h.meanSubtleMissRateAt5ExcludingDisputed) + " (= 5)."));
+  return box;
+}
+
+function parseNote(metrics) {
+  const box = el("div", "note");
+  (metrics.parseFailures || []).filter((p) => p.unparsed > 0).forEach((p) => {
+    const reasons = Object.entries(p.byReason).map(([k, v]) => v + "× " + k.replaceAll("_", " ")).join(", ");
+    const prompts = Object.entries(p.byPrompt).map(([k, v]) => v + " " + k).join(", ");
+    const variants = Object.entries(p.byVariant).map(([k, v]) => v + " " + k.replaceAll("_", " ")).join(", ");
+    let text = p.label + ": " + p.unparsed + " of " + p.calls + " replies did not parse (" + reasons + "; prompts: " + prompts + "; variants: " + variants + ").";
+    const mc = p.missingCorrectnessFaithfulness || {};
+    if (Object.keys(mc).length) {
+      text += " Every reply without a correctness score gave faithfulness " + Object.keys(mc).join("/") +
+        ", so the judge did flag the answer. These rows are left out of every rate, which makes its subtle-miss rate rest on fewer items (see the n column).";
+    }
+    box.append(el("p", null, text));
+  });
+  return box;
+}
+
 function plantedTable(metrics) {
   const table = document.createElement("table");
-  table.append(row("thead", ["Judge", "Subtle miss", "Unsupported miss", "False reject", "Entity-swap miss", "Numeric miss"]));
+  table.append(row("thead", ["Judge", "n", "Subtle miss ≥ " + metrics.plantedErrors.missThreshold, "Subtle miss = 5", "Without disputed (≥ " + metrics.plantedErrors.missThreshold + " / = 5)", "Unparsed subtle", "Unsupported miss", "False reject", "Entity-swap miss", "Numeric miss"]));
   const body = document.createElement("tbody");
   metrics.plantedErrors.judges.forEach((judge) => {
     const kinds = judge.subtleMissRateByKind || {};
@@ -260,7 +297,11 @@ function plantedTable(metrics) {
     const numeric = numericKeys.length ? average(numericKeys.map((key) => kinds[key])) : null;
     body.append(row("tr", [
       judge.label,
+      String(judge.subtleN),
       pct(judge.subtleMissRate),
+      pct(judge.subtleMissRateAt5),
+      pct(judge.subtleMissRateExcludingDisputed) + " / " + pct(judge.subtleMissRateAt5ExcludingDisputed),
+      judge.subtleUnparsed ? judge.subtleUnparsed + (judge.subtleMissingCorrectness ? " (no correctness)" : "") : "0",
       pct(judge.unsupportedMissRate),
       pct(judge.correctFalseRejectRate),
       pct(kinds.entity_swap),
