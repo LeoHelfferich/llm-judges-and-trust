@@ -1,0 +1,297 @@
+{
+    "schemaVersion": 1,
+    "simulated": true,
+    "cases": [
+        {
+            "itemId": "5725b33f6a3fe71400b8952d",
+            "title": "1973_oil_crisis",
+            "question": "When did the 1973 oil crisis begin?",
+            "goldAnswer": "October 1973",
+            "subtleAnswer": "October 1972",
+            "subtleKind": "year",
+            "sourceContext": "The 1973 oil crisis began in October 1973 when the members of the Organization of Arab Petroleum Exporting Countries (OAPEC, consisting of the Arab members of OPEC plus Egypt and Syria) proclaimed an oil embargo. By the end of the embargo in March 1974, the price of oil had risen from US$3 per barrel to nearly $12 globally; US prices were significantly higher. The embargo caused an oil crisis, or \"shock\", with many short- and long-term effects on global politics and the global economy. It was later called the \"first oil shock\", followed by the 1979 oil crisis, termed the \"second oil shock.\"",
+            "donorTitle": "Normans",
+            "donorContext": "Some Normans joined Turkish forces to aid in the destruction of the Armenians vassal-states of Sassoun and Taron in far eastern Anatolia. Later, many took up service with the Armenian state further south in Cilicia and the Taurus Mountains. A Norman named Oursel led a force of \"Franks\" into the upper Euphrates valley in northern Syria. From 1073 to 1074, 8,000 of the 20,000 troops of the Armenian general Philaretus Brachamius were Normans—formerly of Oursel—led by Raimbaud. They even lent their ethnicity to the name of their castle: Afranji, meaning \"Franks.\" The known trade between Amalfi and Antioch and between Bari and Tarsus may be related to the presence of Italo-Normans in those cities while Amalfi and Bari were under Norman rule in Italy.",
+            "scores": [
+                {
+                    "judge": "x-ai/grok-4.3",
+                    "label": "Grok 4.3",
+                    "variant": "correct",
+                    "faithfulness": 5,
+                    "correctness": 5
+                },
+                {
+                    "judge": "x-ai/grok-4.3",
+                    "label": "Grok 4.3",
+                    "variant": "subtle_error",
+                    "faithfulness": 2,
+                    "correctness": 2
+                },
+                {
+                    "judge": "x-ai/grok-4.3",
+                    "label": "Grok 4.3",
+                    "variant": "unsupported",
+                    "faithfulness": 1,
+                    "correctness": 4
+                },
+                {
+                    "judge": "openai/gpt-4o-mini-2024-07-18",
+                    "label": "GPT-4o mini (2024-07-18)",
+                    "variant": "correct",
+                    "faithfulness": 5,
+                    "correctness": 5
+                },
+                {
+                    "judge": "openai/gpt-4o-mini-2024-07-18",
+                    "label": "GPT-4o mini (2024-07-18)",
+                    "variant": "subtle_error",
+                    "faithfulness": 2,
+                    "correctness": 2
+                },
+                {
+                    "judge": "openai/gpt-4o-mini-2024-07-18",
+                    "label": "GPT-4o mini (2024-07-18)",
+                    "variant": "unsupported",
+                    "faithfulness": 1,
+                    "correctness": 4
+                },
+                {
+                    "judge": "anthropic/claude-haiku-4.5",
+                    "label": "Claude Haiku 4.5",
+                    "variant": "correct",
+                    "faithfulness": 5,
+                    "correctness": 5
+                },
+                {
+                    "judge": "anthropic/claude-haiku-4.5",
+                    "label": "Claude Haiku 4.5",
+                    "variant": "subtle_error",
+                    "faithfulness": 2,
+                    "correctness": 2
+                },
+                {
+                    "judge": "anthropic/claude-haiku-4.5",
+                    "label": "Claude Haiku 4.5",
+                    "variant": "unsupported",
+                    "faithfulness": 1,
+                    "correctness": 4
+                },
+                {
+                    "judge": "google/gemini-2.5-flash",
+                    "label": "Gemini 2.5 Flash",
+                    "variant": "correct",
+                    "faithfulness": 5,
+                    "correctness": 5
+                },
+                {
+                    "judge": "google/gemini-2.5-flash",
+                    "label": "Gemini 2.5 Flash",
+                    "variant": "subtle_error",
+                    "faithfulness": 3,
+                    "correctness": 4
+                },
+                {
+                    "judge": "google/gemini-2.5-flash",
+                    "label": "Gemini 2.5 Flash",
+                    "variant": "unsupported",
+                    "faithfulness": 5,
+                    "correctness": 5
+                }
+            ]
+        },
+        {
+            "itemId": "57267f1cdd62a815002e8741",
+            "title": "American_Broadcasting_Company",
+            "question": "In 2007, what company purchased ABC Radio properties?",
+            "goldAnswer": "Citadel Broadcasting",
+            "subtleAnswer": "Telecommunications Commission",
+            "subtleKind": "entity_swap",
+            "sourceContext": "The television network has eight owned-and-operated and over 232 affiliated television stations throughout the United States and its territories. Most Canadians have access to at least one U.S.-based ABC affiliate, either over-the-air (in areas located within proximity to the Canada–United States border) or through a cable, satellite or IPTV provider, although most ABC programs are subject to simultaneous substitution regulations imposed by the Canadian Radio-television and Telecommunications Commission that allow pay television providers to replace an American station's signal with the feed of a Canadian broadcaster to protect domestic programming rights and advertising revenue. ABC News provides news and features content for select radio stations owned by Citadel Broadcasting, which purchased the ABC Radio properties in 2007.",
+            "donorTitle": "Chloroplast",
+            "donorContext": "After a chloroplast polypeptide is synthesized on a ribosome in the cytosol, an enzyme specific to chloroplast proteins phosphorylates, or adds a phosphate group to many (but not all) of them in their transit sequences. Phosphorylation helps many proteins bind the polypeptide, keeping it from folding prematurely. This is important because it prevents chloroplast proteins from assuming their active form and carrying out their chloroplast functions in the wrong place—the cytosol. At the same time, they have to keep just enough shape so that they can be recognized by the chloroplast. These proteins also help the polypeptide get imported into the chloroplast.",
+            "scores": [
+                {
+                    "judge": "x-ai/grok-4.3",
+                    "label": "Grok 4.3",
+                    "variant": "correct",
+                    "faithfulness": 5,
+                    "correctness": 5
+                },
+                {
+                    "judge": "x-ai/grok-4.3",
+                    "label": "Grok 4.3",
+                    "variant": "subtle_error",
+                    "faithfulness": 2,
+                    "correctness": 2
+                },
+                {
+                    "judge": "x-ai/grok-4.3",
+                    "label": "Grok 4.3",
+                    "variant": "unsupported",
+                    "faithfulness": 1,
+                    "correctness": 4
+                },
+                {
+                    "judge": "openai/gpt-4o-mini-2024-07-18",
+                    "label": "GPT-4o mini (2024-07-18)",
+                    "variant": "correct",
+                    "faithfulness": 5,
+                    "correctness": 5
+                },
+                {
+                    "judge": "openai/gpt-4o-mini-2024-07-18",
+                    "label": "GPT-4o mini (2024-07-18)",
+                    "variant": "subtle_error",
+                    "faithfulness": 2,
+                    "correctness": 2
+                },
+                {
+                    "judge": "openai/gpt-4o-mini-2024-07-18",
+                    "label": "GPT-4o mini (2024-07-18)",
+                    "variant": "unsupported",
+                    "faithfulness": 1,
+                    "correctness": 4
+                },
+                {
+                    "judge": "anthropic/claude-haiku-4.5",
+                    "label": "Claude Haiku 4.5",
+                    "variant": "correct",
+                    "faithfulness": 5,
+                    "correctness": 5
+                },
+                {
+                    "judge": "anthropic/claude-haiku-4.5",
+                    "label": "Claude Haiku 4.5",
+                    "variant": "subtle_error",
+                    "faithfulness": 2,
+                    "correctness": 2
+                },
+                {
+                    "judge": "anthropic/claude-haiku-4.5",
+                    "label": "Claude Haiku 4.5",
+                    "variant": "unsupported",
+                    "faithfulness": 1,
+                    "correctness": 4
+                },
+                {
+                    "judge": "google/gemini-2.5-flash",
+                    "label": "Gemini 2.5 Flash",
+                    "variant": "correct",
+                    "faithfulness": 5,
+                    "correctness": 5
+                },
+                {
+                    "judge": "google/gemini-2.5-flash",
+                    "label": "Gemini 2.5 Flash",
+                    "variant": "subtle_error",
+                    "faithfulness": 2,
+                    "correctness": 2
+                },
+                {
+                    "judge": "google/gemini-2.5-flash",
+                    "label": "Gemini 2.5 Flash",
+                    "variant": "unsupported",
+                    "faithfulness": 1,
+                    "correctness": 4
+                }
+            ]
+        },
+        {
+            "itemId": "57264684708984140094c125",
+            "title": "Black_Death",
+            "question": "How much of the European population did the black death kill?",
+            "goldAnswer": "30–60% of Europe's total population",
+            "subtleAnswer": "31–60% of Europe's total population",
+            "subtleKind": "integer",
+            "sourceContext": "The Black Death is thought to have originated in the arid plains of Central Asia, where it then travelled along the Silk Road, reaching Crimea by 1343. From there, it was most likely carried by Oriental rat fleas living on the black rats that were regular passengers on merchant ships. Spreading throughout the Mediterranean and Europe, the Black Death is estimated to have killed 30–60% of Europe's total population. In total, the plague reduced the world population from an estimated 450 million down to 350–375 million in the 14th century. The world population as a whole did not recover to pre-plague levels until the 17th century. The plague recurred occasionally in Europe until the 19th century.",
+            "donorTitle": "American_Broadcasting_Company",
+            "donorContext": "Between May and September 2005, rumors circulated that Disney–ABC was considering a sale of ABC Radio, with Clear Channel Communications and Westwood One (which had earlier purchased NBC's radio division, as well as the distribution rights to CBS's, and the Mutual Broadcasting System during the 1990s) as potential buyers. On October 19, 2005, ABC announced the restructuring of the group into six divisions: Entertainment Communications, Communications Resources, Kids Communications, News Communications, Corporate Communications, and International Communications.",
+            "scores": [
+                {
+                    "judge": "x-ai/grok-4.3",
+                    "label": "Grok 4.3",
+                    "variant": "correct",
+                    "faithfulness": 5,
+                    "correctness": 5
+                },
+                {
+                    "judge": "x-ai/grok-4.3",
+                    "label": "Grok 4.3",
+                    "variant": "subtle_error",
+                    "faithfulness": 2,
+                    "correctness": 2
+                },
+                {
+                    "judge": "x-ai/grok-4.3",
+                    "label": "Grok 4.3",
+                    "variant": "unsupported",
+                    "faithfulness": 1,
+                    "correctness": 4
+                },
+                {
+                    "judge": "openai/gpt-4o-mini-2024-07-18",
+                    "label": "GPT-4o mini (2024-07-18)",
+                    "variant": "correct",
+                    "faithfulness": 5,
+                    "correctness": 5
+                },
+                {
+                    "judge": "openai/gpt-4o-mini-2024-07-18",
+                    "label": "GPT-4o mini (2024-07-18)",
+                    "variant": "subtle_error",
+                    "faithfulness": 3,
+                    "correctness": 4
+                },
+                {
+                    "judge": "openai/gpt-4o-mini-2024-07-18",
+                    "label": "GPT-4o mini (2024-07-18)",
+                    "variant": "unsupported",
+                    "faithfulness": 1,
+                    "correctness": 4
+                },
+                {
+                    "judge": "anthropic/claude-haiku-4.5",
+                    "label": "Claude Haiku 4.5",
+                    "variant": "correct",
+                    "faithfulness": 5,
+                    "correctness": 5
+                },
+                {
+                    "judge": "anthropic/claude-haiku-4.5",
+                    "label": "Claude Haiku 4.5",
+                    "variant": "subtle_error",
+                    "faithfulness": 2,
+                    "correctness": 2
+                },
+                {
+                    "judge": "anthropic/claude-haiku-4.5",
+                    "label": "Claude Haiku 4.5",
+                    "variant": "unsupported",
+                    "faithfulness": 1,
+                    "correctness": 4
+                },
+                {
+                    "judge": "google/gemini-2.5-flash",
+                    "label": "Gemini 2.5 Flash",
+                    "variant": "correct",
+                    "faithfulness": 5,
+                    "correctness": 5
+                },
+                {
+                    "judge": "google/gemini-2.5-flash",
+                    "label": "Gemini 2.5 Flash",
+                    "variant": "subtle_error",
+                    "faithfulness": 2,
+                    "correctness": 2
+                },
+                {
+                    "judge": "google/gemini-2.5-flash",
+                    "label": "Gemini 2.5 Flash",
+                    "variant": "unsupported",
+                    "faithfulness": 1,
+                    "correctness": 4
+                }
+            ]
+        }
+    ]
+}

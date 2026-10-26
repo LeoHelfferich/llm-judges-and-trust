@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Method — LLM-as-Judge lügt</title>
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="index.html">JUDGE DRIFT</a>
+      <nav>
+        <a href="index.html">Results</a>
+        <a href="examples.html">Cases</a>
+        <a href="method.html">Method</a>
+      </nav>
+    </header>
+    <p class="kicker">Protocol</p>
+    <h1>What is held fixed, and what is allowed to move</h1>
+    <p class="lede">The questions, passages, and answer variants are checked in. The only thing a paid run changes is the judge’s raw response. Analysis reads that cache and can be repeated for free.</p>
+
+    <h2>Four measurements</h2>
+    <p>Self-consistency uses one rubric, one model, and three calls at temperature 0. The chart is the distribution of score ranges. Prompt sensitivity rescores the same pairs with a short rubric and a two-sentence chain-of-thought rubric. Inter-judge agreement is quadratic weighted κ between models on the strict rubric’s first repeat. Planted-error misses use a threshold of 4 on a 1–5 scale: a subtly wrong answer is missed when correctness is at least 4, and an unsupported answer is missed when faithfulness is at least 4.</p>
+
+    <h2>Answers</h2>
+    <p>Fifty questions come from the SQuAD 1.1 development set. Thirty-two gold answers are edited by a deterministic numeric rule (a year, ordinal, decade, decimal, or integer that does not occur in the passage). Eighteen gold answers are multi-word proper names swapped with another name from the same passage. The unsupported condition keeps the gold answer and substitutes a passage from a different article that does not contain the answer or its salient numbers.</p>
+
+    <h2>Judges</h2>
+    <p>Calls go to OpenRouter with one key, <span class="mono">OPENROUTER_API_KEY</span>. The default set is Grok 4.3, GPT-4o mini dated 2024-07-18, Claude Haiku 4.5, and Gemini 2.5 Flash. Prices are pinned in <span class="mono">config/experiment.json</span> from the public model list on 26 October 2026. A paid run refreshes that list and refuses to start when the estimate, times a 1.5 safety margin, exceeds 10 EUR. It also stops between calls if the next max-token ceiling would cross the cap. Models that advertise reasoning are asked for <span class="mono">effort: none</span>, because hidden reasoning tokens are billed.</p>
+
+    <h2>What the dry run is</h2>
+    <p>Without a key, <span class="mono">run --dry-run</span> fills the cache from a deterministic simulator. The simulator is deliberately uneven so the charts are not blank. Those numbers are not findings. Re-running analysis on a real cache overwrites <span class="mono">docs/data</span> and this site updates with it. No build step.</p>
+
+    <footer>Full command list, cost table, and limitations: the repository README.</footer>
+  </div>
+</body>
+</html>

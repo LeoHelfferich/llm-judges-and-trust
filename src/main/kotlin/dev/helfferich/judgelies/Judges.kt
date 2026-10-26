@@ -1,0 +1,160 @@
+package dev.helfferich.judgelies
+
+import java.net.URI
+import java.net.http.HttpClient
+import java.net.http.HttpRequest
+import java.net.http.HttpResponse
+import java.time.Duration
+
+data class JudgeRequest(
+    val model: JudgeModel,
+    val temperature: Double?,
+    val maxTokens: Int,
+    val system: String,
+    val user: String,
+    val promptId: String,
+    val itemId: String,
+    val variant: VariantKind,
+    val repeat: Int,
+)
+
+fun interface JudgeClient {
+    fun complete(request: JudgeRequest): JudgeRaw
+}
+
+/**
+ * Deterministic stand-in used by `--dry-run`. The rates are not predictions of
+ * the named models. They exist so the charts have a shape before any API call.
+ */
+object SimulatedJudge : JudgeClient {
+    data class Profile(
+        val subtleMissPercent: Int,
+        val unsupportedMissPercent: Int,
+        val driftPercent: Int,
+        val falseRejectPercent: Int,
+    )
+
+    val profiles: Map<String, Profile> = mapOf(
+        "x-ai/grok-4.3" to Profile(8, 6, 6, 2),
+        "openai/gpt-4o-mini-2024-07-18" to Profile(26, 18, 16, 4),
+        "anthropic/claude-haiku-4.5" to Profile(16, 30, 12, 3),
+        "google/gemini-2.5-flash" to Profile(22, 36, 15, 5),
+    )
+
+    override fun complete(request: JudgeRequest): JudgeRaw {
+        val (faithfulness, correctness) = score(request)
+        val body = Jsons.compact.encodeToString(
+            SimulatedBody.serializer(),
+            SimulatedBody(faithfulness, correctness, "Simulated dry-run score.", simulated = true),
+        )
+        return JudgeRaw(
+            content = body,
+            promptTokens = CostModel.estimateTokens(request.system + "\n" + request.user),
+            completionTokens = CostModel.estimateTokens(body),
+            costUsd = null,
+            rawJson = body,
+        )
+    }
+
+    fun score(request: JudgeRequest): Pair<Int, Int> {
+        val profile = profiles[request.model.id] ?: Profile(20, 20, 10, 4)
+        val nudge = when (request.promptId) {
+            "concise" -> 10
+            "cot" -> -8
+            else -> 0
+        }
+        var faithfulness: Int
+        var correctness: Int
+        when (request.variant) {
+            VariantKind.CORRECT -> if (hit(request, "reject", profile.falseRejectPercent + nudge)) {
+                faithfulness = 2
+                correctness = 3
+            } else {
+                faithfulness = 5
+                correctness = 5
+            }
+            VariantKind.SUBTLE_ERROR -> if (hit(request, "subtle", profile.subtleMissPercent + nudge)) {
+                faithfulness = 3
+                correctness = 4
+            } else {
+                faithfulness = 2
+                correctness = 2
+            }
+            VariantKind.UNSUPPORTED -> if (hit(request, "support", profile.unsupportedMissPercent + nudge)) {
+                faithfulness = 5
+                correctness = 5
+            } else {
+                faithfulness = 1
+                correctness = 4
+            }
+        }
+        if (request.repeat > 0 && bucket(request, "drift", includeRepeat = true) < profile.driftPercent) {
+            val delta = if (bucket(request, "sign", includeRepeat = true) % 2 == 0) 1 else -1
+            if (bucket(request, "which", includeRepeat = true) % 2 == 0) faithfulness += delta else correctness += delta
+        }
+        if (request.promptId == "concise" && bucket(request, "bump") < 40) faithfulness += 1
+        if (request.promptId == "cot" && request.variant == VariantKind.UNSUPPORTED && bucket(request, "cot") < 50) {
+            faithfulness -= 1
+        }
+        return faithfulness.coerceIn(1, 5) to correctness.coerceIn(1, 5)
+    }
+
+    private fun hit(request: JudgeRequest, kind: String, percent: Int): Boolean =
+        bucket(request, kind) < percent.coerceIn(0, 95)
+
+    private fun bucket(request: JudgeRequest, kind: String, includeRepeat: Boolean = false): Int {
+        val repeat = if (includeRepeat) "|${request.repeat}" else ""
+        val key = "${request.model.id}|${request.itemId}|${request.variant}|${request.promptId}$repeat|$kind"
+        return Hashing.fnv1a(key) % 100
+    }
+}
+
+@kotlinx.serialization.Serializable
+private data class SimulatedBody(
+    val faithfulness: Int,
+    val correctness: Int,
+    val rationale: String,
+    val simulated: Boolean,
+)
+
+class OpenRouterJudge(
+    private val apiKey: String,
+    private val http: HttpClient = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(20)).build(),
+    private val endpoint: URI = URI.create("https://openrouter.ai/api/v1/chat/completions"),
+    private val sleep: (Long) -> Unit = Thread::sleep,
+) : JudgeClient {
+    override fun complete(request: JudgeRequest): JudgeRaw {
+        val payload = buildChatRequest(
+            request.model,
+            request.temperature,
+            request.maxTokens,
+            request.system,
+            request.user,
+        )
+        var lastStatus = 0
+        var lastBody = ""
+        for (attempt in 0 until 2) {
+            val httpRequest = HttpRequest.newBuilder(endpoint)
+                .timeout(Duration.ofSeconds(90))
+                .header("Authorization", "Bearer $apiKey")
+                .header("Content-Type", "application/json")
+                .header("HTTP-Referer", "https://github.com/LeoHelfferich/llm-judges-and-trust")
+                .header("X-Title", "LLM-as-Judge lies")
+                .POST(HttpRequest.BodyPublishers.ofString(payload))
+                .build()
+            val response = http.send(httpRequest, HttpResponse.BodyHandlers.ofString())
+            lastStatus = response.statusCode()
+            lastBody = response.body()
+            if (lastStatus == 401 || lastStatus == 403) {
+                throw OpenRouterException("OpenRouter rejected the API key (HTTP $lastStatus).")
+            }
+            if (lastStatus == 200) return parseCompletion(lastBody)
+            val retryable = lastStatus == 429 || lastStatus in 500..599
+            if (!retryable || attempt == 1) break
+            val retryAfter = response.headers().firstValue("retry-after").orElse("2").toLongOrNull() ?: 2L
+            sleep(retryAfter.coerceIn(1, 20) * 1000)
+        }
+        val detail = lastBody.take(300).replace(apiKey, "[redacted]")
+        throw OpenRouterException("OpenRouter HTTP $lastStatus: $detail")
+    }
+}

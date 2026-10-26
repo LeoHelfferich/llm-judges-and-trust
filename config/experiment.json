@@ -1,0 +1,69 @@
+{
+  "dataset": "data/items.json",
+  "temperature": 0.0,
+  "missThreshold": 4,
+  "falseRejectAtOrBelow": 2,
+  "primaryPrompt": "strict",
+  "promptOrder": ["strict", "concise", "cot"],
+  "safetyMargin": 1.5,
+  "capEur": 10.0,
+  "eurPerUsd": 0.89342,
+  "fxAsOf": "2026-10-23",
+  "fxSource": "https://api.frankfurter.app/2026-10-23?from=USD&to=EUR",
+  "pricingAsOf": "2026-10-26",
+  "pricingSource": "https://openrouter.ai/api/v1/models",
+  "expectedOutputTokens": {
+    "strict": 80,
+    "concise": 70,
+    "cot": 160
+  },
+  "maxOutputTokens": {
+    "strict": 160,
+    "concise": 140,
+    "cot": 280
+  },
+  "repeats": {
+    "strict": 3,
+    "concise": 1,
+    "cot": 1
+  },
+  "judges": [
+    {
+      "id": "x-ai/grok-4.3",
+      "label": "Grok 4.3",
+      "vendor": "xAI",
+      "promptUsdPerMillion": 1.25,
+      "completionUsdPerMillion": 2.5,
+      "supportsTemperature": true,
+      "supportsReasoning": true
+    },
+    {
+      "id": "openai/gpt-4o-mini-2024-07-18",
+      "label": "GPT-4o mini (2024-07-18)",
+      "vendor": "OpenAI",
+      "promptUsdPerMillion": 0.15,
+      "completionUsdPerMillion": 0.6,
+      "supportsTemperature": true,
+      "supportsReasoning": false
+    },
+    {
+      "id": "anthropic/claude-haiku-4.5",
+      "label": "Claude Haiku 4.5",
+      "vendor": "Anthropic",
+      "promptUsdPerMillion": 1.0,
+      "completionUsdPerMillion": 5.0,
+      "supportsTemperature": true,
+      "supportsReasoning": true
+    },
+    {
+      "id": "google/gemini-2.5-flash",
+      "label": "Gemini 2.5 Flash",
+      "vendor": "Google",
+      "promptUsdPerMillion": 0.3,
+      "completionUsdPerMillion": 2.5,
+      "supportsTemperature": true,
+      "supportsReasoning": true
+    }
+  ],
+  "schemaVersion": 1
+}

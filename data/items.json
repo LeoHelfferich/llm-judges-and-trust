@@ -1,0 +1,1265 @@
+{
+    "dataset": {
+        "name": "SQuAD 1.1 dev subset",
+        "license": "CC BY-SA 4.0",
+        "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/dataset/dev-v1.1.json",
+        "paper": "https://aclanthology.org/D16-1264/",
+        "citation": "Rajpurkar, P., Zhang, J., Lopyrev, K., and Liang, P. (2016). SQuAD: 100,000+ Questions for Machine Comprehension of Text. EMNLP.",
+        "wikipediaLicense": "Wikipedia passages are CC BY-SA.",
+        "selection": "SQuAD 1.1 dev passages of 480–1400 characters. 32 questions whose gold answer can be made wrong by a minimal numeric edit that does not occur in the passage, and 18 questions whose gold answer is a multi-word proper name swapped with another name from the same passage. Titles are spread across the dev set. The unsupported variant keeps the gold answer and replaces the passage with the first other-article paragraph that does not contain that answer or its salient numbers (3 digits or more).",
+        "squadVersion": "1.1",
+        "schemaVersion": 1
+    },
+    "items": [
+        {
+            "id": "5725b33f6a3fe71400b8952d",
+            "title": "1973_oil_crisis",
+            "question": "When did the 1973 oil crisis begin?",
+            "goldAnswer": "October 1973",
+            "subtleKind": "year",
+            "unsupportedDonorTitle": "Normans",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "October 1973",
+                    "context": "The 1973 oil crisis began in October 1973 when the members of the Organization of Arab Petroleum Exporting Countries (OAPEC, consisting of the Arab members of OPEC plus Egypt and Syria) proclaimed an oil embargo. By the end of the embargo in March 1974, the price of oil had risen from US$3 per barrel to nearly $12 globally; US prices were significantly higher. The embargo caused an oil crisis, or \"shock\", with many short- and long-term effects on global politics and the global economy. It was later called the \"first oil shock\", followed by the 1979 oil crisis, termed the \"second oil shock.\""
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "October 1972",
+                    "context": "The 1973 oil crisis began in October 1973 when the members of the Organization of Arab Petroleum Exporting Countries (OAPEC, consisting of the Arab members of OPEC plus Egypt and Syria) proclaimed an oil embargo. By the end of the embargo in March 1974, the price of oil had risen from US$3 per barrel to nearly $12 globally; US prices were significantly higher. The embargo caused an oil crisis, or \"shock\", with many short- and long-term effects on global politics and the global economy. It was later called the \"first oil shock\", followed by the 1979 oil crisis, termed the \"second oil shock.\""
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "October 1973",
+                    "context": "Some Normans joined Turkish forces to aid in the destruction of the Armenians vassal-states of Sassoun and Taron in far eastern Anatolia. Later, many took up service with the Armenian state further south in Cilicia and the Taurus Mountains. A Norman named Oursel led a force of \"Franks\" into the upper Euphrates valley in northern Syria. From 1073 to 1074, 8,000 of the 20,000 troops of the Armenian general Philaretus Brachamius were Normans—formerly of Oursel—led by Raimbaud. They even lent their ethnicity to the name of their castle: Afranji, meaning \"Franks.\" The known trade between Amalfi and Antioch and between Bari and Tarsus may be related to the presence of Italo-Normans in those cities while Amalfi and Bari were under Norman rule in Italy."
+                }
+            ]
+        },
+        {
+            "id": "5728349dff5b5019007d9f02",
+            "title": "Amazon_rainforest",
+            "question": "How many species of trees can be found in the Amazon rainforest?",
+            "goldAnswer": "16,000",
+            "subtleKind": "integer",
+            "unsupportedDonorTitle": "Private_school",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "16,000",
+                    "context": "The Amazon rainforest (Portuguese: Floresta Amazônica or Amazônia; Spanish: Selva Amazónica, Amazonía or usually Amazonia; French: Forêt amazonienne; Dutch: Amazoneregenwoud), also known in English as Amazonia or the Amazon Jungle, is a moist broadleaf forest that covers most of the Amazon basin of South America. This basin encompasses 7,000,000 square kilometres (2,700,000 sq mi), of which 5,500,000 square kilometres (2,100,000 sq mi) are covered by the rainforest. This region includes territory belonging to nine nations. The majority of the forest is contained within Brazil, with 60% of the rainforest, followed by Peru with 13%, Colombia with 10%, and with minor amounts in Venezuela, Ecuador, Bolivia, Guyana, Suriname and French Guiana. States or departments in four nations contain \"Amazonas\" in their names. The Amazon represents over half of the planet's remaining rainforests, and comprises the largest and most biodiverse tract of tropical rainforest in the world, with an estimated 390 billion individual trees divided into 16,000 species."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "16,001",
+                    "context": "The Amazon rainforest (Portuguese: Floresta Amazônica or Amazônia; Spanish: Selva Amazónica, Amazonía or usually Amazonia; French: Forêt amazonienne; Dutch: Amazoneregenwoud), also known in English as Amazonia or the Amazon Jungle, is a moist broadleaf forest that covers most of the Amazon basin of South America. This basin encompasses 7,000,000 square kilometres (2,700,000 sq mi), of which 5,500,000 square kilometres (2,100,000 sq mi) are covered by the rainforest. This region includes territory belonging to nine nations. The majority of the forest is contained within Brazil, with 60% of the rainforest, followed by Peru with 13%, Colombia with 10%, and with minor amounts in Venezuela, Ecuador, Bolivia, Guyana, Suriname and French Guiana. States or departments in four nations contain \"Amazonas\" in their names. The Amazon represents over half of the planet's remaining rainforests, and comprises the largest and most biodiverse tract of tropical rainforest in the world, with an estimated 390 billion individual trees divided into 16,000 species."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "16,000",
+                    "context": "Although most are non-aligned, some of the best known independent schools also belong to the large, long-established religious foundations, such as the Anglican Church, Uniting Church and Presbyterian Church, but in most cases, they do not insist on their students’ religious allegiance. These schools are typically viewed as 'elite schools'. Many of the 'grammar schools' also fall in this category. They are usually expensive schools that tend to be up-market and traditional in style, some Catholic schools fall into this category as well, e.g. St Joseph's College, Gregory Terrace, Saint Ignatius' College, Riverview, St Gregory's College, Campbelltown, St Aloysius' College (Sydney) and St Joseph's College, Hunters Hill, as well as Loreto Kirribilli, Monte Sant Angelo Mercy College, St Ursula's College and Loreto Normanhurst for girls."
+                }
+            ]
+        },
+        {
+            "id": "5725b41838643c19005acb81",
+            "title": "Apollo_program",
+            "question": "What year did the first manned Apollo flight occur?",
+            "goldAnswer": "1968",
+            "subtleKind": "year",
+            "unsupportedDonorTitle": "Genghis_Khan",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "1968",
+                    "context": "The Apollo program, also known as Project Apollo, was the third United States human spaceflight program carried out by the National Aeronautics and Space Administration (NASA), which accomplished landing the first humans on the Moon from 1969 to 1972. First conceived during Dwight D. Eisenhower's administration as a three-man spacecraft to follow the one-man Project Mercury which put the first Americans in space, Apollo was later dedicated to President John F. Kennedy's national goal of \"landing a man on the Moon and returning him safely to the Earth\" by the end of the 1960s, which he proposed in a May 25, 1961, address to Congress. Project Mercury was followed by the two-man Project Gemini (1962–66). The first manned flight of Apollo was in 1968."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "1967",
+                    "context": "The Apollo program, also known as Project Apollo, was the third United States human spaceflight program carried out by the National Aeronautics and Space Administration (NASA), which accomplished landing the first humans on the Moon from 1969 to 1972. First conceived during Dwight D. Eisenhower's administration as a three-man spacecraft to follow the one-man Project Mercury which put the first Americans in space, Apollo was later dedicated to President John F. Kennedy's national goal of \"landing a man on the Moon and returning him safely to the Earth\" by the end of the 1960s, which he proposed in a May 25, 1961, address to Congress. Project Mercury was followed by the two-man Project Gemini (1962–66). The first manned flight of Apollo was in 1968."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "1968",
+                    "context": "In another incident, around 1177, he was captured in a raid and held prisoner by his father's former allies, the Tayichi'ud. The Tayichi'ud enslaved Temüjin (reportedly with a cangue, a sort of portable stocks), but with the help of a sympathetic guard, the father of Chilaun (who later became a general of Genghis Khan), he was able to escape from the ger (yurt) in the middle of the night by hiding in a river crevice.[citation needed] It was around this time that Jelme and Bo'orchu, two of Genghis Khan's future generals, joined forces with him. Temüjin's reputation also became widespread after his escape from the Tayichi'ud."
+                }
+            ]
+        },
+        {
+            "id": "57264684708984140094c125",
+            "title": "Black_Death",
+            "question": "How much of the European population did the black death kill?",
+            "goldAnswer": "30–60% of Europe's total population",
+            "subtleKind": "integer",
+            "unsupportedDonorTitle": "American_Broadcasting_Company",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "30–60% of Europe's total population",
+                    "context": "The Black Death is thought to have originated in the arid plains of Central Asia, where it then travelled along the Silk Road, reaching Crimea by 1343. From there, it was most likely carried by Oriental rat fleas living on the black rats that were regular passengers on merchant ships. Spreading throughout the Mediterranean and Europe, the Black Death is estimated to have killed 30–60% of Europe's total population. In total, the plague reduced the world population from an estimated 450 million down to 350–375 million in the 14th century. The world population as a whole did not recover to pre-plague levels until the 17th century. The plague recurred occasionally in Europe until the 19th century."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "31–60% of Europe's total population",
+                    "context": "The Black Death is thought to have originated in the arid plains of Central Asia, where it then travelled along the Silk Road, reaching Crimea by 1343. From there, it was most likely carried by Oriental rat fleas living on the black rats that were regular passengers on merchant ships. Spreading throughout the Mediterranean and Europe, the Black Death is estimated to have killed 30–60% of Europe's total population. In total, the plague reduced the world population from an estimated 450 million down to 350–375 million in the 14th century. The world population as a whole did not recover to pre-plague levels until the 17th century. The plague recurred occasionally in Europe until the 19th century."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "30–60% of Europe's total population",
+                    "context": "Between May and September 2005, rumors circulated that Disney–ABC was considering a sale of ABC Radio, with Clear Channel Communications and Westwood One (which had earlier purchased NBC's radio division, as well as the distribution rights to CBS's, and the Mutual Broadcasting System during the 1990s) as potential buyers. On October 19, 2005, ABC announced the restructuring of the group into six divisions: Entertainment Communications, Communications Resources, Kids Communications, News Communications, Corporate Communications, and International Communications."
+                }
+            ]
+        },
+        {
+            "id": "572825a92ca10214002d9f01",
+            "title": "Civil_disobedience",
+            "question": "How long did Julia Butterfly Hill live in a tree?",
+            "goldAnswer": "738 days",
+            "subtleKind": "integer",
+            "unsupportedDonorTitle": "Kenya",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "738 days",
+                    "context": "Civil disobedients have chosen a variety of different illegal acts. Bedau writes, \"There is a whole class of acts, undertaken in the name of civil disobedience, which, even if they were widely practiced, would in themselves constitute hardly more than a nuisance (e.g. trespassing at a nuclear-missile installation)...Such acts are often just a harassment and, at least to the bystander, somewhat inane...The remoteness of the connection between the disobedient act and the objectionable law lays such acts open to the charge of ineffectiveness and absurdity.\" Bedau also notes, though, that the very harmlessness of such entirely symbolic illegal protests toward public policy goals may serve a propaganda purpose. Some civil disobedients, such as the proprietors of illegal medical cannabis dispensaries and Voice in the Wilderness, which brought medicine to Iraq without the permission of the U.S. Government, directly achieve a desired social goal (such as the provision of medication to the sick) while openly breaking the law. Julia Butterfly Hill lived in Luna, a 180-foot (55 m)-tall, 600-year-old California Redwood tree for 738 days, successfully preventing it from being cut down."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "739 days",
+                    "context": "Civil disobedients have chosen a variety of different illegal acts. Bedau writes, \"There is a whole class of acts, undertaken in the name of civil disobedience, which, even if they were widely practiced, would in themselves constitute hardly more than a nuisance (e.g. trespassing at a nuclear-missile installation)...Such acts are often just a harassment and, at least to the bystander, somewhat inane...The remoteness of the connection between the disobedient act and the objectionable law lays such acts open to the charge of ineffectiveness and absurdity.\" Bedau also notes, though, that the very harmlessness of such entirely symbolic illegal protests toward public policy goals may serve a propaganda purpose. Some civil disobedients, such as the proprietors of illegal medical cannabis dispensaries and Voice in the Wilderness, which brought medicine to Iraq without the permission of the U.S. Government, directly achieve a desired social goal (such as the provision of medication to the sick) while openly breaking the law. Julia Butterfly Hill lived in Luna, a 180-foot (55 m)-tall, 600-year-old California Redwood tree for 738 days, successfully preventing it from being cut down."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "738 days",
+                    "context": "The central highlands were already home to over a million members of the Kikuyu people, most of whom had no land claims in European terms and lived as itinerant farmers. To protect their interests, the settlers banned the growing of coffee, introduced a hut tax, and the landless were granted less and less land in exchange for their labour. A massive exodus to the cities ensued as their ability to provide a living from the land dwindled. There were 80,000 white settlers living in Kenya in the 1950s."
+                }
+            ]
+        },
+        {
+            "id": "56e17e6ee3433e1400422f7f",
+            "title": "Computational_complexity_theory",
+            "question": "By how many kilometers does the traveling salesman problem seek to classify a route between the 15 largest cities in Germany?",
+            "goldAnswer": "2000",
+            "subtleKind": "year",
+            "unsupportedDonorTitle": "Civil_disobedience",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "2000",
+                    "context": "To further highlight the difference between a problem and an instance, consider the following instance of the decision version of the traveling salesman problem: Is there a route of at most 2000 kilometres passing through all of Germany's 15 largest cities? The quantitative answer to this particular problem instance is of little use for solving other instances of the problem, such as asking for a round trip through all sites in Milan whose total length is at most 10 km. For this reason, complexity theory addresses computational problems and not particular problem instances."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "2001",
+                    "context": "To further highlight the difference between a problem and an instance, consider the following instance of the decision version of the traveling salesman problem: Is there a route of at most 2000 kilometres passing through all of Germany's 15 largest cities? The quantitative answer to this particular problem instance is of little use for solving other instances of the problem, such as asking for a round trip through all sites in Milan whose total length is at most 10 km. For this reason, complexity theory addresses computational problems and not particular problem instances."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "2000",
+                    "context": "Some civil disobedients feel it is incumbent upon them to accept punishment because of their belief in the validity of the social contract, which is held to bind all to obey the laws that a government meeting certain standards of legitimacy has established, or else suffer the penalties set out in the law. Other civil disobedients who favor the existence of government still don't believe in the legitimacy of their particular government, or don't believe in the legitimacy of a particular law it has enacted. And still other civil disobedients, being anarchists, don't believe in the legitimacy of any government, and therefore see no need to accept punishment for a violation of criminal law that does not infringe the rights of others."
+                }
+            ]
+        },
+        {
+            "id": "5725c0f289a1e219009abdf5",
+            "title": "Ctenophora",
+            "question": "How large can ctenophora grow?",
+            "goldAnswer": "1.5 m (4 ft 11 in)",
+            "subtleKind": "decimal",
+            "unsupportedDonorTitle": "Doctor_Who",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "1.5 m (4 ft 11 in)",
+                    "context": "Ctenophora (/tᵻˈnɒfərə/; singular ctenophore, /ˈtɛnəfɔːr/ or /ˈtiːnəfɔːr/; from the Greek κτείς kteis 'comb' and φέρω pherō 'carry'; commonly known as comb jellies) is a phylum of animals that live in marine waters worldwide. Their most distinctive feature is the ‘combs’ – groups of cilia which they use for swimming – they are the largest animals that swim by means of cilia. Adults of various species range from a few millimeters to 1.5 m (4 ft 11 in) in size. Like cnidarians, their bodies consist of a mass of jelly, with one layer of cells on the outside and another lining the internal cavity. In ctenophores, these layers are two cells deep, while those in cnidarians are only one cell deep. Some authors combined ctenophores and cnidarians in one phylum, Coelenterata, as both groups rely on water flow through the body cavity for both digestion and respiration. Increasing awareness of the differences persuaded more recent authors to classify them as separate phyla."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "1.6 m (4 ft 11 in)",
+                    "context": "Ctenophora (/tᵻˈnɒfərə/; singular ctenophore, /ˈtɛnəfɔːr/ or /ˈtiːnəfɔːr/; from the Greek κτείς kteis 'comb' and φέρω pherō 'carry'; commonly known as comb jellies) is a phylum of animals that live in marine waters worldwide. Their most distinctive feature is the ‘combs’ – groups of cilia which they use for swimming – they are the largest animals that swim by means of cilia. Adults of various species range from a few millimeters to 1.5 m (4 ft 11 in) in size. Like cnidarians, their bodies consist of a mass of jelly, with one layer of cells on the outside and another lining the internal cavity. In ctenophores, these layers are two cells deep, while those in cnidarians are only one cell deep. Some authors combined ctenophores and cnidarians in one phylum, Coelenterata, as both groups rely on water flow through the body cavity for both digestion and respiration. Increasing awareness of the differences persuaded more recent authors to classify them as separate phyla."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "1.5 m (4 ft 11 in)",
+                    "context": "The companion figure – generally a human – has been a constant feature in Doctor Who since the programme's inception in 1963. One of the roles of the companion is to remind the Doctor of his \"moral duty\". The Doctor's first companions seen on screen were his granddaughter Susan Foreman (Carole Ann Ford) and her teachers Barbara Wright (Jacqueline Hill) and Ian Chesterton (William Russell). These characters were intended to act as audience surrogates, through which the audience would discover information about the Doctor who was to act as a mysterious father figure. The only story from the original series in which the Doctor travels alone is The Deadly Assassin. Notable companions from the earlier series included Romana (Mary Tamm and Lalla Ward), a Time Lady; Sarah Jane Smith (Elisabeth Sladen); and Jo Grant (Katy Manning). Dramatically, these characters provide a figure with whom the audience can identify, and serve to further the story by requesting exposition from the Doctor and manufacturing peril for the Doctor to resolve. The Doctor regularly gains new companions and loses old ones; sometimes they return home or find new causes — or loves — on worlds they have visited. Some have died during the course of the series. Companions are usually human, or humanoid aliens."
+                }
+            ]
+        },
+        {
+            "id": "5727efabff5b5019007d98e3",
+            "title": "Doctor_Who",
+            "question": "What year did Doctor Who first show on TV?",
+            "goldAnswer": "1963",
+            "subtleKind": "year",
+            "unsupportedDonorTitle": "Newcastle_upon_Tyne",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "1963",
+                    "context": "Doctor Who is a British science-fiction television programme produced by the BBC since 1963. The programme depicts the adventures of the Doctor, a Time Lord—a space and time-travelling humanoid alien. He explores the universe in his TARDIS, a sentient time-travelling space ship. Its exterior appears as a blue British police box, which was a common sight in Britain in 1963 when the series first aired. Accompanied by companions, the Doctor combats a variety of foes, while working to save civilisations and help people in need."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "1964",
+                    "context": "Doctor Who is a British science-fiction television programme produced by the BBC since 1963. The programme depicts the adventures of the Doctor, a Time Lord—a space and time-travelling humanoid alien. He explores the universe in his TARDIS, a sentient time-travelling space ship. Its exterior appears as a blue British police box, which was a common sight in Britain in 1963 when the series first aired. Accompanied by companions, the Doctor combats a variety of foes, while working to save civilisations and help people in need."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "1963",
+                    "context": "Train operator Virgin Trains East Coast provides a half-hourly frequency of trains to London King's Cross, with a journey time of about three hours, these services call at Durham, Darlington, York, Doncaster, Newark North Gate and Peterborough and north to Scotland with all trains calling at Edinburgh and a small number of trains extended to Glasgow, Aberdeen and Inverness. CrossCountry trains serve destinations in Yorkshire, the Midlands and the South West. First TransPennine Express operates services to Manchester and Liverpool. Northern Rail provides local and regional services."
+                }
+            ]
+        },
+        {
+            "id": "5725cc38ec44d21400f3d5bd",
+            "title": "European_Union_law",
+            "question": "In what years did Spain and Portugal join the European Union?",
+            "goldAnswer": "1985",
+            "subtleKind": "year",
+            "unsupportedDonorTitle": "Rhine",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "1985",
+                    "context": "The principal Treaties that form the European Union began with common rules for coal and steel, and then atomic energy, but more complete and formal institutions were established through the Treaty of Rome 1957 and the Maastricht Treaty 1992 (now: TFEU). Minor amendments were made during the 1960s and 1970s. Major amending treaties were signed to complete the development of a single, internal market in the Single European Act 1986, to further the development of a more social Europe in the Treaty of Amsterdam 1997, and to make minor amendments to the relative power of member states in the EU institutions in the Treaty of Nice 2001 and the Treaty of Lisbon 2007. Since its establishment, more member states have joined through a series of accession treaties, from the UK, Ireland, Denmark and Norway in 1972 (though Norway did not end up joining), Greece in 1979, Spain and Portugal 1985, Austria, Finland, Norway and Sweden in 1994 (though again Norway failed to join, because of lack of support in the referendum), the Czech Republic, Cyprus, Estonia, Hungary, Latvia, Lithuania, Malta, Poland, Slovakia and Slovenia in 2004, Romania and Bulgaria in 2007 and Croatia in 2013. Greenland signed a Treaty in 1985 giving it a special status."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "1984",
+                    "context": "The principal Treaties that form the European Union began with common rules for coal and steel, and then atomic energy, but more complete and formal institutions were established through the Treaty of Rome 1957 and the Maastricht Treaty 1992 (now: TFEU). Minor amendments were made during the 1960s and 1970s. Major amending treaties were signed to complete the development of a single, internal market in the Single European Act 1986, to further the development of a more social Europe in the Treaty of Amsterdam 1997, and to make minor amendments to the relative power of member states in the EU institutions in the Treaty of Nice 2001 and the Treaty of Lisbon 2007. Since its establishment, more member states have joined through a series of accession treaties, from the UK, Ireland, Denmark and Norway in 1972 (though Norway did not end up joining), Greece in 1979, Spain and Portugal 1985, Austria, Finland, Norway and Sweden in 1994 (though again Norway failed to join, because of lack of support in the referendum), the Czech Republic, Cyprus, Estonia, Hungary, Latvia, Lithuania, Malta, Poland, Slovakia and Slovenia in 2004, Romania and Bulgaria in 2007 and Croatia in 2013. Greenland signed a Treaty in 1985 giving it a special status."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "1985",
+                    "context": "In World War II, it was recognised that the Rhine would present a formidable natural obstacle to the invasion of Germany, by the Western Allies. The Rhine bridge at Arnhem, immortalized in the book, A Bridge Too Far and the film, was a central focus of the battle for Arnhem, during the failed Operation Market Garden of September 1944. The bridges at Nijmegen, over the Waal distributary of the Rhine, were also an objective of Operation Market Garden. In a separate operation, the Ludendorff Bridge, crossing the Rhine at Remagen, became famous, when U.S. forces were able to capture it intact – much to their own surprise – after the Germans failed to demolish it. This also became the subject of a film, The Bridge at Remagen. Seven Days to the River Rhine was a Warsaw Pact war plan for an invasion of Western Europe during the Cold War."
+                }
+            ]
+        },
+        {
+            "id": "57373f80c3c5551400e51e8f",
+            "title": "Force",
+            "question": "When were the shortcomings of Aristotle's physics overcome?",
+            "goldAnswer": "17th century",
+            "subtleKind": "ordinal",
+            "unsupportedDonorTitle": "Huguenot",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "17th century",
+                    "context": "The shortcomings of Aristotelian physics would not be fully corrected until the 17th century work of Galileo Galilei, who was influenced by the late Medieval idea that objects in forced motion carried an innate force of impetus. Galileo constructed an experiment in which stones and cannonballs were both rolled down an incline to disprove the Aristotelian theory of motion early in the 17th century. He showed that the bodies were accelerated by gravity to an extent that was independent of their mass and argued that objects retain their velocity unless acted on by a force, for example friction."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "18th century",
+                    "context": "The shortcomings of Aristotelian physics would not be fully corrected until the 17th century work of Galileo Galilei, who was influenced by the late Medieval idea that objects in forced motion carried an innate force of impetus. Galileo constructed an experiment in which stones and cannonballs were both rolled down an incline to disprove the Aristotelian theory of motion early in the 17th century. He showed that the bodies were accelerated by gravity to an extent that was independent of their mass and argued that objects retain their velocity unless acted on by a force, for example friction."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "17th century",
+                    "context": "After this, Huguenots (with estimates ranging from 200,000 to 1,000,000) fled to surrounding Protestant countries: England, the Netherlands, Switzerland, Norway, Denmark, and Prussia — whose Calvinist Great Elector Frederick William welcomed them to help rebuild his war-ravaged and underpopulated country. Following this exodus, Huguenots remained in large numbers in only one region of France: the rugged Cévennes region in the south. In the early 18th century, a regional group known as the Camisards who were Huguenots rioted against the Catholic Church in the region, burning churches and killing clergy. It took French troops years to hunt down and destroy all the bands of Camisards, between 1702 and 1709."
+                }
+            ]
+        },
+        {
+            "id": "5725ce4d38643c19005acd4e",
+            "title": "Fresno,_California",
+            "question": "How far is Fresno from Los Angeles?",
+            "goldAnswer": "220 miles (350 km)",
+            "subtleKind": "integer",
+            "unsupportedDonorTitle": "Teacher",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "220 miles (350 km)",
+                    "context": "Fresno (/ˈfrɛznoʊ/ FREZ-noh), the county seat of Fresno County, is a city in the U.S. state of California. As of 2015, the city's population was 520,159, making it the fifth-largest city in California, the largest inland city in California and the 34th-largest in the nation. Fresno is in the center of the San Joaquin Valley and is the largest city in the Central Valley, which contains the San Joaquin Valley. It is approximately 220 miles (350 km) northwest of Los Angeles, 170 miles (270 km) south of the state capital, Sacramento, or 185 miles (300 km) south of San Francisco. The name Fresno means \"ash tree\" in Spanish, and an ash leaf is featured on the city's flag."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "221 miles (350 km)",
+                    "context": "Fresno (/ˈfrɛznoʊ/ FREZ-noh), the county seat of Fresno County, is a city in the U.S. state of California. As of 2015, the city's population was 520,159, making it the fifth-largest city in California, the largest inland city in California and the 34th-largest in the nation. Fresno is in the center of the San Joaquin Valley and is the largest city in the Central Valley, which contains the San Joaquin Valley. It is approximately 220 miles (350 km) northwest of Los Angeles, 170 miles (270 km) south of the state capital, Sacramento, or 185 miles (300 km) south of San Francisco. The name Fresno means \"ash tree\" in Spanish, and an ash leaf is featured on the city's flag."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "220 miles (350 km)",
+                    "context": "A modern example of school discipline in North America and Western Europe relies upon the idea of an assertive teacher who is prepared to impose their will upon a class. Positive reinforcement is balanced with immediate and fair punishment for misbehavior and firm, clear boundaries define what is appropriate and inappropriate behavior. Teachers are expected to respect their students; sarcasm and attempts to humiliate pupils are seen as falling outside of what constitutes reasonable discipline.[verification needed]"
+                }
+            ]
+        },
+        {
+            "id": "5726a00d708984140094cc26",
+            "title": "Genghis_Khan",
+            "question": "What year did Genghis Khan die?",
+            "goldAnswer": "1227",
+            "subtleKind": "year",
+            "unsupportedDonorTitle": "Pharmacy",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "1227",
+                    "context": "Before Genghis Khan died, he assigned Ögedei Khan as his successor and split his empire into khanates among his sons and grandsons. He died in 1227 after defeating the Western Xia. He was buried in an unmarked grave somewhere in Mongolia at an unknown location. His descendants extended the Mongol Empire across most of Eurasia by conquering or creating vassal states out of all of modern-day China, Korea, the Caucasus, Central Asia, and substantial portions of modern Eastern Europe, Russia, and Southwest Asia. Many of these invasions repeated the earlier large-scale slaughters of local populations. As a result, Genghis Khan and his empire have a fearsome reputation in local histories."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "1228",
+                    "context": "Before Genghis Khan died, he assigned Ögedei Khan as his successor and split his empire into khanates among his sons and grandsons. He died in 1227 after defeating the Western Xia. He was buried in an unmarked grave somewhere in Mongolia at an unknown location. His descendants extended the Mongol Empire across most of Eurasia by conquering or creating vassal states out of all of modern-day China, Korea, the Caucasus, Central Asia, and substantial portions of modern Eastern Europe, Russia, and Southwest Asia. Many of these invasions repeated the earlier large-scale slaughters of local populations. As a result, Genghis Khan and his empire have a fearsome reputation in local histories."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "1227",
+                    "context": "The word pharmacy is derived from its root word pharma which was a term used since the 15th–17th centuries. However, the original Greek roots from pharmakos imply sorcery or even poison. In addition to pharma responsibilities, the pharma offered general medical advice and a range of services that are now performed solely by other specialist practitioners, such as surgery and midwifery. The pharma (as it was referred to) often operated through a retail shop which, in addition to ingredients for medicines, sold tobacco and patent medicines. Often the place that did this was called an apothecary and several languages have this as the dominant term, though their practices are more akin to a modern pharmacy, in English the term apothecary would today be seen as outdated or only approproriate if herbal remedies were on offer to a large extent. The pharmas also used many other herbs not listed. The Greek word Pharmakeia (Greek: φαρμακεία) derives from pharmakon (φάρμακον), meaning \"drug\", \"medicine\" (or \"poison\").[n 1]"
+                }
+            ]
+        },
+        {
+            "id": "5727aa413acd2414000de922",
+            "title": "Harvard_University",
+            "question": "When did the undergraduate program become coeducational?",
+            "goldAnswer": "1977",
+            "subtleKind": "year",
+            "unsupportedDonorTitle": "Islamism",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "1977",
+                    "context": "Established originally by the Massachusetts legislature and soon thereafter named for John Harvard (its first benefactor), Harvard is the United States' oldest institution of higher learning, and the Harvard Corporation (formally, the President and Fellows of Harvard College) is its first chartered corporation. Although never formally affiliated with any denomination, the early College primarily trained Congregationalist and Unitarian clergy. Its curriculum and student body were gradually secularized during the 18th century, and by the 19th century Harvard had emerged as the central cultural establishment among Boston elites. Following the American Civil War, President Charles W. Eliot's long tenure (1869–1909) transformed the college and affiliated professional schools into a modern research university; Harvard was a founding member of the Association of American Universities in 1900. James Bryant Conant led the university through the Great Depression and World War II and began to reform the curriculum and liberalize admissions after the war. The undergraduate college became coeducational after its 1977 merger with Radcliffe College."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "1978",
+                    "context": "Established originally by the Massachusetts legislature and soon thereafter named for John Harvard (its first benefactor), Harvard is the United States' oldest institution of higher learning, and the Harvard Corporation (formally, the President and Fellows of Harvard College) is its first chartered corporation. Although never formally affiliated with any denomination, the early College primarily trained Congregationalist and Unitarian clergy. Its curriculum and student body were gradually secularized during the 18th century, and by the 19th century Harvard had emerged as the central cultural establishment among Boston elites. Following the American Civil War, President Charles W. Eliot's long tenure (1869–1909) transformed the college and affiliated professional schools into a modern research university; Harvard was a founding member of the Association of American Universities in 1900. James Bryant Conant led the university through the Great Depression and World War II and began to reform the curriculum and liberalize admissions after the war. The undergraduate college became coeducational after its 1977 merger with Radcliffe College."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "1977",
+                    "context": "The views of Ali Shariati, ideologue of the Iranian Revolution, had resemblance with Mohammad Iqbal, ideological father of the State of Pakistan, but Khomeini's beliefs is perceived to be placed somewhere between beliefs of Sunni Islamic thinkers like Mawdudi and Qutb. He believed that complete imitation of the Prophet Mohammad and his successors such as Ali for restoration of Sharia law was essential to Islam, that many secular, Westernizing Muslims were actually agents of the West serving Western interests, and that the acts such as \"plundering\" of Muslim lands was part of a long-term conspiracy against Islam by the Western governments."
+                }
+            ]
+        },
+        {
+            "id": "57105da9a58dae1900cd69a0",
+            "title": "Huguenot",
+            "question": "When were the Wars of Religion fought?",
+            "goldAnswer": "from 1562 to 1598",
+            "subtleKind": "year",
+            "unsupportedDonorTitle": "Prime_number",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "from 1562 to 1598",
+                    "context": "Huguenot numbers peaked near an estimated two million by 1562, concentrated mainly in the southern and central parts of France, about one-eighth the number of French Catholics. As Huguenots gained influence and more openly displayed their faith, Catholic hostility grew, in spite of increasingly liberal political concessions and edicts of toleration from the French crown. A series of religious conflicts followed, known as the Wars of Religion, fought intermittently from 1562 to 1598. The wars finally ended with the granting of the Edict of Nantes, which granted the Huguenots substantial religious, political and military autonomy."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "from 1562 to 1599",
+                    "context": "Huguenot numbers peaked near an estimated two million by 1562, concentrated mainly in the southern and central parts of France, about one-eighth the number of French Catholics. As Huguenots gained influence and more openly displayed their faith, Catholic hostility grew, in spite of increasingly liberal political concessions and edicts of toleration from the French crown. A series of religious conflicts followed, known as the Wars of Religion, fought intermittently from 1562 to 1598. The wars finally ended with the granting of the Edict of Nantes, which granted the Huguenots substantial religious, political and military autonomy."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "from 1562 to 1598",
+                    "context": "Prime numbers have influenced many artists and writers. The French composer Olivier Messiaen used prime numbers to create ametrical music through \"natural phenomena\". In works such as La Nativité du Seigneur (1935) and Quatre études de rythme (1949–50), he simultaneously employs motifs with lengths given by different prime numbers to create unpredictable rhythms: the primes 41, 43, 47 and 53 appear in the third étude, \"Neumes rythmiques\". According to Messiaen this way of composing was \"inspired by the movements of nature, movements of free and unequal durations\"."
+                }
+            ]
+        },
+        {
+            "id": "57309446396df919000961b8",
+            "title": "Imperialism",
+            "question": "When did the age of Imperialism begin?",
+            "goldAnswer": "around 1700",
+            "subtleKind": "year",
+            "unsupportedDonorTitle": "Newcastle_upon_Tyne",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "around 1700",
+                    "context": "The Age of Imperialism, a time period beginning around 1700, saw (generally European) industrializing nations engaging in the process of colonizing, influencing, and annexing other parts of the world in order to gain political power.[citation needed] Although imperialist practices have existed for thousands of years, the term \"Age of Imperialism\" generally refers to the activities of European powers from the early 18th century through to the middle of the 20th century, for example, the \"The Great Game\" in Persian lands, the \"Scramble for Africa\" and the \"Open Door Policy\" in China."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "around 1701",
+                    "context": "The Age of Imperialism, a time period beginning around 1700, saw (generally European) industrializing nations engaging in the process of colonizing, influencing, and annexing other parts of the world in order to gain political power.[citation needed] Although imperialist practices have existed for thousands of years, the term \"Age of Imperialism\" generally refers to the activities of European powers from the early 18th century through to the middle of the 20th century, for example, the \"The Great Game\" in Persian lands, the \"Scramble for Africa\" and the \"Open Door Policy\" in China."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "around 1700",
+                    "context": "The city has a proud history of theatre. Stephen Kemble of the famous Kemble family successfully managed the original Theatre Royal, Newcastle for fifteen years (1791–1806). He brought members of his famous acting family such as Sarah Siddons and John Kemble out of London to Newcastle. Stephen Kemble guided the theatre through many celebrated seasons. The original Theatre Royal in Newcastle was opened on 21 January 1788 and was located on Mosley Street. It was demolished to make way for Grey Street, where its replacement was built."
+                }
+            ]
+        },
+        {
+            "id": "57293b843f37b31900478137",
+            "title": "Intergovernmental_Panel_on_Climate_Change",
+            "question": "What UN resolution endorsed the IPCC?",
+            "goldAnswer": "Resolution 43/53",
+            "subtleKind": "integer",
+            "unsupportedDonorTitle": "American_Broadcasting_Company",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "Resolution 43/53",
+                    "context": "The Intergovernmental Panel on Climate Change (IPCC) is a scientific intergovernmental body under the auspices of the United Nations, set up at the request of member governments. It was first established in 1988 by two United Nations organizations, the World Meteorological Organization (WMO) and the United Nations Environment Programme (UNEP), and later endorsed by the United Nations General Assembly through Resolution 43/53. Membership of the IPCC is open to all members of the WMO and UNEP. The IPCC produces reports that support the United Nations Framework Convention on Climate Change (UNFCCC), which is the main international treaty on climate change. The ultimate objective of the UNFCCC is to \"stabilize greenhouse gas concentrations in the atmosphere at a level that would prevent dangerous anthropogenic [i.e., human-induced] interference with the climate system\". IPCC reports cover \"the scientific, technical and socio-economic information relevant to understanding the scientific basis of risk of human-induced climate change, its potential impacts and options for adaptation and mitigation.\""
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "Resolution 44/53",
+                    "context": "The Intergovernmental Panel on Climate Change (IPCC) is a scientific intergovernmental body under the auspices of the United Nations, set up at the request of member governments. It was first established in 1988 by two United Nations organizations, the World Meteorological Organization (WMO) and the United Nations Environment Programme (UNEP), and later endorsed by the United Nations General Assembly through Resolution 43/53. Membership of the IPCC is open to all members of the WMO and UNEP. The IPCC produces reports that support the United Nations Framework Convention on Climate Change (UNFCCC), which is the main international treaty on climate change. The ultimate objective of the UNFCCC is to \"stabilize greenhouse gas concentrations in the atmosphere at a level that would prevent dangerous anthropogenic [i.e., human-induced] interference with the climate system\". IPCC reports cover \"the scientific, technical and socio-economic information relevant to understanding the scientific basis of risk of human-induced climate change, its potential impacts and options for adaptation and mitigation.\""
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "Resolution 43/53",
+                    "context": "The Writers Guild of America strike that halted production of network programs for much of the 2007–08 season affected the network in 2007–08 and 2008–09, as various ABC shows that premiered in 2007, such as Dirty Sexy Money, Pushing Daisies, Eli Stone and Samantha Who?, did not live to see a third season; other series such as Boston Legal and the U.S. version of Life on Mars suffered from low viewership, despite the former, a spin off of The Practice, being a once-highlighted breakout series when it debuted in 2005. One of the network's strike-replacement programs during that time was the game show Duel, which premiered in December 2007. The program would become a minor success for the network during its initial six-episode run, which led ABC to renew Duel as a regular series starting in April 2008. However, Duel suffered from low viewership during its run as a regular series, and ABC canceled the program after sixteen episodes. On August 15, 2008, Disney denied rumors started by Caris & Co. that it would be selling the ten ABC owned-and-operated stations."
+                }
+            ]
+        },
+        {
+            "id": "5727c94bff5b5019007d954b",
+            "title": "Jacksonville,_Florida",
+            "question": "What was the population Jacksonville city as of 2010?",
+            "goldAnswer": "1,345,596",
+            "subtleKind": "integer",
+            "unsupportedDonorTitle": "Intergovernmental_Panel_on_Climate_Change",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "1,345,596",
+                    "context": "Jacksonville is the largest city by population in the U.S. state of Florida, and the largest city by area in the contiguous United States. It is the county seat of Duval County, with which the city government consolidated in 1968. Consolidation gave Jacksonville its great size and placed most of its metropolitan population within the city limits; with an estimated population of 853,382 in 2014, it is the most populous city proper in Florida and the Southeast, and the 12th most populous in the United States. Jacksonville is the principal city in the Jacksonville metropolitan area, with a population of 1,345,596 in 2010."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "1,345,597",
+                    "context": "Jacksonville is the largest city by population in the U.S. state of Florida, and the largest city by area in the contiguous United States. It is the county seat of Duval County, with which the city government consolidated in 1968. Consolidation gave Jacksonville its great size and placed most of its metropolitan population within the city limits; with an estimated population of 853,382 in 2014, it is the most populous city proper in Florida and the Southeast, and the 12th most populous in the United States. Jacksonville is the principal city in the Jacksonville metropolitan area, with a population of 1,345,596 in 2010."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "1,345,596",
+                    "context": "According to Sheldon Ungar's comparison with global warming, the actors in the ozone depletion case had a better understanding of scientific ignorance and uncertainties. The ozone case communicated to lay persons \"with easy-to-understand bridging metaphors derived from the popular culture\" and related to \"immediate risks with everyday relevance\", while the public opinion on climate change sees no imminent danger. The stepwise mitigation of the ozone layer challenge was based as well on successfully reducing regional burden sharing conflicts. In case of the IPCC conclusions and the failure of the Kyoto Protocol, varying regional cost-benefit analysis and burden-sharing conflicts with regard to the distribution of emission reductions remain an unsolved problem. In the UK, a report for a House of Lords committee asked to urge the IPCC to involve better assessments of costs and benefits of climate change but the Stern Review ordered by the UK government made a stronger argument in favor to combat human-made climate change."
+                }
+            ]
+        },
+        {
+            "id": "5728dab94b864d1900164f9a",
+            "title": "Kenya",
+            "question": "What was the population of Kenya in 2014?",
+            "goldAnswer": "45 million people",
+            "subtleKind": "integer",
+            "unsupportedDonorTitle": "Martin_Luther",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "45 million people",
+                    "context": "Kenya (/ˈkɛnjə/; locally [ˈkɛɲa] ( listen)), officially the Republic of Kenya, is a country in Africa and a founding member of the East African Community (EAC). Its capital and largest city is Nairobi. Kenya's territory lies on the equator and overlies the East African Rift covering a diverse and expansive terrain that extends roughly from Lake Victoria to Lake Turkana (formerly called Lake Rudolf) and further south-east to the Indian Ocean. It is bordered by Tanzania to the south, Uganda to the west, South Sudan to the north-west, Ethiopia to the north and Somalia to the north-east. Kenya covers 581,309 km2 (224,445 sq mi), and had a population of approximately 45 million people in July 2014."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "46 million people",
+                    "context": "Kenya (/ˈkɛnjə/; locally [ˈkɛɲa] ( listen)), officially the Republic of Kenya, is a country in Africa and a founding member of the East African Community (EAC). Its capital and largest city is Nairobi. Kenya's territory lies on the equator and overlies the East African Rift covering a diverse and expansive terrain that extends roughly from Lake Victoria to Lake Turkana (formerly called Lake Rudolf) and further south-east to the Indian Ocean. It is bordered by Tanzania to the south, Uganda to the west, South Sudan to the north-west, Ethiopia to the north and Somalia to the north-east. Kenya covers 581,309 km2 (224,445 sq mi), and had a population of approximately 45 million people in July 2014."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "45 million people",
+                    "context": "His last sermon was delivered at Eisleben, his place of birth, on 15 February 1546, three days before his death. It was \"entirely devoted to the obdurate Jews, whom it was a matter of great urgency to expel from all German territory,\" according to Léon Poliakov. James Mackinnon writes that it concluded with a \"fiery summons to drive the Jews bag and baggage from their midst, unless they desisted from their calumny and their usury and became Christians.\" Luther said, \"we want to practice Christian love toward them and pray that they convert,\" but also that they are \"our public enemies ... and if they could kill us all, they would gladly do so. And so often they do.\""
+                }
+            ]
+        },
+        {
+            "id": "5726642f5951b619008f7157",
+            "title": "Newcastle_upon_Tyne",
+            "question": "How many miles south of Edinburgh is Newcastle?",
+            "goldAnswer": "103 miles",
+            "subtleKind": "integer",
+            "unsupportedDonorTitle": "Victoria_and_Albert_Museum",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "103 miles",
+                    "context": "Newcastle upon Tyne (RP: i/ˌnjuːkɑːsəl əˌpɒn ˈtaɪn/; Locally: i/njuːˌkæsəl əˌpən ˈtaɪn/), commonly known as Newcastle, is a city in Tyne and Wear, North East England, 103 miles (166 km) south of Edinburgh and 277 miles (446 km) north of London on the northern bank of the River Tyne, 8.5 mi (13.7 km) from the North Sea. Newcastle is the most populous city in the North East and Tyneside the eighth most populous conurbation in the United Kingdom. Newcastle is a member of the English Core Cities Group and is a member of the Eurocities network of European cities. Newcastle was part of the county of Northumberland until 1400, when it became a county itself, a status it retained until becoming part of Tyne and Wear in 1974.[not in citation given] The regional nickname and dialect for people from Newcastle and the surrounding area is Geordie."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "104 miles",
+                    "context": "Newcastle upon Tyne (RP: i/ˌnjuːkɑːsəl əˌpɒn ˈtaɪn/; Locally: i/njuːˌkæsəl əˌpən ˈtaɪn/), commonly known as Newcastle, is a city in Tyne and Wear, North East England, 103 miles (166 km) south of Edinburgh and 277 miles (446 km) north of London on the northern bank of the River Tyne, 8.5 mi (13.7 km) from the North Sea. Newcastle is the most populous city in the North East and Tyneside the eighth most populous conurbation in the United Kingdom. Newcastle is a member of the English Core Cities Group and is a member of the Eurocities network of European cities. Newcastle was part of the county of Northumberland until 1400, when it became a county itself, a status it retained until becoming part of Tyne and Wear in 1974.[not in citation given] The regional nickname and dialect for people from Newcastle and the surrounding area is Geordie."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "103 miles",
+                    "context": "The Victoria and Albert Museum (often abbreviated as the V&A), London, is the world's largest museum of decorative arts and design, housing a permanent collection of over 4.5 million objects. It was founded in 1852 and named after Queen Victoria and Prince Albert. The V&A is located in the Brompton district of the Royal Borough of Kensington and Chelsea, in an area that has become known as \"Albertopolis\" because of its association with Prince Albert, the Albert Memorial and the major cultural institutions with which he was associated. These include the Natural History Museum, the Science Museum and the Royal Albert Hall. The museum is a non-departmental public body sponsored by the Department for Culture, Media and Sport. Like other national British museums, entrance to the museum has been free since 2001."
+                }
+            ]
+        },
+        {
+            "id": "56df9ee138dc421700152108",
+            "title": "Nikola_Tesla",
+            "question": "In what year did Nikola Tesla emigrate to the United States?",
+            "goldAnswer": "1884",
+            "subtleKind": "year",
+            "unsupportedDonorTitle": "American_Broadcasting_Company",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "1884",
+                    "context": "Tesla gained experience in telephony and electrical engineering before emigrating to the United States in 1884 to work for Thomas Edison in New York City. He soon struck out on his own with financial backers, setting up laboratories and companies to develop a range of electrical devices. His patented AC induction motor and transformer were licensed by George Westinghouse, who also hired Tesla for a short time as a consultant. His work in the formative years of electric power development was involved in a corporate alternating current/direct current \"War of Currents\" as well as various patent battles."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "1885",
+                    "context": "Tesla gained experience in telephony and electrical engineering before emigrating to the United States in 1884 to work for Thomas Edison in New York City. He soon struck out on his own with financial backers, setting up laboratories and companies to develop a range of electrical devices. His patented AC induction motor and transformer were licensed by George Westinghouse, who also hired Tesla for a short time as a consultant. His work in the formative years of electric power development was involved in a corporate alternating current/direct current \"War of Currents\" as well as various patent battles."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "1884",
+                    "context": "During the 1960s, ABC continued on the same path that it began to take in the mid-1950s, by consolidating the network as part of its effort to gain loyalty from the public. The network's finances improved and allowed it to invest in other properties and programming. In May 1960, ABC purchased Chicago radio station WLS, which had shared airtime with WENR since the 1920s. This acquisition allowed ABC to consolidate its presence in the market. On May 9, 1960, WLS launched a new lineup consisting of ABC Radio programming. In 1960, Canadian entrepreneur John Bassett, who was trying to establish a television station in Toronto, sought the help of ABC to launch the station. Leonard Goldenson agreed to acquire a 25% interest in CFTO-TV; however, legislation by the Canadian Radio-Television Commission prohibited ABC's involvement, resulting in the company withdrawing from the project before the station's launch."
+                }
+            ]
+        },
+        {
+            "id": "571bb2269499d21900609ca9",
+            "title": "Oxygen",
+            "question": "How much of the earth's atmosphere is diatomic oxygen?",
+            "goldAnswer": "20.8%",
+            "subtleKind": "decimal",
+            "unsupportedDonorTitle": "Pharmacy",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "20.8%",
+                    "context": "Oxygen is a chemical element with symbol O and atomic number 8. It is a member of the chalcogen group on the periodic table and is a highly reactive nonmetal and oxidizing agent that readily forms compounds (notably oxides) with most elements. By mass, oxygen is the third-most abundant element in the universe, after hydrogen and helium. At standard temperature and pressure, two atoms of the element bind to form dioxygen, a colorless and odorless diatomic gas with the formula O\n2. Diatomic oxygen gas constitutes 20.8% of the Earth's atmosphere. However, monitoring of atmospheric oxygen levels show a global downward trend, because of fossil-fuel burning. Oxygen is the most abundant element by mass in the Earth's crust as part of oxide compounds such as silicon dioxide, making up almost half of the crust's mass."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "20.9%",
+                    "context": "Oxygen is a chemical element with symbol O and atomic number 8. It is a member of the chalcogen group on the periodic table and is a highly reactive nonmetal and oxidizing agent that readily forms compounds (notably oxides) with most elements. By mass, oxygen is the third-most abundant element in the universe, after hydrogen and helium. At standard temperature and pressure, two atoms of the element bind to form dioxygen, a colorless and odorless diatomic gas with the formula O\n2. Diatomic oxygen gas constitutes 20.8% of the Earth's atmosphere. However, monitoring of atmospheric oxygen levels show a global downward trend, because of fossil-fuel burning. Oxygen is the most abundant element by mass in the Earth's crust as part of oxide compounds such as silicon dioxide, making up almost half of the crust's mass."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "20.8%",
+                    "context": "In some rural areas in the United Kingdom, there are dispensing physicians who are allowed to both prescribe and dispense prescription-only medicines to their patients from within their practices. The law requires that the GP practice be located in a designated rural area and that there is also a specified, minimum distance (currently 1.6 kilometres) between a patient's home and the nearest retail pharmacy. This law also exists in Austria for general physicians if the nearest pharmacy is more than 4 kilometers away, or where none is registered in the city."
+                }
+            ]
+        },
+        {
+            "id": "57263c78ec44d21400f3dc7b",
+            "title": "Packet_switching",
+            "question": "WHen did ARPNET and SITA become operational",
+            "goldAnswer": "1969",
+            "subtleKind": "year",
+            "unsupportedDonorTitle": "American_Broadcasting_Company",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "1969",
+                    "context": "ARPANET and SITA HLN became operational in 1969. Before the introduction of X.25 in 1973, about twenty different network technologies had been developed. Two fundamental differences involved the division of functions and tasks between the hosts at the edge of the network and the network core. In the datagram system, the hosts have the responsibility to ensure orderly delivery of packets. The User Datagram Protocol (UDP) is an example of a datagram protocol. In the virtual call system, the network guarantees sequenced delivery of data to the host. This results in a simpler host interface with less functionality than in the datagram model. The X.25 protocol suite uses this network type."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "1970",
+                    "context": "ARPANET and SITA HLN became operational in 1969. Before the introduction of X.25 in 1973, about twenty different network technologies had been developed. Two fundamental differences involved the division of functions and tasks between the hosts at the edge of the network and the network core. In the datagram system, the hosts have the responsibility to ensure orderly delivery of packets. The User Datagram Protocol (UDP) is an example of a datagram protocol. In the virtual call system, the network guarantees sequenced delivery of data to the host. This results in a simpler host interface with less functionality than in the datagram model. The X.25 protocol suite uses this network type."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "1969",
+                    "context": "Currently, New Jersey, Rhode Island and Delaware are the only U.S. states where ABC does not have a locally licensed affiliate (New Jersey is served by New York City O&O WABC-TV and Philadelphia O&O WPVI-TV; Rhode Island is served by New Bedford, Massachusetts-licensed WLNE; and Delaware is served by WPVI and Salisbury, Maryland affiliate WMDT). ABC maintains affiliations with low-power stations (broadcasting either in analog or digital) in a few markets, such as Birmingham, Alabama (WBMA-LD), Lima, Ohio (WLQP-LP) and South Bend, Indiana (WBND-LD). In some markets, including the former two mentioned, these stations also maintain digital simulcasts on a subchannel of a co-owned/co-managed full-power television station."
+                }
+            ]
+        },
+        {
+            "id": "57296f293f37b319004783a7",
+            "title": "Prime_number",
+            "question": "As of January 2016 how many digits does the largest known prime consist of?",
+            "goldAnswer": "22,338,618 decimal digits",
+            "subtleKind": "integer",
+            "unsupportedDonorTitle": "Civil_disobedience",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "22,338,618 decimal digits",
+                    "context": "The property of being prime (or not) is called primality. A simple but slow method of verifying the primality of a given number n is known as trial division. It consists of testing whether n is a multiple of any integer between 2 and . Algorithms much more efficient than trial division have been devised to test the primality of large numbers. These include the Miller–Rabin primality test, which is fast but has a small probability of error, and the AKS primality test, which always produces the correct answer in polynomial time but is too slow to be practical. Particularly fast methods are available for numbers of special forms, such as Mersenne numbers. As of January 2016[update], the largest known prime number has 22,338,618 decimal digits."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "22,338,619 decimal digits",
+                    "context": "The property of being prime (or not) is called primality. A simple but slow method of verifying the primality of a given number n is known as trial division. It consists of testing whether n is a multiple of any integer between 2 and . Algorithms much more efficient than trial division have been devised to test the primality of large numbers. These include the Miller–Rabin primality test, which is fast but has a small probability of error, and the AKS primality test, which always produces the correct answer in polynomial time but is too slow to be practical. Particularly fast methods are available for numbers of special forms, such as Mersenne numbers. As of January 2016[update], the largest known prime number has 22,338,618 decimal digits."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "22,338,618 decimal digits",
+                    "context": "Non-revolutionary civil disobedience is a simple disobedience of laws on the grounds that they are judged \"wrong\" by an individual conscience, or as part of an effort to render certain laws ineffective, to cause their repeal, or to exert pressure to get one's political wishes on some other issue. Revolutionary civil disobedience is more of an active attempt to overthrow a government (or to change cultural traditions, social customs, religious beliefs, etc...revolution doesn't have to be political, i.e. \"cultural revolution\", it simply implies sweeping and widespread change to a section of the social fabric). Gandhi's acts have been described as revolutionary civil disobedience. It has been claimed that the Hungarians under Ferenc Deák directed revolutionary civil disobedience against the Austrian government. Thoreau also wrote of civil disobedience accomplishing \"peaceable revolution.\" Howard Zinn, Harvey Wheeler, and others have identified the right espoused in The Declaration of Independence to \"alter or abolish\" an unjust government to be a principle of civil disobedience. "
+                }
+            ]
+        },
+        {
+            "id": "57274712708984140094dbad",
+            "title": "Private_school",
+            "question": "What is the yearly cost of some notable prep schools in New England?",
+            "goldAnswer": "$45,000",
+            "subtleKind": "integer",
+            "unsupportedDonorTitle": "Construction",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "$45,000",
+                    "context": "In the United Kingdom and several other Commonwealth countries including Australia and Canada, the use of the term is generally restricted to primary and secondary educational levels; it is almost never used of universities and other tertiary institutions. Private education in North America covers the whole gamut of educational activity, ranging from pre-school to tertiary level institutions. Annual tuition fees at K-12 schools range from nothing at so called 'tuition-free' schools to more than $45,000 at several New England preparatory schools."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "$45,001",
+                    "context": "In the United Kingdom and several other Commonwealth countries including Australia and Canada, the use of the term is generally restricted to primary and secondary educational levels; it is almost never used of universities and other tertiary institutions. Private education in North America covers the whole gamut of educational activity, ranging from pre-school to tertiary level institutions. Annual tuition fees at K-12 schools range from nothing at so called 'tuition-free' schools to more than $45,000 at several New England preparatory schools."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "$45,000",
+                    "context": "The project must adhere to zoning and building code requirements. Constructing a project that fails to adhere to codes does not benefit the owner. Some legal requirements come from malum in se considerations, or the desire to prevent things that are indisputably bad – bridge collapses or explosions. Other legal requirements come from malum prohibitum considerations, or things that are a matter of custom or expectation, such as isolating businesses to a business district and residences to a residential district. An attorney may seek changes or exemptions in the law that governs the land where the building will be built, either by arguing that a rule is inapplicable (the bridge design will not cause a collapse), or that the custom is no longer needed (acceptance of live-work spaces has grown in the community)."
+                }
+            ]
+        },
+        {
+            "id": "572fac17947a6a140053cb54",
+            "title": "Scottish_Parliament",
+            "question": "When was the current parliament of Scotland convened?",
+            "goldAnswer": "Following a referendum in 1997",
+            "subtleKind": "year",
+            "unsupportedDonorTitle": "Teacher",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "Following a referendum in 1997",
+                    "context": "Following a referendum in 1997, in which the Scottish electorate voted for devolution, the current Parliament was convened by the Scotland Act 1998, which sets out its powers as a devolved legislature. The Act delineates the legislative competence of the Parliament – the areas in which it can make laws – by explicitly specifying powers that are \"reserved\" to the Parliament of the United Kingdom. The Scottish Parliament has the power to legislate in all areas that are not explicitly reserved to Westminster. The British Parliament retains the ability to amend the terms of reference of the Scottish Parliament, and can extend or reduce the areas in which it can make laws. The first meeting of the new Parliament took place on 12 May 1999."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "Following a referendum in 1996",
+                    "context": "Following a referendum in 1997, in which the Scottish electorate voted for devolution, the current Parliament was convened by the Scotland Act 1998, which sets out its powers as a devolved legislature. The Act delineates the legislative competence of the Parliament – the areas in which it can make laws – by explicitly specifying powers that are \"reserved\" to the Parliament of the United Kingdom. The Scottish Parliament has the power to legislate in all areas that are not explicitly reserved to Westminster. The British Parliament retains the ability to amend the terms of reference of the Scottish Parliament, and can extend or reduce the areas in which it can make laws. The first meeting of the new Parliament took place on 12 May 1999."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "Following a referendum in 1997",
+                    "context": "Chris Keates, the general secretary of National Association of Schoolmasters Union of Women Teachers, said that teachers who have sex with pupils over the age of consent should not be placed on the sex offenders register and that prosecution for statutory rape \"is a real anomaly in the law that we are concerned about.\" This has led to outrage from child protection and parental rights groups. Fears of being labelled a pedophile or hebephile has led to several men who enjoy teaching avoiding the profession. This has in some jurisdictions reportedly led to a shortage of male teachers."
+                }
+            ]
+        },
+        {
+            "id": "57092322efce8f15003a7db2",
+            "title": "Sky_(United_Kingdom)",
+            "question": "What year did BSkyB acquire Sky Italia?",
+            "goldAnswer": "2014",
+            "subtleKind": "year",
+            "unsupportedDonorTitle": "European_Union_law",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "2014",
+                    "context": "Formed in November 1990 by the equal merger of Sky Television and British Satellite Broadcasting, BSkyB became the UK's largest digital subscription television company. Following BSkyB's 2014 acquisition of Sky Italia and a majority 90.04% interest in Sky Deutschland in November 2014, its holding company British Sky Broadcasting Group plc changed its name to Sky plc. The United Kingdom operations also changed the company name from British Sky Broadcasting Limited to Sky UK Limited, still trading as Sky."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "2015",
+                    "context": "Formed in November 1990 by the equal merger of Sky Television and British Satellite Broadcasting, BSkyB became the UK's largest digital subscription television company. Following BSkyB's 2014 acquisition of Sky Italia and a majority 90.04% interest in Sky Deutschland in November 2014, its holding company British Sky Broadcasting Group plc changed its name to Sky plc. The United Kingdom operations also changed the company name from British Sky Broadcasting Limited to Sky UK Limited, still trading as Sky."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "2014",
+                    "context": "The principal Treaties that form the European Union began with common rules for coal and steel, and then atomic energy, but more complete and formal institutions were established through the Treaty of Rome 1957 and the Maastricht Treaty 1992 (now: TFEU). Minor amendments were made during the 1960s and 1970s. Major amending treaties were signed to complete the development of a single, internal market in the Single European Act 1986, to further the development of a more social Europe in the Treaty of Amsterdam 1997, and to make minor amendments to the relative power of member states in the EU institutions in the Treaty of Nice 2001 and the Treaty of Lisbon 2007. Since its establishment, more member states have joined through a series of accession treaties, from the UK, Ireland, Denmark and Norway in 1972 (though Norway did not end up joining), Greece in 1979, Spain and Portugal 1985, Austria, Finland, Norway and Sweden in 1994 (though again Norway failed to join, because of lack of support in the referendum), the Czech Republic, Cyprus, Estonia, Hungary, Latvia, Lithuania, Malta, Poland, Slovakia and Slovenia in 2004, Romania and Bulgaria in 2007 and Croatia in 2013. Greenland signed a Treaty in 1985 giving it a special status."
+                }
+            ]
+        },
+        {
+            "id": "571126dfa58dae1900cd6cb4",
+            "title": "Steam_engine",
+            "question": "About what year was the atmospheric engine invented?",
+            "goldAnswer": "1712",
+            "subtleKind": "year",
+            "unsupportedDonorTitle": "Packet_switching",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "1712",
+                    "context": "The first commercially successful true engine, in that it could generate power and transmit it to a machine, was the atmospheric engine, invented by Thomas Newcomen around 1712. It was an improvement over Savery's steam pump, using a piston as proposed by Papin. Newcomen's engine was relatively inefficient, and in most cases was used for pumping water. It worked by creating a partial vacuum by condensing steam under a piston within a cylinder. It was employed for draining mine workings at depths hitherto impossible, and also for providing a reusable water supply for driving waterwheels at factories sited away from a suitable \"head\". Water that had passed over the wheel was pumped back up into a storage reservoir above the wheel."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "1713",
+                    "context": "The first commercially successful true engine, in that it could generate power and transmit it to a machine, was the atmospheric engine, invented by Thomas Newcomen around 1712. It was an improvement over Savery's steam pump, using a piston as proposed by Papin. Newcomen's engine was relatively inefficient, and in most cases was used for pumping water. It worked by creating a partial vacuum by condensing steam under a piston within a cylinder. It was employed for draining mine workings at depths hitherto impossible, and also for providing a reusable water supply for driving waterwheels at factories sited away from a suitable \"head\". Water that had passed over the wheel was pumped back up into a storage reservoir above the wheel."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "1712",
+                    "context": "DECnet is a suite of network protocols created by Digital Equipment Corporation, originally released in 1975 in order to connect two PDP-11 minicomputers. It evolved into one of the first peer-to-peer network architectures, thus transforming DEC into a networking powerhouse in the 1980s. Initially built with three layers, it later (1982) evolved into a seven-layer OSI-compliant networking protocol. The DECnet protocols were designed entirely by Digital Equipment Corporation. However, DECnet Phase II (and later) were open standards with published specifications, and several implementations were developed outside DEC, including one for Linux."
+                }
+            ]
+        },
+        {
+            "id": "56be8e613aeaaa14008c90d2",
+            "title": "Super_Bowl_50",
+            "question": "What day was the game played on?",
+            "goldAnswer": "February 7, 2016",
+            "subtleKind": "year",
+            "unsupportedDonorTitle": "Civil_disobedience",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "February 7, 2016",
+                    "context": "Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24–10 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "February 7, 2017",
+                    "context": "Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24–10 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "February 7, 2016",
+                    "context": "Sometimes the prosecution proposes a plea bargain to civil disobedients, as in the case of the Camden 28, in which the defendants were offered an opportunity to plead guilty to one misdemeanor count and receive no jail time. In some mass arrest situations, the activists decide to use solidarity tactics to secure the same plea bargain for everyone. But some activists have opted to enter a blind plea, pleading guilty without any plea agreement in place. Mohandas Gandhi pleaded guilty and told the court, \"I am here to . . . submit cheerfully to the highest penalty that can be inflicted upon me for what in law is a deliberate crime and what appears to me to be the highest duty of a citizen.\""
+                }
+            ]
+        },
+        {
+            "id": "5730982f396df919000961e4",
+            "title": "United_Methodist_Church",
+            "question": "When was the UMC founded?",
+            "goldAnswer": "1968",
+            "subtleKind": "year",
+            "unsupportedDonorTitle": "Kenya",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "1968",
+                    "context": "The United Methodist Church (UMC) is a mainline Protestant Methodist denomination. In the 19th century its main predecessor was a leader in Evangelicalism. Founded in 1968 by the union of the Methodist Church (USA) and the Evangelical United Brethren Church, the UMC traces its roots back to the revival movement of John and Charles Wesley in England as well as the Great Awakening in the United States. As such, the church's theological orientation is decidedly Wesleyan. It embraces both liturgical and evangelical elements."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "1969",
+                    "context": "The United Methodist Church (UMC) is a mainline Protestant Methodist denomination. In the 19th century its main predecessor was a leader in Evangelicalism. Founded in 1968 by the union of the Methodist Church (USA) and the Evangelical United Brethren Church, the UMC traces its roots back to the revival movement of John and Charles Wesley in England as well as the Great Awakening in the United States. As such, the church's theological orientation is decidedly Wesleyan. It embraces both liturgical and evangelical elements."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "1968",
+                    "context": "Kenya has proven deposits of oil in Turkana and the commercial viability was just discovered. Tullow Oil estimates Kenya's oil reserves to be around 10 billion barrels. Exploration is still continuing to determine if there are more reserves. Kenya currently imports all crude petroleum requirements. Kenya, east Africa's largest economy, has no strategic reserves and relies solely on oil marketers' 21-day oil reserves required under industry regulations. Petroleum accounts for 20% to 25% of the national import bill."
+                }
+            ]
+        },
+        {
+            "id": "57283c464b864d19001647c9",
+            "title": "University_of_Chicago",
+            "question": "When was the University of Chicago established?",
+            "goldAnswer": "1890",
+            "subtleKind": "year",
+            "unsupportedDonorTitle": "Economic_inequality",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "1890",
+                    "context": "The University of Chicago (UChicago, Chicago, or U of C) is a private research university in Chicago. The university, established in 1890, consists of The College, various graduate programs, interdisciplinary committees organized into four academic research divisions and seven professional schools. Beyond the arts and sciences, Chicago is also well known for its professional schools, which include the Pritzker School of Medicine, the University of Chicago Booth School of Business, the Law School, the School of Social Service Administration, the Harris School of Public Policy Studies, the Graham School of Continuing Liberal and Professional Studies and the Divinity School. The university currently enrolls approximately 5,000 students in the College and around 15,000 students overall."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "1891",
+                    "context": "The University of Chicago (UChicago, Chicago, or U of C) is a private research university in Chicago. The university, established in 1890, consists of The College, various graduate programs, interdisciplinary committees organized into four academic research divisions and seven professional schools. Beyond the arts and sciences, Chicago is also well known for its professional schools, which include the Pritzker School of Medicine, the University of Chicago Booth School of Business, the Law School, the School of Social Service Administration, the Harris School of Public Policy Studies, the Graham School of Continuing Liberal and Professional Studies and the Divinity School. The university currently enrolls approximately 5,000 students in the College and around 15,000 students overall."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "1890",
+                    "context": "Some theories developed in the 1970s established possible avenues through which inequality may have a positive effect on economic development. According to a 1955 review, savings by the wealthy, if these increase with inequality, were thought to offset reduced consumer demand. A 2013 report on Nigeria suggests that growth has risen with increased income inequality. Some theories popular from the 1950s to 2011 incorrectly stated that inequality had a positive effect on economic development. Analyses based on comparing yearly equality figures to yearly growth rates were misleading because it takes several years for effects to manifest as changes to economic growth. IMF economists found a strong association between lower levels of inequality in developing countries and sustained periods of economic growth. Developing countries with high inequality have \"succeeded in initiating growth at high rates for a few years\" but \"longer growth spells are robustly associated with more equality in the income distribution.\""
+                }
+            ]
+        },
+        {
+            "id": "5726710b708984140094c61f",
+            "title": "Victoria_and_Albert_Museum",
+            "question": "when was the Victoria and Albert museum founded?",
+            "goldAnswer": "It was founded in 1852",
+            "subtleKind": "year",
+            "unsupportedDonorTitle": "American_Broadcasting_Company",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "It was founded in 1852",
+                    "context": "The Victoria and Albert Museum (often abbreviated as the V&A), London, is the world's largest museum of decorative arts and design, housing a permanent collection of over 4.5 million objects. It was founded in 1852 and named after Queen Victoria and Prince Albert. The V&A is located in the Brompton district of the Royal Borough of Kensington and Chelsea, in an area that has become known as \"Albertopolis\" because of its association with Prince Albert, the Albert Memorial and the major cultural institutions with which he was associated. These include the Natural History Museum, the Science Museum and the Royal Albert Hall. The museum is a non-departmental public body sponsored by the Department for Culture, Media and Sport. Like other national British museums, entrance to the museum has been free since 2001."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "It was founded in 1853",
+                    "context": "The Victoria and Albert Museum (often abbreviated as the V&A), London, is the world's largest museum of decorative arts and design, housing a permanent collection of over 4.5 million objects. It was founded in 1852 and named after Queen Victoria and Prince Albert. The V&A is located in the Brompton district of the Royal Borough of Kensington and Chelsea, in an area that has become known as \"Albertopolis\" because of its association with Prince Albert, the Albert Memorial and the major cultural institutions with which he was associated. These include the Natural History Museum, the Science Museum and the Royal Albert Hall. The museum is a non-departmental public body sponsored by the Department for Culture, Media and Sport. Like other national British museums, entrance to the museum has been free since 2001."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "It was founded in 1852",
+                    "context": "In 1983, for the 40th anniversary of the network's founding, ID sequences had the logo appear in a gold CGI design on a blue background, accompanied by the slogan \"That Special Feeling\" in a script font. Ten years later, in 1993, the \"ABC Circle\" logo reverted to its classic white-on-black color scheme, but with gloss effects on both the circle and the letters, and a bronze border surrounding the circle. The ABC logo first appeared as a on-screen bug in the 1993–94 season, appearing initially only for 60 seconds at the beginning of an act or segment, before appearing throughout programs (except during commercial breaks) beginning in the 1995–96 season; the respective iterations of the translucent logo bug were also incorporated within program promotions until the 2011–12 season."
+                }
+            ]
+        },
+        {
+            "id": "57285ed5ff5b5019007da1ba",
+            "title": "Yuan_dynasty",
+            "question": "When did Khan formally declare the Yuan dynasty?",
+            "goldAnswer": "1271",
+            "subtleKind": "year",
+            "unsupportedDonorTitle": "American_Broadcasting_Company",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "1271",
+                    "context": "The Yuan dynasty (Chinese: 元朝; pinyin: Yuán Cháo), officially the Great Yuan (Chinese: 大元; pinyin: Dà Yuán; Mongolian: Yehe Yuan Ulus[a]), was the empire or ruling dynasty of China established by Kublai Khan, leader of the Mongolian Borjigin clan. Although the Mongols had ruled territories including today's North China for decades, it was not until 1271 that Kublai Khan officially proclaimed the dynasty in the traditional Chinese style. His realm was, by this point, isolated from the other khanates and controlled most of present-day China and its surrounding areas, including modern Mongolia and Korea. It was the first foreign dynasty to rule all of China and lasted until 1368, after which its Genghisid rulers returned to their Mongolian homeland and continued to rule the Northern Yuan dynasty. Some of the Mongolian Emperors of the Yuan mastered the Chinese language, while others only used their native language (i.e. Mongolian) and the 'Phags-pa script."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "1272",
+                    "context": "The Yuan dynasty (Chinese: 元朝; pinyin: Yuán Cháo), officially the Great Yuan (Chinese: 大元; pinyin: Dà Yuán; Mongolian: Yehe Yuan Ulus[a]), was the empire or ruling dynasty of China established by Kublai Khan, leader of the Mongolian Borjigin clan. Although the Mongols had ruled territories including today's North China for decades, it was not until 1271 that Kublai Khan officially proclaimed the dynasty in the traditional Chinese style. His realm was, by this point, isolated from the other khanates and controlled most of present-day China and its surrounding areas, including modern Mongolia and Korea. It was the first foreign dynasty to rule all of China and lasted until 1368, after which its Genghisid rulers returned to their Mongolian homeland and continued to rule the Northern Yuan dynasty. Some of the Mongolian Emperors of the Yuan mastered the Chinese language, while others only used their native language (i.e. Mongolian) and the 'Phags-pa script."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "1271",
+                    "context": "Warner tried with mixed success to adapt some of its most successful films as ABC television series, and showcase these adaptations as part of the wheel series Warner Bros. Presents. Airing during the 1955–56 season, it showcased television adaptations of the 1942 films Kings Row and Casablanca; Cheyenne (adapted from the 1947 film Wyoming Kid); Sugarfoot (a remake of the 1954 film The Boy from Oklahoma); and Maverick. However, the most iconic of ABC's relationships with Hollywood producers was its agreement with Walt Disney; after the start of the network's bond with the Disney studio, James Lewis Baughman, who worked as a columnist at that time, observed that \"at ABC's headquarters in New York, the secretaries [were now] wearing hats with Mickey Mouse ears\"."
+                }
+            ]
+        },
+        {
+            "id": "57265a58dd62a815002e8270",
+            "title": "1973_oil_crisis",
+            "question": "Name a type of Toyota compact trucks?",
+            "goldAnswer": "Toyota Hilux",
+            "subtleKind": "entity_swap",
+            "unsupportedDonorTitle": "Rhine",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "Toyota Hilux",
+                    "context": "Compact trucks were introduced, such as the Toyota Hilux and the Datsun Truck, followed by the Mazda Truck (sold as the Ford Courier), and the Isuzu-built Chevrolet LUV. Mitsubishi rebranded its Forte as the Dodge D-50 a few years after the oil crisis. Mazda, Mitsubishi and Isuzu had joint partnerships with Ford, Chrysler, and GM, respectively. Later the American makers introduced their domestic replacements (Ford Ranger, Dodge Dakota and the Chevrolet S10/GMC S-15), ending their captive import policy."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "Datsun Truck",
+                    "context": "Compact trucks were introduced, such as the Toyota Hilux and the Datsun Truck, followed by the Mazda Truck (sold as the Ford Courier), and the Isuzu-built Chevrolet LUV. Mitsubishi rebranded its Forte as the Dodge D-50 a few years after the oil crisis. Mazda, Mitsubishi and Isuzu had joint partnerships with Ford, Chrysler, and GM, respectively. Later the American makers introduced their domestic replacements (Ford Ranger, Dodge Dakota and the Chevrolet S10/GMC S-15), ending their captive import policy."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "Toyota Hilux",
+                    "context": "The shape of the Rhine delta is determined by two bifurcations: first, at Millingen aan de Rijn, the Rhine splits into Waal and Pannerdens Kanaal, which changes its name to Nederrijn at Angeren, and second near Arnhem, the IJssel branches off from the Nederrijn. This creates three main flows, two of which change names rather often. The largest and southern main branch begins as Waal and continues as Boven Merwede (\"Upper Merwede\"), Beneden Merwede (\"Lower Merwede\"), Noord River (\"North River\"), Nieuwe Maas (\"New Meuse\"), Het Scheur (\"the Rip\") and Nieuwe Waterweg (\"New Waterway\"). The middle flow begins as Nederrijn, then changes into Lek, then joins the Noord, thereby forming Nieuwe Maas. The northern flow keeps the name IJssel until it flows into Lake IJsselmeer. Three more flows carry significant amounts of water: the Nieuwe Merwede (\"New Merwede\"), which branches off from the southern branch where it changes from Boven to Beneden Merwede; the Oude Maas (\"Old Meuse\"), which branches off from the southern branch where it changes from Beneden Merwede into Noord, and Dordtse Kil, which branches off from Oude Maas."
+                }
+            ]
+        },
+        {
+            "id": "57267f1cdd62a815002e8741",
+            "title": "American_Broadcasting_Company",
+            "question": "In 2007, what company purchased ABC Radio properties?",
+            "goldAnswer": "Citadel Broadcasting",
+            "subtleKind": "entity_swap",
+            "unsupportedDonorTitle": "Chloroplast",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "Citadel Broadcasting",
+                    "context": "The television network has eight owned-and-operated and over 232 affiliated television stations throughout the United States and its territories. Most Canadians have access to at least one U.S.-based ABC affiliate, either over-the-air (in areas located within proximity to the Canada–United States border) or through a cable, satellite or IPTV provider, although most ABC programs are subject to simultaneous substitution regulations imposed by the Canadian Radio-television and Telecommunications Commission that allow pay television providers to replace an American station's signal with the feed of a Canadian broadcaster to protect domestic programming rights and advertising revenue. ABC News provides news and features content for select radio stations owned by Citadel Broadcasting, which purchased the ABC Radio properties in 2007."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "Telecommunications Commission",
+                    "context": "The television network has eight owned-and-operated and over 232 affiliated television stations throughout the United States and its territories. Most Canadians have access to at least one U.S.-based ABC affiliate, either over-the-air (in areas located within proximity to the Canada–United States border) or through a cable, satellite or IPTV provider, although most ABC programs are subject to simultaneous substitution regulations imposed by the Canadian Radio-television and Telecommunications Commission that allow pay television providers to replace an American station's signal with the feed of a Canadian broadcaster to protect domestic programming rights and advertising revenue. ABC News provides news and features content for select radio stations owned by Citadel Broadcasting, which purchased the ABC Radio properties in 2007."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "Citadel Broadcasting",
+                    "context": "After a chloroplast polypeptide is synthesized on a ribosome in the cytosol, an enzyme specific to chloroplast proteins phosphorylates, or adds a phosphate group to many (but not all) of them in their transit sequences. Phosphorylation helps many proteins bind the polypeptide, keeping it from folding prematurely. This is important because it prevents chloroplast proteins from assuming their active form and carrying out their chloroplast functions in the wrong place—the cytosol. At the same time, they have to keep just enough shape so that they can be recognized by the chloroplast. These proteins also help the polypeptide get imported into the chloroplast."
+                }
+            ]
+        },
+        {
+            "id": "572956c86aef051400154d1e",
+            "title": "Chloroplast",
+            "question": "Who said chloroplasts are similar to cyanobacteria?",
+            "goldAnswer": "Andreas Schimper",
+            "subtleKind": "entity_swap",
+            "unsupportedDonorTitle": "Kenya",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "Andreas Schimper",
+                    "context": "Chloroplasts are one of many types of organelles in the plant cell. They are considered to have originated from cyanobacteria through endosymbiosis—when a eukaryotic cell engulfed a photosynthesizing cyanobacterium that became a permanent resident in the cell. Mitochondria are thought to have come from a similar event, where an aerobic prokaryote was engulfed. This origin of chloroplasts was first suggested by the Russian biologist Konstantin Mereschkowski in 1905 after Andreas Schimper observed in 1883 that chloroplasts closely resemble cyanobacteria. Chloroplasts are only found in plants and algae."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "Konstantin Mereschkowski",
+                    "context": "Chloroplasts are one of many types of organelles in the plant cell. They are considered to have originated from cyanobacteria through endosymbiosis—when a eukaryotic cell engulfed a photosynthesizing cyanobacterium that became a permanent resident in the cell. Mitochondria are thought to have come from a similar event, where an aerobic prokaryote was engulfed. This origin of chloroplasts was first suggested by the Russian biologist Konstantin Mereschkowski in 1905 after Andreas Schimper observed in 1883 that chloroplasts closely resemble cyanobacteria. Chloroplasts are only found in plants and algae."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "Andreas Schimper",
+                    "context": "The current 8–4–4 system was launched in January 1985. It put more emphasis on vocational subjects on the assumption that the new structure would enable school drop-outs at all levels either to be self-employed or to secure employment in the informal sector. In January 2003, the Government of Kenya announced the introduction of free primary education. As a result, primary school enrolment increased by about 70%. Secondary and tertiary education enrolment has not increased proportionally because payment is still required for attendance. In 2007 the government issued a statement declaring that from 2008, secondary education would be heavily subsidiszed, with the government footing all tuition fees."
+                }
+            ]
+        },
+        {
+            "id": "5727f18c3acd2414000df064",
+            "title": "Doctor_Who",
+            "question": "Who followed Matt Smith in the role of Doctor Who?",
+            "goldAnswer": "Peter Capaldi",
+            "subtleKind": "entity_swap",
+            "unsupportedDonorTitle": "Oxygen",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "Peter Capaldi",
+                    "context": "Twelve actors have headlined the series as the Doctor. The transition from one actor to another is written into the plot of the show, as well as the differing approach to the role that each brings, under the concept of regeneration into a new incarnation. The show's premise is that this is a life process of Time Lords through which the character of the Doctor takes on a new body and, to some extent, new personality, which occurs after sustaining an injury which would be fatal to most other species. Each actor's portrayal differs, but they are all intended to be aspects of the same character and form part of the same storyline. The time-travelling nature of the plot means that, on occasion, different Doctors have met each other. Peter Capaldi took on the role after Matt Smith's exit in the 2013 Christmas special \"The Time of the Doctor\"."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "Matt Smith",
+                    "context": "Twelve actors have headlined the series as the Doctor. The transition from one actor to another is written into the plot of the show, as well as the differing approach to the role that each brings, under the concept of regeneration into a new incarnation. The show's premise is that this is a life process of Time Lords through which the character of the Doctor takes on a new body and, to some extent, new personality, which occurs after sustaining an injury which would be fatal to most other species. Each actor's portrayal differs, but they are all intended to be aspects of the same character and form part of the same storyline. The time-travelling nature of the plot means that, on occasion, different Doctors have met each other. Peter Capaldi took on the role after Matt Smith's exit in the 2013 Christmas special \"The Time of the Doctor\"."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "Peter Capaldi",
+                    "context": "Oxygen is a chemical element with symbol O and atomic number 8. It is a member of the chalcogen group on the periodic table and is a highly reactive nonmetal and oxidizing agent that readily forms compounds (notably oxides) with most elements. By mass, oxygen is the third-most abundant element in the universe, after hydrogen and helium. At standard temperature and pressure, two atoms of the element bind to form dioxygen, a colorless and odorless diatomic gas with the formula O\n2. Diatomic oxygen gas constitutes 20.8% of the Earth's atmosphere. However, monitoring of atmospheric oxygen levels show a global downward trend, because of fossil-fuel burning. Oxygen is the most abundant element by mass in the Earth's crust as part of oxide compounds such as silicon dioxide, making up almost half of the crust's mass."
+                }
+            ]
+        },
+        {
+            "id": "57378e311c456719005744af",
+            "title": "Force",
+            "question": "Who first fully explained the origins of magnetic and electric fields?",
+            "goldAnswer": "James Clerk Maxwell",
+            "subtleKind": "entity_swap",
+            "unsupportedDonorTitle": "Geology",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "James Clerk Maxwell",
+                    "context": "The origin of electric and magnetic fields would not be fully explained until 1864 when James Clerk Maxwell unified a number of earlier theories into a set of 20 scalar equations, which were later reformulated into 4 vector equations by Oliver Heaviside and Josiah Willard Gibbs. These \"Maxwell Equations\" fully described the sources of the fields as being stationary and moving charges, and the interactions of the fields themselves. This led Maxwell to discover that electric and magnetic fields could be \"self-generating\" through a wave that traveled at a speed that he calculated to be the speed of light. This insight united the nascent fields of electromagnetic theory with optics and led directly to a complete description of the electromagnetic spectrum."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "Josiah Willard Gibbs",
+                    "context": "The origin of electric and magnetic fields would not be fully explained until 1864 when James Clerk Maxwell unified a number of earlier theories into a set of 20 scalar equations, which were later reformulated into 4 vector equations by Oliver Heaviside and Josiah Willard Gibbs. These \"Maxwell Equations\" fully described the sources of the fields as being stationary and moving charges, and the interactions of the fields themselves. This led Maxwell to discover that electric and magnetic fields could be \"self-generating\" through a wave that traveled at a speed that he calculated to be the speed of light. This insight united the nascent fields of electromagnetic theory with optics and led directly to a complete description of the electromagnetic spectrum."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "James Clerk Maxwell",
+                    "context": "Among the most well-known experiments in structural geology are those involving orogenic wedges, which are zones in which mountains are built along convergent tectonic plate boundaries. In the analog versions of these experiments, horizontal layers of sand are pulled along a lower surface into a back stop, which results in realistic-looking patterns of faulting and the growth of a critically tapered (all angles remain the same) orogenic wedge. Numerical models work in the same way as these analog models, though they are often more sophisticated and can include patterns of erosion and uplift in the mountain belt. This helps to show the relationship between erosion and the shape of the mountain range. These studies can also give useful information about pathways for metamorphism through pressure, temperature, space, and time."
+                }
+            ]
+        },
+        {
+            "id": "5725d42a89a1e219009abf58",
+            "title": "Fresno,_California",
+            "question": "Who wrote \"Walking in Fresno?\"",
+            "goldAnswer": "Bill Aken",
+            "subtleKind": "entity_swap",
+            "unsupportedDonorTitle": "Force",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "Bill Aken",
+                    "context": "In the 1970s, the city was the subject of a song, \"Walking Into Fresno\", written by Hall Of Fame guitarist Bill Aken and recorded by Bob Gallion of the world-famous \"WWVA Jamboree\" radio and television show in Wheeling, West Virginia. Aken, adopted by Mexican movie actress Lupe Mayorga, grew up in the neighboring town of Madera and his song chronicled the hardships faced by the migrant farm workers he saw as a child. Aken also made his first TV appearance playing guitar on the old country-western show at The Fresno Barn."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "Lupe Mayorga",
+                    "context": "In the 1970s, the city was the subject of a song, \"Walking Into Fresno\", written by Hall Of Fame guitarist Bill Aken and recorded by Bob Gallion of the world-famous \"WWVA Jamboree\" radio and television show in Wheeling, West Virginia. Aken, adopted by Mexican movie actress Lupe Mayorga, grew up in the neighboring town of Madera and his song chronicled the hardships faced by the migrant farm workers he saw as a child. Aken also made his first TV appearance playing guitar on the old country-western show at The Fresno Barn."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "Bill Aken",
+                    "context": "The origin of electric and magnetic fields would not be fully explained until 1864 when James Clerk Maxwell unified a number of earlier theories into a set of 20 scalar equations, which were later reformulated into 4 vector equations by Oliver Heaviside and Josiah Willard Gibbs. These \"Maxwell Equations\" fully described the sources of the fields as being stationary and moving charges, and the interactions of the fields themselves. This led Maxwell to discover that electric and magnetic fields could be \"self-generating\" through a wave that traveled at a speed that he calculated to be the speed of light. This insight united the nascent fields of electromagnetic theory with optics and led directly to a complete description of the electromagnetic spectrum."
+                }
+            ]
+        },
+        {
+            "id": "5727b8df3acd2414000dea9a",
+            "title": "Harvard_University",
+            "question": "What liberal succeeded Joseph Willard as president?",
+            "goldAnswer": "Samuel Webber",
+            "subtleKind": "entity_swap",
+            "unsupportedDonorTitle": "Super_Bowl_50",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "Samuel Webber",
+                    "context": "Throughout the 18th century, Enlightenment ideas of the power of reason and free will became widespread among Congregationalist ministers, putting those ministers and their congregations in tension with more traditionalist, Calvinist parties.:1–4 When the Hollis Professor of Divinity David Tappan died in 1803 and the president of Harvard Joseph Willard died a year later, in 1804, a struggle broke out over their replacements. Henry Ware was elected to the chair in 1805, and the liberal Samuel Webber was appointed to the presidency of Harvard two years later, which signaled the changing of the tide from the dominance of traditional ideas at Harvard to the dominance of liberal, Arminian ideas (defined by traditionalists as Unitarian ideas).:4–5:24"
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "Henry Ware",
+                    "context": "Throughout the 18th century, Enlightenment ideas of the power of reason and free will became widespread among Congregationalist ministers, putting those ministers and their congregations in tension with more traditionalist, Calvinist parties.:1–4 When the Hollis Professor of Divinity David Tappan died in 1803 and the president of Harvard Joseph Willard died a year later, in 1804, a struggle broke out over their replacements. Henry Ware was elected to the chair in 1805, and the liberal Samuel Webber was appointed to the presidency of Harvard two years later, which signaled the changing of the tide from the dominance of traditional ideas at Harvard to the dominance of liberal, Arminian ideas (defined by traditionalists as Unitarian ideas).:4–5:24"
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "Samuel Webber",
+                    "context": "On Carolina's next possession fullback Mike Tolbert lost a fumble while being tackled by safety Darian Stewart, which linebacker Danny Trevathan recovered on the Broncos 40-yard line. However, the Panthers soon took the ball back when defensive end Kony Ealy tipped a Manning pass to himself and then intercepted it, returning the ball 19 yards to the Panthers 39-yard line with 1:55 left on the clock. The Panthers could not gain any yards with their possession and had to punt. After a Denver punt, Carolina drove to the Broncos 45-yard line. But with 11 seconds left, Newton was sacked by DeMarcus Ware as time expired in the half."
+                }
+            ]
+        },
+        {
+            "id": "5726f8abf1498d1400e8f168",
+            "title": "Immune_system",
+            "question": "Who came up with germ theory?",
+            "goldAnswer": "Louis Pasteur",
+            "subtleKind": "entity_swap",
+            "unsupportedDonorTitle": "Packet_switching",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "Louis Pasteur",
+                    "context": "Immunology is a science that examines the structure and function of the immune system. It originates from medicine and early studies on the causes of immunity to disease. The earliest known reference to immunity was during the plague of Athens in 430 BC. Thucydides noted that people who had recovered from a previous bout of the disease could nurse the sick without contracting the illness a second time. In the 18th century, Pierre-Louis Moreau de Maupertuis made experiments with scorpion venom and observed that certain dogs and mice were immune to this venom. This and other observations of acquired immunity were later exploited by Louis Pasteur in his development of vaccination and his proposed germ theory of disease. Pasteur's theory was in direct opposition to contemporary theories of disease, such as the miasma theory. It was not until Robert Koch's 1891 proofs, for which he was awarded a Nobel Prize in 1905, that microorganisms were confirmed as the cause of infectious disease. Viruses were confirmed as human pathogens in 1901, with the discovery of the yellow fever virus by Walter Reed."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "Robert Koch",
+                    "context": "Immunology is a science that examines the structure and function of the immune system. It originates from medicine and early studies on the causes of immunity to disease. The earliest known reference to immunity was during the plague of Athens in 430 BC. Thucydides noted that people who had recovered from a previous bout of the disease could nurse the sick without contracting the illness a second time. In the 18th century, Pierre-Louis Moreau de Maupertuis made experiments with scorpion venom and observed that certain dogs and mice were immune to this venom. This and other observations of acquired immunity were later exploited by Louis Pasteur in his development of vaccination and his proposed germ theory of disease. Pasteur's theory was in direct opposition to contemporary theories of disease, such as the miasma theory. It was not until Robert Koch's 1891 proofs, for which he was awarded a Nobel Prize in 1905, that microorganisms were confirmed as the cause of infectious disease. Viruses were confirmed as human pathogens in 1901, with the discovery of the yellow fever virus by Walter Reed."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "Louis Pasteur",
+                    "context": "There were two kinds of X.25 networks. Some such as DATAPAC and TRANSPAC were initially implemented with an X.25 external interface. Some older networks such as TELENET and TYMNET were modified to provide a X.25 host interface in addition to older host connection schemes. DATAPAC was developed by Bell Northern Research which was a joint venture of Bell Canada (a common carrier) and Northern Telecom (a telecommunications equipment supplier). Northern Telecom sold several DATAPAC clones to foreign PTTs including the Deutsche Bundespost. X.75 and X.121 allowed the interconnection of national X.25 networks. A user or host could call a host on a foreign network by including the DNIC of the remote network as part of the destination address.[citation needed]"
+                }
+            ]
+        },
+        {
+            "id": "57293bc91d0469140077919e",
+            "title": "Intergovernmental_Panel_on_Climate_Change",
+            "question": "Who was the first chair of the IPCC?",
+            "goldAnswer": "Bert Bolin",
+            "subtleKind": "entity_swap",
+            "unsupportedDonorTitle": "Economic_inequality",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "Bert Bolin",
+                    "context": "Korean economist Hoesung Lee is the chair of the IPCC since October 8, 2015, following the election of the new IPCC Bureau. Before this election, the IPCC was led by his vice-Chair Ismail El Gizouli, who was designated acting Chair after the resignation of Rajendra K. Pachauri in February 2015. The previous chairs were Rajendra K. Pachauri, elected in May 2002; Robert Watson in 1997; and Bert Bolin in 1988. The chair is assisted by an elected bureau including vice-chairs, working group co-chairs, and a secretariat."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "Robert Watson",
+                    "context": "Korean economist Hoesung Lee is the chair of the IPCC since October 8, 2015, following the election of the new IPCC Bureau. Before this election, the IPCC was led by his vice-Chair Ismail El Gizouli, who was designated acting Chair after the resignation of Rajendra K. Pachauri in February 2015. The previous chairs were Rajendra K. Pachauri, elected in May 2002; Robert Watson in 1997; and Bert Bolin in 1988. The chair is assisted by an elected bureau including vice-chairs, working group co-chairs, and a secretariat."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "Bert Bolin",
+                    "context": "In 2014, economists with the Standard & Poor's rating agency concluded that the widening disparity between the U.S.'s wealthiest citizens and the rest of the nation had slowed its recovery from the 2008-2009 recession and made it more prone to boom-and-bust cycles. To partially remedy the wealth gap and the resulting slow growth, S&P recommended increasing access to education. It estimated that if the average United States worker had completed just one more year of school, it would add an additional $105 billion in growth to the country's economy over five years."
+                }
+            ]
+        },
+        {
+            "id": "5728f9342ca10214002dab54",
+            "title": "Kenya",
+            "question": "Who was the Scottish geologist that named Mt Kenya as Mt Kenia?",
+            "goldAnswer": "Joseph Thompsons",
+            "subtleKind": "entity_swap",
+            "unsupportedDonorTitle": "Genghis_Khan",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "Joseph Thompsons",
+                    "context": "Ludwig Krapf recorded the name as both Kenia and Kegnia believed by most to be a corruption of the Kamba version. Others say that this was—on the contrary—a very precise notation of a correct African pronunciation /ˈkɛnjə/. An 1882 map drawn by Joseph Thompsons, a Scottish geologist and naturalist, indicated Mt. Kenya as Mt. Kenia, 1862. Controversy over the actual meaning of the word Kenya notwithstanding, it is clear that the mountain's name became widely accepted, pars pro toto, as the name of the country."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "Ludwig Krapf",
+                    "context": "Ludwig Krapf recorded the name as both Kenia and Kegnia believed by most to be a corruption of the Kamba version. Others say that this was—on the contrary—a very precise notation of a correct African pronunciation /ˈkɛnjə/. An 1882 map drawn by Joseph Thompsons, a Scottish geologist and naturalist, indicated Mt. Kenya as Mt. Kenia, 1862. Controversy over the actual meaning of the word Kenya notwithstanding, it is clear that the mountain's name became widely accepted, pars pro toto, as the name of the country."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "Joseph Thompsons",
+                    "context": "Börte had three more sons, Chagatai (1187—1241), Ögedei (1189—1241), and Tolui (1190–1232). Genghis Khan also had many other children with his other wives, but they were excluded from the succession. While the names of sons were documented, daughters were not. The names of at least six daughters are known, and while they played significant roles behind the scenes during his lifetime, no documents have survived that definitively provide the number or names of daughters born to the consorts of Genghis Khan."
+                }
+            ]
+        },
+        {
+            "id": "5726651ff1498d1400e8de30",
+            "title": "Newcastle_upon_Tyne",
+            "question": "Who built a castle in Newcastle in 1080?",
+            "goldAnswer": "Robert Curthose",
+            "subtleKind": "entity_swap",
+            "unsupportedDonorTitle": "Chloroplast",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "Robert Curthose",
+                    "context": "The city developed around the Roman settlement Pons Aelius and was named after the castle built in 1080 by Robert Curthose, William the Conqueror's eldest son. The city grew as an important centre for the wool trade in the 14th century, and later became a major coal mining area. The port developed in the 16th century and, along with the shipyards lower down the River Tyne, was amongst the world's largest shipbuilding and ship-repairing centres. Newcastle's economy includes corporate headquarters, learning, digital technology, retail, tourism and cultural centres, from which the city contributes £13 billion towards the United Kingdom's GVA. Among its icons are Newcastle Brown Ale; Newcastle United football club; and the Tyne Bridge. It has hosted the world's most popular half marathon, the Great North Run, since it began in 1981."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "Pons Aelius",
+                    "context": "The city developed around the Roman settlement Pons Aelius and was named after the castle built in 1080 by Robert Curthose, William the Conqueror's eldest son. The city grew as an important centre for the wool trade in the 14th century, and later became a major coal mining area. The port developed in the 16th century and, along with the shipyards lower down the River Tyne, was amongst the world's largest shipbuilding and ship-repairing centres. Newcastle's economy includes corporate headquarters, learning, digital technology, retail, tourism and cultural centres, from which the city contributes £13 billion towards the United Kingdom's GVA. Among its icons are Newcastle Brown Ale; Newcastle United football club; and the Tyne Bridge. It has hosted the world's most popular half marathon, the Great North Run, since it began in 1981."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "Robert Curthose",
+                    "context": "After a chloroplast polypeptide is synthesized on a ribosome in the cytosol, an enzyme specific to chloroplast proteins phosphorylates, or adds a phosphate group to many (but not all) of them in their transit sequences. Phosphorylation helps many proteins bind the polypeptide, keeping it from folding prematurely. This is important because it prevents chloroplast proteins from assuming their active form and carrying out their chloroplast functions in the wrong place—the cytosol. At the same time, they have to keep just enough shape so that they can be recognized by the chloroplast. These proteins also help the polypeptide get imported into the chloroplast."
+                }
+            ]
+        },
+        {
+            "id": "56dde3aa9a695914005b9661",
+            "title": "Normans",
+            "question": "Whose shrine did the pilgrims go to in 1016?",
+            "goldAnswer": "Archangel Michael",
+            "subtleKind": "entity_swap",
+            "unsupportedDonorTitle": "Martin_Luther",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "Archangel Michael",
+                    "context": "Opportunistic bands of Normans successfully established a foothold in Southern Italy (the Mezzogiorno). Probably as the result of returning pilgrims' stories, the Normans entered the Mezzogiorno as warriors in 1017 at the latest. In 999, according to Amatus of Montecassino, Norman pilgrims returning from Jerusalem called in at the port of Salerno when a Saracen attack occurred. The Normans fought so valiantly that Prince Guaimar III begged them to stay, but they refused and instead offered to tell others back home of the prince's request. William of Apulia tells that, in 1016, Norman pilgrims to the shrine of the Archangel Michael at Monte Gargano were met by Melus of Bari, a Lombard nobleman and rebel, who persuaded them to return with more warriors to help throw off the Byzantine rule, which they did."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "Monte Gargano",
+                    "context": "Opportunistic bands of Normans successfully established a foothold in Southern Italy (the Mezzogiorno). Probably as the result of returning pilgrims' stories, the Normans entered the Mezzogiorno as warriors in 1017 at the latest. In 999, according to Amatus of Montecassino, Norman pilgrims returning from Jerusalem called in at the port of Salerno when a Saracen attack occurred. The Normans fought so valiantly that Prince Guaimar III begged them to stay, but they refused and instead offered to tell others back home of the prince's request. William of Apulia tells that, in 1016, Norman pilgrims to the shrine of the Archangel Michael at Monte Gargano were met by Melus of Bari, a Lombard nobleman and rebel, who persuaded them to return with more warriors to help throw off the Byzantine rule, which they did."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "Archangel Michael",
+                    "context": "Luther's hymns inspired composers to write music. Johann Sebastian Bach included several verses as chorales in his cantatas and based chorale cantatas entirely on them, namely Christ lag in Todes Banden, BWV 4, as early as possibly 1707, in his second annual cycle (1724 to 1725) Ach Gott, vom Himmel sieh darein, BWV 2, Christ unser Herr zum Jordan kam, BWV 7, Nun komm, der Heiden Heiland, BWV 62, Gelobet seist du, Jesu Christ, BWV 91, and Aus tiefer Not schrei ich zu dir, BWV 38, later Ein feste Burg ist unser Gott, BWV 80, and in 1735 Wär Gott nicht mit uns diese Zeit, BWV 14."
+                }
+            ]
+        },
+        {
+            "id": "57297547af94a219006aa45c",
+            "title": "Prime_number",
+            "question": "Who included 1 as the first prime number in the mid 18th century?",
+            "goldAnswer": "Christian Goldbach",
+            "subtleKind": "entity_swap",
+            "unsupportedDonorTitle": "American_Broadcasting_Company",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "Christian Goldbach",
+                    "context": "Most early Greeks did not even consider 1 to be a number, so they could not consider it to be a prime. By the Middle Ages and Renaissance many mathematicians included 1 as the first prime number. In the mid-18th century Christian Goldbach listed 1 as the first prime in his famous correspondence with Leonhard Euler -- who did not agree. In the 19th century many mathematicians still considered the number 1 to be a prime. For example, Derrick Norman Lehmer's list of primes up to 10,006,721, reprinted as late as 1956, started with 1 as its first prime. Henri Lebesgue is said to be the last professional mathematician to call 1 prime. By the early 20th century, mathematicians began to accept that 1 is not a prime number, but rather forms its own special category as a \"unit\"."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "Henri Lebesgue",
+                    "context": "Most early Greeks did not even consider 1 to be a number, so they could not consider it to be a prime. By the Middle Ages and Renaissance many mathematicians included 1 as the first prime number. In the mid-18th century Christian Goldbach listed 1 as the first prime in his famous correspondence with Leonhard Euler -- who did not agree. In the 19th century many mathematicians still considered the number 1 to be a prime. For example, Derrick Norman Lehmer's list of primes up to 10,006,721, reprinted as late as 1956, started with 1 as its first prime. Henri Lebesgue is said to be the last professional mathematician to call 1 prime. By the early 20th century, mathematicians began to accept that 1 is not a prime number, but rather forms its own special category as a \"unit\"."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "Christian Goldbach",
+                    "context": "In 1993, the FCC repealed the Financial Interest and Syndication Rules, once again allowing networks to hold interests in television production studios. That same year, Capital Cities/ABC purchased the French animation studio DIC Entertainment; it also signed an agreement with Time Warner Cable to carry its owned-and-operated television stations on the provider's systems in ABC O&O markets. By that year, ABC had a total viewership share of 23.63% of American households, just below the limit of 25% imposed by the FCC."
+                }
+            ]
+        },
+        {
+            "id": "572faec7b2c2fd1400568334",
+            "title": "Scottish_Parliament",
+            "question": "Who designed the Scottish Parliament building?",
+            "goldAnswer": "Enric Miralles",
+            "subtleKind": "entity_swap",
+            "unsupportedDonorTitle": "French_and_Indian_War",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "Enric Miralles",
+                    "context": "Since September 2004, the official home of the Scottish Parliament has been a new Scottish Parliament Building, in the Holyrood area of Edinburgh. The Scottish Parliament building was designed by Spanish architect Enric Miralles in partnership with local Edinburgh Architecture firm RMJM which was led by Design Principal Tony Kettle. Some of the principal features of the complex include leaf-shaped buildings, a grass-roofed branch merging into adjacent parkland and gabion walls formed from the stones of previous buildings. Throughout the building there are many repeated motifs, such as shapes based on Raeburn's Skating Minister. Crow-stepped gables and the upturned boat skylights of the Garden Lobby, complete the unique architecture. Queen Elizabeth II opened the new building on 9 October 2004."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "Edinburgh Architecture",
+                    "context": "Since September 2004, the official home of the Scottish Parliament has been a new Scottish Parliament Building, in the Holyrood area of Edinburgh. The Scottish Parliament building was designed by Spanish architect Enric Miralles in partnership with local Edinburgh Architecture firm RMJM which was led by Design Principal Tony Kettle. Some of the principal features of the complex include leaf-shaped buildings, a grass-roofed branch merging into adjacent parkland and gabion walls formed from the stones of previous buildings. Throughout the building there are many repeated motifs, such as shapes based on Raeburn's Skating Minister. Crow-stepped gables and the upturned boat skylights of the Garden Lobby, complete the unique architecture. Queen Elizabeth II opened the new building on 9 October 2004."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "Enric Miralles",
+                    "context": "The outcome was one of the most significant developments in a century of Anglo-French conflict. France ceded its territory east of the Mississippi to Great Britain. It ceded French Louisiana west of the Mississippi River (including New Orleans) to its ally Spain, in compensation for Spain's loss to Britain of Florida (Spain had ceded this to Britain in exchange for the return of Havana, Cuba). France's colonial presence north of the Caribbean was reduced to the islands of Saint Pierre and Miquelon, confirming Britain's position as the dominant colonial power in eastern North America."
+                }
+            ]
+        },
+        {
+            "id": "57113c6da58dae1900cd6d35",
+            "title": "Steam_engine",
+            "question": "Who described a steam turbine in 1629?",
+            "goldAnswer": "Giovanni Branca",
+            "subtleKind": "entity_swap",
+            "unsupportedDonorTitle": "American_Broadcasting_Company",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "Giovanni Branca",
+                    "context": "The history of the steam engine stretches back as far as the first century AD; the first recorded rudimentary steam engine being the aeolipile described by Greek mathematician Hero of Alexandria. In the following centuries, the few steam-powered \"engines\" known were, like the aeolipile, essentially experimental devices used by inventors to demonstrate the properties of steam. A rudimentary steam turbine device was described by Taqi al-Din in 1551 and by Giovanni Branca in 1629. Jerónimo de Ayanz y Beaumont received patents in 1606 for fifty steam powered inventions, including a water pump for draining inundated mines. Denis Papin, a Huguenot refugee, did some useful work on the steam digester in 1679, and first used a piston to raise weights in 1690."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "Denis Papin",
+                    "context": "The history of the steam engine stretches back as far as the first century AD; the first recorded rudimentary steam engine being the aeolipile described by Greek mathematician Hero of Alexandria. In the following centuries, the few steam-powered \"engines\" known were, like the aeolipile, essentially experimental devices used by inventors to demonstrate the properties of steam. A rudimentary steam turbine device was described by Taqi al-Din in 1551 and by Giovanni Branca in 1629. Jerónimo de Ayanz y Beaumont received patents in 1606 for fifty steam powered inventions, including a water pump for draining inundated mines. Denis Papin, a Huguenot refugee, did some useful work on the steam digester in 1679, and first used a piston to raise weights in 1690."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "Giovanni Branca",
+                    "context": "On September 3, 1958, the Disneyland anthology series was retitled Walt Disney Presents as it became disassociated with the theme park of the same name. The movement in westerns, which ABC is credited for having started, represented a fifth of all primetime series on American television in January 1959, at which point detective shows were beginning to rise in popularity as well. ABC requested additional productions from Disney. In late 1958, Desilu Productions pitched its detective series The Untouchables to CBS; after that network rejected the show because of its use of violence, Desilu then presented it to ABC, which agreed to pick up the show, and debuted The Untouchables in April 1959. The series went on to quickly become \"immensely popular\"."
+                }
+            ]
+        },
+        {
+            "id": "5730afed069b531400832260",
+            "title": "United_Methodist_Church",
+            "question": "What is that grace of God which sustains the believers in the journey towards Christian Perfection?",
+            "goldAnswer": "Sanctifying Grace",
+            "subtleKind": "entity_swap",
+            "unsupportedDonorTitle": "European_Union_law",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "Sanctifying Grace",
+                    "context": "Sanctifying Grace is that grace of God which sustains the believers in the journey toward Christian Perfection: a genuine love of God with heart, soul, mind, and strength, and a genuine love of our neighbors as ourselves. Sanctifying grace enables us to respond to God by leading a Spirit-filled and Christ-like life aimed toward love. Wesley never claimed this state of perfection for himself but instead insisted the attainment of perfection was possible for all Christians. Here the English Reformer parted company with both Luther and Calvin, who denied that a man would ever reach a state in this life in which he could not fall into sin. Such a man can lose all inclination to evil and can gain perfection in this life."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "Christian Perfection",
+                    "context": "Sanctifying Grace is that grace of God which sustains the believers in the journey toward Christian Perfection: a genuine love of God with heart, soul, mind, and strength, and a genuine love of our neighbors as ourselves. Sanctifying grace enables us to respond to God by leading a Spirit-filled and Christ-like life aimed toward love. Wesley never claimed this state of perfection for himself but instead insisted the attainment of perfection was possible for all Christians. Here the English Reformer parted company with both Luther and Calvin, who denied that a man would ever reach a state in this life in which he could not fall into sin. Such a man can lose all inclination to evil and can gain perfection in this life."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "Sanctifying Grace",
+                    "context": "While the Treaties and Regulations will have direct effect (if clear, unconditional and immediate), Directives do not generally give citizens (as opposed to the member state) standing to sue other citizens. In theory, this is because TFEU article 288 says Directives are addressed to the member states and usually \"leave to the national authorities the choice of form and methods\" to implement. In part this reflects that directives often create minimum standards, leaving member states to apply higher standards. For example, the Working Time Directive requires that every worker has at least 4 weeks paid holidays each year, but most member states require more than 28 days in national law. However, on the current position adopted by the Court of Justice, citizens have standing to make claims based on national laws that implement Directives, but not from Directives themselves. Directives do not have so called \"horizontal\" direct effect (i.e. between non-state parties). This view was instantly controversial, and in the early 1990s three Advocate Generals persuasively argued that Directives should create rights and duties for all citizens. The Court of Justice refused, but there are five large exceptions."
+                }
+            ]
+        },
+        {
+            "id": "570d2556fed7b91900d45c49",
+            "title": "Victoria_(Australia)",
+            "question": "Where was the 1857 riot?",
+            "goldAnswer": "Buckland Valley",
+            "subtleKind": "entity_swap",
+            "unsupportedDonorTitle": "University_of_Chicago",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "Buckland Valley",
+                    "context": "Immigrants arrived from all over the world to search for gold, especially from Ireland and China. Many Chinese miners worked in Victoria, and their legacy is particularly strong in Bendigo and its environs. Although there was some racism directed at them, there was not the level of anti-Chinese violence that was seen at the Lambing Flat riots in New South Wales. However, there was a riot at Buckland Valley near Bright in 1857. Conditions on the gold fields were cramped and unsanitary; an outbreak of typhoid at Buckland Valley in 1854 killed over 1,000 miners."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "Lambing Flat",
+                    "context": "Immigrants arrived from all over the world to search for gold, especially from Ireland and China. Many Chinese miners worked in Victoria, and their legacy is particularly strong in Bendigo and its environs. Although there was some racism directed at them, there was not the level of anti-Chinese violence that was seen at the Lambing Flat riots in New South Wales. However, there was a riot at Buckland Valley near Bright in 1857. Conditions on the gold fields were cramped and unsanitary; an outbreak of typhoid at Buckland Valley in 1854 killed over 1,000 miners."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "Buckland Valley",
+                    "context": "The University of Chicago (UChicago, Chicago, or U of C) is a private research university in Chicago. The university, established in 1890, consists of The College, various graduate programs, interdisciplinary committees organized into four academic research divisions and seven professional schools. Beyond the arts and sciences, Chicago is also well known for its professional schools, which include the Pritzker School of Medicine, the University of Chicago Booth School of Business, the Law School, the School of Social Service Administration, the Harris School of Public Policy Studies, the Graham School of Continuing Liberal and Professional Studies and the Divinity School. The university currently enrolls approximately 5,000 students in the College and around 15,000 students overall."
+                }
+            ]
+        },
+        {
+            "id": "572860e03acd2414000df97a",
+            "title": "Yuan_dynasty",
+            "question": "Who was Kublai Khan's grandfather?",
+            "goldAnswer": "Genghis Khan",
+            "subtleKind": "entity_swap",
+            "unsupportedDonorTitle": "United_Methodist_Church",
+            "variants": [
+                {
+                    "kind": "correct",
+                    "answer": "Genghis Khan",
+                    "context": "The Yuan dynasty is considered both a successor to the Mongol Empire and an imperial Chinese dynasty. It was the khanate ruled by the successors of Möngke Khan after the division of the Mongol Empire. In official Chinese histories, the Yuan dynasty bore the Mandate of Heaven, following the Song dynasty and preceding the Ming dynasty. The dynasty was established by Kublai Khan, yet he placed his grandfather Genghis Khan on the imperial records as the official founder of the dynasty as Taizu.[b] In the Proclamation of the Dynastic Name (《建國號詔》), Kublai announced the name of the new dynasty as Great Yuan and claimed the succession of former Chinese dynasties from the Three Sovereigns and Five Emperors to the Tang dynasty."
+                },
+                {
+                    "kind": "subtle_error",
+                    "answer": "Five Emperors",
+                    "context": "The Yuan dynasty is considered both a successor to the Mongol Empire and an imperial Chinese dynasty. It was the khanate ruled by the successors of Möngke Khan after the division of the Mongol Empire. In official Chinese histories, the Yuan dynasty bore the Mandate of Heaven, following the Song dynasty and preceding the Ming dynasty. The dynasty was established by Kublai Khan, yet he placed his grandfather Genghis Khan on the imperial records as the official founder of the dynasty as Taizu.[b] In the Proclamation of the Dynastic Name (《建國號詔》), Kublai announced the name of the new dynasty as Great Yuan and claimed the succession of former Chinese dynasties from the Three Sovereigns and Five Emperors to the Tang dynasty."
+                },
+                {
+                    "kind": "unsupported",
+                    "answer": "Genghis Khan",
+                    "context": "Throughout its history, the United Methodist Church has placed great emphasis on the importance of education. As such, the United Methodist Church established and is affiliated with around one hundred colleges and universities in the United States, including Syracuse University, Boston University, Emory University, Duke University, Drew University, University of Denver, University of Evansville, and Southern Methodist University. Most are members of the International Association of Methodist-related Schools, Colleges, and Universities. The church operates three hundred sixty schools and institutions overseas."
+                }
+            ]
+        }
+    ]
+}
