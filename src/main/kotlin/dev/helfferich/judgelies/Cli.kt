@@ -113,14 +113,24 @@ object Cli {
         val dataset = loadDataset(path(manifest.datasetPath))
         val cache = ResponseCache(runDir.resolve("responses.jsonl"))
         cache.load()
-        val analysis = Analyzer.analyze(dataset.items, manifest, cache.rows(), clock().toString())
+        val disputedPath = path(flags["disputed"] ?: "data/disputed.json")
+        val disputed = if (disputedPath.exists()) {
+            Jsons.pretty.decodeFromString(DisputedFile.serializer(), Files.readString(disputedPath)).items
+        } else {
+            emptyList()
+        }
+        val analysis = Analyzer.analyze(dataset.items, manifest, cache.rows(), clock().toString(), disputed)
         Report.write(runDir, docs, analysis)
         val h = analysis.metrics.headlines
         println("Analyzed $runDir")
         println("Parsed ${analysis.metrics.meta.nParsed} / ${analysis.metrics.meta.nTrialsCompleted} responses")
         println("Mean self-disagreement (faithfulness): ${pct(h.meanFaithfulnessSelfDisagreement)}")
         println("Mean pairwise kappa (faithfulness): ${num(h.meanPairwiseFaithfulnessKappa)}")
-        println("Mean subtle-error miss rate: ${pct(h.meanSubtleMissRate)}")
+        println("Mean subtle-error miss rate: ${pct(h.meanSubtleMissRate)} (correctness >= ${manifest.missThreshold}), ${pct(h.meanSubtleMissRateAt5)} (== 5)")
+        if (disputed.isNotEmpty()) {
+            println("  without ${disputed.size} disputed item(s): ${pct(h.meanSubtleMissRateExcludingDisputed)} (>= ${manifest.missThreshold}), ${pct(h.meanSubtleMissRateAt5ExcludingDisputed)} (== 5)")
+        }
+        println("Missed planted cases (all prompts and repeats): ${analysis.misses.rows.size}")
         println("Mean unsupported miss rate: ${pct(h.meanUnsupportedMissRate)}")
         if (docs != null) println("Wrote charts data to $docs")
         return 0

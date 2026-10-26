@@ -177,3 +177,16 @@ data class SquadAnswer(
     val text: String,
     @SerialName("answer_start") val answerStart: Int = 0,
 )
+
+/** A planted case whose "wrong" answer is arguably acceptable. Kept in the data, reported both with and without. */
+@Serializable
+data class DisputedItem(
+    val itemId: String,
+    val reason: String,
+)
+
+@Serializable
+data class DisputedFile(
+    val schemaVersion: Int = 1,
+    val items: List<DisputedItem>,
+)

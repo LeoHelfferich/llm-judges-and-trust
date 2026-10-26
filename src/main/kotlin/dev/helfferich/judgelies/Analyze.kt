@@ -20,6 +20,9 @@ data class ScoreRow(
     val estimatedCostUsd: Double,
     val billedCostUsd: Double?,
     val mode: String,
+    val rationale: String? = null,
+    val parseFailure: String? = null,
+    val partialFaithfulness: Int? = null,
 )
 
 @Serializable
@@ -96,6 +99,15 @@ data class PlantedJudge(
     val unsupportedN: Int,
     val unparsed: Int,
     val subtleMissRate: Double?,
+    /** Same subtle slice, but only a perfect correctness of 5 counts as a miss. */
+    val subtleMissRateAt5: Double? = null,
+    val subtleNExcludingDisputed: Int = 0,
+    val subtleMissRateExcludingDisputed: Double? = null,
+    val subtleMissRateAt5ExcludingDisputed: Double? = null,
+    /** Subtle-error rows in this slice that did not parse (not counted in any subtle rate). */
+    val subtleUnparsed: Int = 0,
+    /** Of those, rows that gave a faithfulness score but no correctness. */
+    val subtleMissingCorrectness: Int = 0,
     val unsupportedMissRate: Double?,
     val correctFalseRejectRate: Double?,
     val subtleMissRateByKind: Map<String, Double>,
@@ -113,6 +125,8 @@ data class PlantedErrors(
     val unsupportedMiss: String,
     val correctFalseReject: String,
     val judges: List<PlantedJudge>,
+    val subtleMissAt5: String = "",
+    val disputed: List<DisputedItem> = emptyList(),
 )
 
 @Serializable
@@ -120,6 +134,9 @@ data class Headlines(
     val meanFaithfulnessSelfDisagreement: Double?,
     val meanPairwiseFaithfulnessKappa: Double?,
     val meanSubtleMissRate: Double?,
+    val meanSubtleMissRateAt5: Double? = null,
+    val meanSubtleMissRateExcludingDisputed: Double? = null,
+    val meanSubtleMissRateAt5ExcludingDisputed: Double? = null,
     val meanUnsupportedMissRate: Double?,
     val meanCorrectFalseRejectRate: Double?,
 )
@@ -167,6 +184,53 @@ data class Metrics(
     val promptSensitivity: PromptSensitivity,
     val interJudge: InterJudge,
     val plantedErrors: PlantedErrors,
+    val parseFailures: List<ParseFailureSummary> = emptyList(),
+)
+
+@Serializable
+data class ParseFailureSummary(
+    val judge: String,
+    val label: String,
+    val calls: Int,
+    val unparsed: Int,
+    val byReason: Map<String, Int>,
+    val byPrompt: Map<String, Int>,
+    val byVariant: Map<String, Int>,
+    /** For missing_correctness rows: how often each faithfulness value was given. */
+    val missingCorrectnessFaithfulness: Map<String, Int>,
+)
+
+/** One planted case a judge let through: a subtle error scored correct, or an unsupported answer scored faithful. */
+@Serializable
+data class MissRow(
+    val itemId: String,
+    val title: String,
+    val question: String,
+    val goldAnswer: String,
+    val variant: String,
+    val subtleKind: String,
+    val shownAnswer: String,
+    val donorTitle: String?,
+    val disputed: Boolean,
+    val judge: String,
+    val label: String,
+    val prompt: String,
+    val repeat: Int,
+    val faithfulness: Int,
+    val correctness: Int,
+    val missedAt4: Boolean,
+    val missedAt5: Boolean,
+    val rationale: String?,
+)
+
+@Serializable
+data class MissFile(
+    val schemaVersion: Int = 1,
+    val simulated: Boolean,
+    val missThreshold: Int,
+    val definition: String,
+    val disputed: List<DisputedItem>,
+    val rows: List<MissRow>,
 )
 
 @Serializable
@@ -203,6 +267,7 @@ data class Analysis(
     val metrics: Metrics,
     val examples: ExampleFile,
     val rows: List<ScoreRow>,
+    val misses: MissFile,
 )
 
 object Analyzer {
@@ -229,6 +294,9 @@ object Analyzer {
                 estimatedCostUsd = row.estimatedCostUsd,
                 billedCostUsd = row.billedCostUsd,
                 mode = row.mode,
+                rationale = parsed.rationale,
+                parseFailure = parsed.failure?.wire,
+                partialFaithfulness = parsed.partialFaithfulness,
             )
         }
     }
@@ -238,6 +306,7 @@ object Analyzer {
         manifest: RunManifest,
         cached: List<CachedTrial>,
         analyzedAt: String,
+        disputed: List<DisputedItem> = emptyList(),
     ): Analysis {
         val rows = scoreRows(items, manifest, cached)
         val judges = manifest.judges
@@ -245,11 +314,14 @@ object Analyzer {
         val consistency = selfConsistency(rows, judges, primary)
         val sensitivity = promptSensitivity(rows, judges, primary, manifest.promptOrder)
         val inter = interJudge(rows, judges, primary)
-        val planted = planted(rows, judges, primary, manifest.missThreshold, manifest.falseRejectAtOrBelow)
+        val planted = planted(rows, judges, primary, manifest.missThreshold, manifest.falseRejectAtOrBelow, disputed)
         val headlines = Headlines(
             meanFaithfulnessSelfDisagreement = meanOrNull(consistency.judges.map { it.faithfulness.pctNotIdentical }),
             meanPairwiseFaithfulnessKappa = meanOffDiagonal(inter.faithfulness.quadraticKappa),
             meanSubtleMissRate = meanOrNull(planted.judges.mapNotNull { it.subtleMissRate }),
+            meanSubtleMissRateAt5 = meanOrNull(planted.judges.mapNotNull { it.subtleMissRateAt5 }),
+            meanSubtleMissRateExcludingDisputed = meanOrNull(planted.judges.mapNotNull { it.subtleMissRateExcludingDisputed }),
+            meanSubtleMissRateAt5ExcludingDisputed = meanOrNull(planted.judges.mapNotNull { it.subtleMissRateAt5ExcludingDisputed }),
             meanUnsupportedMissRate = meanOrNull(planted.judges.mapNotNull { it.unsupportedMissRate }),
             meanCorrectFalseRejectRate = meanOrNull(planted.judges.mapNotNull { it.correctFalseRejectRate }),
         )
@@ -291,8 +363,14 @@ object Analyzer {
             promptSensitivity = sensitivity,
             interJudge = inter,
             plantedErrors = planted,
+            parseFailures = parseFailures(rows, judges),
         )
-        return Analysis(metrics, examples(items, rows, judges, manifest.simulated, primary), rows)
+        return Analysis(
+            metrics,
+            examples(items, rows, judges, manifest.simulated, primary),
+            rows,
+            misses(items, rows, manifest.missThreshold, manifest.simulated, disputed),
+        )
     }
 
     fun selfConsistency(rows: List<ScoreRow>, judges: List<JudgeModel>, prompt: String): SelfConsistency {
@@ -353,7 +431,9 @@ object Analyzer {
         prompt: String,
         missAt: Int,
         rejectAt: Int,
+        disputed: List<DisputedItem> = emptyList(),
     ): PlantedErrors {
+        val disputedIds = disputed.map { it.itemId }.toSet()
         val slice = rows.filter { it.prompt == prompt && it.repeat == 0 }
         val perJudge = judges.map { judge ->
             val mine = slice.filter { it.judge == judge.id }
@@ -362,8 +442,10 @@ object Analyzer {
             val subtle = ofKind("subtle_error")
             val unsupported = ofKind("unsupported")
             val byKind = subtle.groupBy { it.subtleKind }.mapValues { (_, group) ->
-                rate(group.count { (it.correctness ?: 0) >= missAt }, group.size)
+                subtleMissRate(group, missAt)!!
             }
+            val undisputed = subtle.filter { it.itemId !in disputedIds }
+            val subtleFailed = mine.filter { it.variant == "subtle_error" && !it.parsed }
             PlantedJudge(
                 judge = judge.id,
                 label = judge.label,
@@ -371,7 +453,13 @@ object Analyzer {
                 subtleN = subtle.size,
                 unsupportedN = unsupported.size,
                 unparsed = mine.count { !it.parsed },
-                subtleMissRate = if (subtle.isEmpty()) null else rate(subtle.count { (it.correctness ?: 0) >= missAt }, subtle.size),
+                subtleMissRate = subtleMissRate(subtle, missAt),
+                subtleMissRateAt5 = subtleMissRate(subtle, 5),
+                subtleNExcludingDisputed = undisputed.size,
+                subtleMissRateExcludingDisputed = subtleMissRate(undisputed, missAt),
+                subtleMissRateAt5ExcludingDisputed = subtleMissRate(undisputed, 5),
+                subtleUnparsed = subtleFailed.size,
+                subtleMissingCorrectness = subtleFailed.count { it.parseFailure == ParseFailure.MISSING_CORRECTNESS.wire },
                 unsupportedMissRate = if (unsupported.isEmpty()) null else rate(
                     unsupported.count { (it.faithfulness ?: 0) >= missAt },
                     unsupported.size,
@@ -394,6 +482,86 @@ object Analyzer {
             unsupportedMiss = "faithfulness >= $missAt on a correct answer paired with an unrelated passage",
             correctFalseReject = "faithfulness or correctness <= $rejectAt on the gold answer in its own passage",
             judges = perJudge,
+            subtleMissAt5 = "correctness == 5 on a subtly wrong answer",
+            disputed = disputed,
+        )
+    }
+
+    /**
+     * Share of parsed subtle-error rows whose correctness is at or above [cutoff].
+     * The headline uses the config's missThreshold (4). A cutoff of 5 counts only a perfect score as a miss.
+     * Unparsed rows are never counted, in the numerator or the denominator. Null when nothing is left.
+     */
+    fun subtleMissRate(subtleRows: List<ScoreRow>, cutoff: Int): Double? {
+        val usable = subtleRows.filter { it.parsed && it.variant == "subtle_error" && it.correctness != null }
+        if (usable.isEmpty()) return null
+        return rate(usable.count { it.correctness!! >= cutoff }, usable.size)
+    }
+
+    fun parseFailures(rows: List<ScoreRow>, judges: List<JudgeModel>): List<ParseFailureSummary> = judges.map { judge ->
+        val mine = rows.filter { it.judge == judge.id }
+        val failed = mine.filter { !it.parsed }
+        ParseFailureSummary(
+            judge = judge.id,
+            label = judge.label,
+            calls = mine.size,
+            unparsed = failed.size,
+            byReason = failed.groupingBy { it.parseFailure ?: "unknown" }.eachCount().toSortedMap(),
+            byPrompt = failed.groupingBy { it.prompt }.eachCount().toSortedMap(),
+            byVariant = failed.groupingBy { it.variant }.eachCount().toSortedMap(),
+            missingCorrectnessFaithfulness = failed
+                .filter { it.parseFailure == ParseFailure.MISSING_CORRECTNESS.wire }
+                .groupingBy { it.partialFaithfulness?.toString() ?: "?" }.eachCount().toSortedMap(),
+        )
+    }
+
+    /** Every planted case a judge let through, across all prompts and repeats. */
+    fun misses(
+        items: List<EvalItem>,
+        rows: List<ScoreRow>,
+        missAt: Int,
+        simulated: Boolean,
+        disputed: List<DisputedItem> = emptyList(),
+    ): MissFile {
+        val byId = items.associateBy { it.id }
+        val disputedIds = disputed.map { it.itemId }.toSet()
+        val missed = rows.filter { row ->
+            row.parsed && when (row.variant) {
+                "subtle_error" -> row.correctness!! >= missAt
+                "unsupported" -> row.faithfulness!! >= missAt
+                else -> false
+            }
+        }.mapNotNull { row ->
+            val item = byId[row.itemId] ?: return@mapNotNull null
+            val subtle = row.variant == "subtle_error"
+            val score = if (subtle) row.correctness!! else row.faithfulness!!
+            MissRow(
+                itemId = row.itemId,
+                title = item.title,
+                question = item.question,
+                goldAnswer = item.goldAnswer,
+                variant = row.variant,
+                subtleKind = if (subtle) item.subtleKind else "",
+                shownAnswer = if (subtle) item.variant(VariantKind.SUBTLE_ERROR).answer else item.variant(VariantKind.UNSUPPORTED).answer,
+                donorTitle = if (subtle) null else item.unsupportedDonorTitle,
+                disputed = row.itemId in disputedIds,
+                judge = row.judge,
+                label = row.label,
+                prompt = row.prompt,
+                repeat = row.repeat,
+                faithfulness = row.faithfulness!!,
+                correctness = row.correctness!!,
+                missedAt4 = score >= missAt,
+                missedAt5 = score >= 5,
+                rationale = row.rationale,
+            )
+        }.sortedWith(compareBy({ it.variant }, { it.title }, { it.itemId }, { it.label }, { it.prompt }, { it.repeat }))
+        return MissFile(
+            simulated = simulated,
+            missThreshold = missAt,
+            definition = "subtle_error: correctness >= $missAt. unsupported: faithfulness >= $missAt. All prompts and repeats.",
+            disputed = disputed,
+            rows = missed,
         )
     }
 

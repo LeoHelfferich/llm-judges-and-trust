@@ -12,23 +12,39 @@ data class ParsedScore(
     val correctness: Int?,
     val rationale: String?,
     val parsed: Boolean,
+    /** Why a reply did not parse. Null when [parsed] is true. */
+    val failure: ParseFailure? = null,
+    /** A valid faithfulness score found in a reply that still failed, e.g. one that left out correctness. */
+    val partialFaithfulness: Int? = null,
 ) {
     companion object {
-        val failed = ParsedScore(null, null, null, false)
+        fun failed(reason: ParseFailure, partialFaithfulness: Int? = null, rationale: String? = null) =
+            ParsedScore(null, null, rationale, false, reason, partialFaithfulness)
     }
+}
+
+enum class ParseFailure(val wire: String) {
+    NO_JSON("no_json"),
+    UNTERMINATED_JSON("unterminated_json"),
+    INVALID_JSON("invalid_json"),
+    MISSING_FAITHFULNESS("missing_faithfulness"),
+    MISSING_CORRECTNESS("missing_correctness"),
 }
 
 object ScoreParser {
     fun parse(text: String): ParsedScore {
-        val json = extractObject(text) ?: return ParsedScore.failed
+        val json = extractObject(text)
+            ?: return ParsedScore.failed(if (text.contains('{')) ParseFailure.UNTERMINATED_JSON else ParseFailure.NO_JSON)
         val obj = try {
-            Jsons.compact.parseToJsonElement(json) as? JsonObject ?: return ParsedScore.failed
+            Jsons.compact.parseToJsonElement(json) as? JsonObject ?: return ParsedScore.failed(ParseFailure.INVALID_JSON)
         } catch (_: Exception) {
-            return ParsedScore.failed
+            return ParsedScore.failed(ParseFailure.INVALID_JSON)
         }
-        val faithfulness = readScore(obj, "faithfulness") ?: return ParsedScore.failed
-        val correctness = readScore(obj, "correctness") ?: return ParsedScore.failed
-        val rationale = obj["rationale"]?.jsonPrimitive?.contentOrNull?.trim()?.take(500)
+        val rationale = obj["rationale"]?.let { it as? JsonPrimitive }?.contentOrNull?.trim()?.take(500)
+        val faithfulness = readScore(obj, "faithfulness")
+            ?: return ParsedScore.failed(ParseFailure.MISSING_FAITHFULNESS, rationale = rationale)
+        val correctness = readScore(obj, "correctness")
+            ?: return ParsedScore.failed(ParseFailure.MISSING_CORRECTNESS, faithfulness, rationale)
         return ParsedScore(faithfulness, correctness, rationale, true)
     }
 
