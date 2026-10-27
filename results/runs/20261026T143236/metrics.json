@@ -5,13 +5,13 @@
         "simulated": false,
         "startedAt": "2026-10-26T14:32:36.722347477Z",
         "finishedAt": "2026-10-26T17:14:04.200637987Z",
-        "analyzedAt": "2026-10-26T17:21:06.137436602Z",
+        "analyzedAt": "2026-10-27T11:10:35.732159644Z",
         "dataset": "SQuAD 1.1 dev subset",
         "datasetLicense": "CC BY-SA 4.0",
         "nItems": 50,
         "nTrialsPlanned": 3750,
-        "nTrialsCompleted": 3750,
-        "nParsed": 3722,
+        "nTrialsCompleted": 3725,
+        "nParsed": 3697,
         "temperature": 0.0,
         "seedSent": false,
         "primaryPrompt": "strict",
@@ -88,12 +88,10 @@
         "promptHash": "3b781b568255"
     },
     "headlines": {
-        "meanFaithfulnessSelfDisagreement": 0.016,
-        "meanPairwiseFaithfulnessKappa": 0.9274473217110403,
-        "meanSubtleMissRate": 0.12995348837209303,
-        "meanSubtleMissRateAt5": 0.04065116279069768,
-        "meanSubtleMissRateExcludingDisputed": 0.11564625850340135,
-        "meanSubtleMissRateAt5ExcludingDisputed": 0.024489795918367346,
+        "meanFaithfulnessSelfDisagreement": 0.016107382550335572,
+        "meanPairwiseFaithfulnessKappa": 0.928274906266456,
+        "meanSubtleMissRate": 0.11564625850340135,
+        "meanSubtleMissRateAt5": 0.024489795918367346,
         "meanUnsupportedMissRate": 0.0,
         "meanCorrectFalseRejectRate": 0.028000000000000004
     },
@@ -103,12 +101,12 @@
             {
                 "judge": "x-ai/grok-4.3",
                 "label": "Grok 4.3",
-                "nGroups": 150,
+                "nGroups": 149,
                 "faithfulness": {
-                    "pctNotIdentical": 0.013333333333333334,
-                    "meanRange": 0.03333333333333333,
+                    "pctNotIdentical": 0.013422818791946308,
+                    "meanRange": 0.03355704697986577,
                     "rangeHistogram": [
-                        148,
+                        147,
                         1,
                         0,
                         0,
@@ -116,10 +114,10 @@
                     ]
                 },
                 "correctness": {
-                    "pctNotIdentical": 0.006666666666666667,
-                    "meanRange": 0.006666666666666667,
+                    "pctNotIdentical": 0.006711409395973154,
+                    "meanRange": 0.006711409395973154,
                     "rangeHistogram": [
-                        149,
+                        148,
                         1,
                         0,
                         0,
@@ -130,12 +128,12 @@
             {
                 "judge": "openai/gpt-5.4-mini",
                 "label": "GPT-5.4 Mini",
-                "nGroups": 150,
+                "nGroups": 149,
                 "faithfulness": {
-                    "pctNotIdentical": 0.06,
-                    "meanRange": 0.12666666666666668,
+                    "pctNotIdentical": 0.06040268456375839,
+                    "meanRange": 0.12751677852348994,
                     "rangeHistogram": [
-                        141,
+                        140,
                         4,
                         0,
                         5,
@@ -143,10 +141,10 @@
                     ]
                 },
                 "correctness": {
-                    "pctNotIdentical": 0.07333333333333333,
-                    "meanRange": 0.1,
+                    "pctNotIdentical": 0.0738255033557047,
+                    "meanRange": 0.10067114093959731,
                     "rangeHistogram": [
-                        139,
+                        138,
                         8,
                         2,
                         1,
@@ -157,12 +155,12 @@
             {
                 "judge": "anthropic/claude-haiku-4.5",
                 "label": "Claude Haiku 4.5",
-                "nGroups": 141,
+                "nGroups": 140,
                 "faithfulness": {
                     "pctNotIdentical": 0.0,
                     "meanRange": 0.0,
                     "rangeHistogram": [
-                        141,
+                        140,
                         0,
                         0,
                         0,
@@ -173,7 +171,7 @@
                     "pctNotIdentical": 0.0,
                     "meanRange": 0.0,
                     "rangeHistogram": [
-                        141,
+                        140,
                         0,
                         0,
                         0,
@@ -184,12 +182,12 @@
             {
                 "judge": "google/gemini-2.5-flash",
                 "label": "Gemini 2.5 Flash",
-                "nGroups": 150,
+                "nGroups": 149,
                 "faithfulness": {
                     "pctNotIdentical": 0.0,
                     "meanRange": 0.0,
                     "rangeHistogram": [
-                        150,
+                        149,
                         0,
                         0,
                         0,
@@ -200,7 +198,7 @@
                     "pctNotIdentical": 0.0,
                     "meanRange": 0.0,
                     "rangeHistogram": [
-                        150,
+                        149,
                         0,
                         0,
                         0,
@@ -211,12 +209,12 @@
             {
                 "judge": "meta-llama/llama-3.3-70b-instruct",
                 "label": "Llama 3.3 70B",
-                "nGroups": 150,
+                "nGroups": 149,
                 "faithfulness": {
-                    "pctNotIdentical": 0.006666666666666667,
-                    "meanRange": 0.013333333333333334,
+                    "pctNotIdentical": 0.006711409395973154,
+                    "meanRange": 0.013422818791946308,
                     "rangeHistogram": [
-                        149,
+                        148,
                         0,
                         1,
                         0,
@@ -224,10 +222,10 @@
                     ]
                 },
                 "correctness": {
-                    "pctNotIdentical": 0.006666666666666667,
-                    "meanRange": 0.013333333333333334,
+                    "pctNotIdentical": 0.006711409395973154,
+                    "meanRange": 0.013422818791946308,
                     "rangeHistogram": [
-                        149,
+                        148,
                         0,
                         1,
                         0,
@@ -246,57 +244,57 @@
                     {
                         "judge": "x-ai/grok-4.3",
                         "label": "Grok 4.3",
-                        "n": 150,
-                        "meanDeltaFaithfulness": 0.19333333333333333,
-                        "meanDeltaCorrectness": 0.12666666666666668,
-                        "pctFaithfulnessChanged": 0.10666666666666667,
-                        "pctFaithfulnessShiftAtLeast2": 0.05333333333333334,
-                        "pctCorrectnessChanged": 0.1,
-                        "pctCorrectnessShiftAtLeast2": 0.03333333333333333
+                        "n": 149,
+                        "meanDeltaFaithfulness": 0.19463087248322147,
+                        "meanDeltaCorrectness": 0.12751677852348994,
+                        "pctFaithfulnessChanged": 0.10738255033557047,
+                        "pctFaithfulnessShiftAtLeast2": 0.053691275167785234,
+                        "pctCorrectnessChanged": 0.10067114093959731,
+                        "pctCorrectnessShiftAtLeast2": 0.03355704697986577
                     },
                     {
                         "judge": "openai/gpt-5.4-mini",
                         "label": "GPT-5.4 Mini",
-                        "n": 150,
-                        "meanDeltaFaithfulness": 0.21333333333333335,
-                        "meanDeltaCorrectness": 0.13333333333333333,
-                        "pctFaithfulnessChanged": 0.13333333333333333,
-                        "pctFaithfulnessShiftAtLeast2": 0.05333333333333334,
-                        "pctCorrectnessChanged": 0.12,
-                        "pctCorrectnessShiftAtLeast2": 0.04666666666666667
+                        "n": 149,
+                        "meanDeltaFaithfulness": 0.21476510067114093,
+                        "meanDeltaCorrectness": 0.1342281879194631,
+                        "pctFaithfulnessChanged": 0.1342281879194631,
+                        "pctFaithfulnessShiftAtLeast2": 0.053691275167785234,
+                        "pctCorrectnessChanged": 0.12080536912751678,
+                        "pctCorrectnessShiftAtLeast2": 0.04697986577181208
                     },
                     {
                         "judge": "anthropic/claude-haiku-4.5",
                         "label": "Claude Haiku 4.5",
-                        "n": 141,
-                        "meanDeltaFaithfulness": 0.05673758865248227,
+                        "n": 140,
+                        "meanDeltaFaithfulness": 0.05714285714285714,
                         "meanDeltaCorrectness": 0.0,
-                        "pctFaithfulnessChanged": 0.07801418439716312,
-                        "pctFaithfulnessShiftAtLeast2": 0.02127659574468085,
-                        "pctCorrectnessChanged": 0.07801418439716312,
-                        "pctCorrectnessShiftAtLeast2": 0.0070921985815602835
+                        "pctFaithfulnessChanged": 0.07857142857142857,
+                        "pctFaithfulnessShiftAtLeast2": 0.02142857142857143,
+                        "pctCorrectnessChanged": 0.07857142857142857,
+                        "pctCorrectnessShiftAtLeast2": 0.007142857142857143
                     },
                     {
                         "judge": "google/gemini-2.5-flash",
                         "label": "Gemini 2.5 Flash",
-                        "n": 150,
-                        "meanDeltaFaithfulness": 0.11333333333333333,
-                        "meanDeltaCorrectness": 0.06666666666666667,
-                        "pctFaithfulnessChanged": 0.12666666666666668,
-                        "pctFaithfulnessShiftAtLeast2": 0.06,
-                        "pctCorrectnessChanged": 0.12,
-                        "pctCorrectnessShiftAtLeast2": 0.03333333333333333
+                        "n": 149,
+                        "meanDeltaFaithfulness": 0.11409395973154363,
+                        "meanDeltaCorrectness": 0.06711409395973154,
+                        "pctFaithfulnessChanged": 0.12751677852348994,
+                        "pctFaithfulnessShiftAtLeast2": 0.06040268456375839,
+                        "pctCorrectnessChanged": 0.12080536912751678,
+                        "pctCorrectnessShiftAtLeast2": 0.03355704697986577
                     },
                     {
                         "judge": "meta-llama/llama-3.3-70b-instruct",
                         "label": "Llama 3.3 70B",
-                        "n": 150,
-                        "meanDeltaFaithfulness": 0.3466666666666667,
-                        "meanDeltaCorrectness": 0.3333333333333333,
-                        "pctFaithfulnessChanged": 0.2,
-                        "pctFaithfulnessShiftAtLeast2": 0.08,
-                        "pctCorrectnessChanged": 0.21333333333333335,
-                        "pctCorrectnessShiftAtLeast2": 0.08
+                        "n": 149,
+                        "meanDeltaFaithfulness": 0.348993288590604,
+                        "meanDeltaCorrectness": 0.33557046979865773,
+                        "pctFaithfulnessChanged": 0.20134228187919462,
+                        "pctFaithfulnessShiftAtLeast2": 0.08053691275167785,
+                        "pctCorrectnessChanged": 0.21476510067114093,
+                        "pctCorrectnessShiftAtLeast2": 0.08053691275167785
                     }
                 ]
             },
@@ -306,57 +304,57 @@
                     {
                         "judge": "x-ai/grok-4.3",
                         "label": "Grok 4.3",
-                        "n": 150,
-                        "meanDeltaFaithfulness": 0.02,
-                        "meanDeltaCorrectness": 0.06666666666666667,
-                        "pctFaithfulnessChanged": 0.05333333333333334,
-                        "pctFaithfulnessShiftAtLeast2": 0.02,
-                        "pctCorrectnessChanged": 0.04666666666666667,
-                        "pctCorrectnessShiftAtLeast2": 0.02
+                        "n": 149,
+                        "meanDeltaFaithfulness": 0.020134228187919462,
+                        "meanDeltaCorrectness": 0.06711409395973154,
+                        "pctFaithfulnessChanged": 0.053691275167785234,
+                        "pctFaithfulnessShiftAtLeast2": 0.020134228187919462,
+                        "pctCorrectnessChanged": 0.04697986577181208,
+                        "pctCorrectnessShiftAtLeast2": 0.020134228187919462
                     },
                     {
                         "judge": "openai/gpt-5.4-mini",
                         "label": "GPT-5.4 Mini",
-                        "n": 150,
-                        "meanDeltaFaithfulness": -0.013333333333333334,
-                        "meanDeltaCorrectness": -0.05333333333333334,
-                        "pctFaithfulnessChanged": 0.09333333333333334,
-                        "pctFaithfulnessShiftAtLeast2": 0.02666666666666667,
-                        "pctCorrectnessChanged": 0.1,
-                        "pctCorrectnessShiftAtLeast2": 0.02666666666666667
+                        "n": 149,
+                        "meanDeltaFaithfulness": -0.006711409395973154,
+                        "meanDeltaCorrectness": -0.040268456375838924,
+                        "pctFaithfulnessChanged": 0.087248322147651,
+                        "pctFaithfulnessShiftAtLeast2": 0.026845637583892617,
+                        "pctCorrectnessChanged": 0.09395973154362416,
+                        "pctCorrectnessShiftAtLeast2": 0.020134228187919462
                     },
                     {
                         "judge": "anthropic/claude-haiku-4.5",
                         "label": "Claude Haiku 4.5",
-                        "n": 141,
-                        "meanDeltaFaithfulness": -0.12056737588652482,
-                        "meanDeltaCorrectness": -0.0851063829787234,
-                        "pctFaithfulnessChanged": 0.0851063829787234,
-                        "pctFaithfulnessShiftAtLeast2": 0.03546099290780142,
-                        "pctCorrectnessChanged": 0.07092198581560284,
-                        "pctCorrectnessShiftAtLeast2": 0.028368794326241134
+                        "n": 140,
+                        "meanDeltaFaithfulness": -0.12142857142857143,
+                        "meanDeltaCorrectness": -0.08571428571428572,
+                        "pctFaithfulnessChanged": 0.08571428571428572,
+                        "pctFaithfulnessShiftAtLeast2": 0.03571428571428571,
+                        "pctCorrectnessChanged": 0.07142857142857142,
+                        "pctCorrectnessShiftAtLeast2": 0.02857142857142857
                     },
                     {
                         "judge": "google/gemini-2.5-flash",
                         "label": "Gemini 2.5 Flash",
-                        "n": 150,
-                        "meanDeltaFaithfulness": -0.006666666666666667,
-                        "meanDeltaCorrectness": -0.013333333333333334,
-                        "pctFaithfulnessChanged": 0.09333333333333334,
-                        "pctFaithfulnessShiftAtLeast2": 0.04,
-                        "pctCorrectnessChanged": 0.08666666666666667,
-                        "pctCorrectnessShiftAtLeast2": 0.03333333333333333
+                        "n": 149,
+                        "meanDeltaFaithfulness": -0.006711409395973154,
+                        "meanDeltaCorrectness": -0.013422818791946308,
+                        "pctFaithfulnessChanged": 0.09395973154362416,
+                        "pctFaithfulnessShiftAtLeast2": 0.040268456375838924,
+                        "pctCorrectnessChanged": 0.087248322147651,
+                        "pctCorrectnessShiftAtLeast2": 0.03355704697986577
                     },
                     {
                         "judge": "meta-llama/llama-3.3-70b-instruct",
                         "label": "Llama 3.3 70B",
-                        "n": 150,
-                        "meanDeltaFaithfulness": -0.14,
-                        "meanDeltaCorrectness": -0.14,
-                        "pctFaithfulnessChanged": 0.06666666666666667,
-                        "pctFaithfulnessShiftAtLeast2": 0.04,
-                        "pctCorrectnessChanged": 0.06666666666666667,
-                        "pctCorrectnessShiftAtLeast2": 0.04
+                        "n": 149,
+                        "meanDeltaFaithfulness": -0.14093959731543623,
+                        "meanDeltaCorrectness": -0.14093959731543623,
+                        "pctFaithfulnessChanged": 0.06711409395973154,
+                        "pctFaithfulnessShiftAtLeast2": 0.040268456375838924,
+                        "pctCorrectnessChanged": 0.06711409395973154,
+                        "pctCorrectnessShiftAtLeast2": 0.040268456375838924
                     }
                 ]
             }
@@ -365,7 +363,7 @@
     "interJudge": {
         "prompt": "strict",
         "repeat": 0,
-        "nItems": 141,
+        "nItems": 140,
         "judges": [
             "x-ai/grok-4.3",
             "openai/gpt-5.4-mini",
@@ -384,111 +382,111 @@
             "exactAgreement": [
                 [
                     1.0,
-                    0.950354609929078,
-                    0.8936170212765957,
-                    0.9219858156028369,
-                    0.9219858156028369
+                    0.95,
+                    0.8928571428571429,
+                    0.9285714285714286,
+                    0.9214285714285714
                 ],
                 [
-                    0.950354609929078,
+                    0.95,
                     1.0,
-                    0.8865248226950354,
-                    0.9290780141843972,
-                    0.950354609929078
+                    0.8857142857142857,
+                    0.9357142857142857,
+                    0.95
                 ],
                 [
-                    0.8936170212765957,
-                    0.8865248226950354,
+                    0.8928571428571429,
+                    0.8857142857142857,
                     1.0,
-                    0.9078014184397163,
-                    0.8936170212765957
+                    0.9142857142857143,
+                    0.8928571428571429
                 ],
                 [
-                    0.9219858156028369,
-                    0.9290780141843972,
-                    0.9078014184397163,
+                    0.9285714285714286,
+                    0.9357142857142857,
+                    0.9142857142857143,
                     1.0,
-                    0.9219858156028369
+                    0.9285714285714286
                 ],
                 [
-                    0.9219858156028369,
-                    0.950354609929078,
-                    0.8936170212765957,
-                    0.9219858156028369,
+                    0.9214285714285714,
+                    0.95,
+                    0.8928571428571429,
+                    0.9285714285714286,
                     1.0
                 ]
             ],
             "meanAbsDiff": [
                 [
                     0.0,
-                    0.15602836879432624,
-                    0.2198581560283688,
-                    0.2127659574468085,
-                    0.20567375886524822
+                    0.15714285714285714,
+                    0.22142857142857142,
+                    0.2,
+                    0.20714285714285716
                 ],
                 [
-                    0.15602836879432624,
+                    0.15714285714285714,
                     0.0,
-                    0.20567375886524822,
-                    0.1702127659574468,
-                    0.1347517730496454
+                    0.20714285714285716,
+                    0.15714285714285714,
+                    0.1357142857142857
                 ],
                 [
-                    0.2198581560283688,
-                    0.20567375886524822,
+                    0.22142857142857142,
+                    0.20714285714285716,
                     0.0,
-                    0.1347517730496454,
-                    0.2127659574468085
+                    0.12142857142857143,
+                    0.21428571428571427
                 ],
                 [
-                    0.2127659574468085,
-                    0.1702127659574468,
-                    0.1347517730496454,
+                    0.2,
+                    0.15714285714285714,
+                    0.12142857142857143,
                     0.0,
-                    0.1773049645390071
+                    0.16428571428571428
                 ],
                 [
-                    0.20567375886524822,
-                    0.1347517730496454,
-                    0.2127659574468085,
-                    0.1773049645390071,
+                    0.20714285714285716,
+                    0.1357142857142857,
+                    0.21428571428571427,
+                    0.16428571428571428,
                     0.0
                 ]
             ],
             "quadraticKappa": [
                 [
                     1.0,
-                    0.9257545104342765,
-                    0.9148193687322762,
-                    0.9064339870388411,
-                    0.9131587142313415
+                    0.9247737556561086,
+                    0.91366802089379,
+                    0.9097938144329897,
+                    0.9120553359683794
                 ],
                 [
-                    0.9257545104342766,
+                    0.9247737556561086,
                     1.0,
-                    0.9239412939157239,
-                    0.931381137112585,
-                    0.9469609405456423
+                    0.9229669858510791,
+                    0.9348671967518186,
+                    0.946320515323053
                 ],
                 [
-                    0.9148193687322762,
-                    0.9239412939157239,
+                    0.91366802089379,
+                    0.9229669858510791,
                     1.0,
-                    0.9627854223287466,
-                    0.9188790974405029
+                    0.9665798611111112,
+                    0.9178768152228343
                 ],
                 [
-                    0.9064339870388411,
-                    0.931381137112585,
-                    0.9627854223287466,
+                    0.9097938144329897,
+                    0.9348671967518186,
+                    0.9665798611111112,
                     1.0,
-                    0.9303587453304673
+                    0.9338467614533965
                 ],
                 [
-                    0.9131587142313415,
-                    0.9469609405456423,
-                    0.9188790974405029,
-                    0.9303587453304673,
+                    0.9120553359683794,
+                    0.946320515323053,
+                    0.9178768152228343,
+                    0.9338467614533965,
                     1.0
                 ]
             ]
@@ -497,111 +495,111 @@
             "exactAgreement": [
                 [
                     1.0,
-                    0.9361702127659575,
-                    0.9078014184397163,
-                    0.9290780141843972,
-                    0.9219858156028369
+                    0.9357142857142857,
+                    0.9071428571428571,
+                    0.9357142857142857,
+                    0.9214285714285714
                 ],
                 [
-                    0.9361702127659575,
+                    0.9357142857142857,
                     1.0,
-                    0.8936170212765957,
-                    0.9148936170212766,
-                    0.9290780141843972
+                    0.8928571428571429,
+                    0.9214285714285714,
+                    0.9285714285714286
                 ],
                 [
-                    0.9078014184397163,
-                    0.8936170212765957,
+                    0.9071428571428571,
+                    0.8928571428571429,
                     1.0,
-                    0.9078014184397163,
-                    0.9078014184397163
+                    0.9142857142857143,
+                    0.9071428571428571
                 ],
                 [
-                    0.9290780141843972,
-                    0.9148936170212766,
-                    0.9078014184397163,
+                    0.9357142857142857,
+                    0.9214285714285714,
+                    0.9142857142857143,
                     1.0,
-                    0.9219858156028369
+                    0.9285714285714286
                 ],
                 [
-                    0.9219858156028369,
-                    0.9290780141843972,
-                    0.9078014184397163,
-                    0.9219858156028369,
+                    0.9214285714285714,
+                    0.9285714285714286,
+                    0.9071428571428571,
+                    0.9285714285714286,
                     1.0
                 ]
             ],
             "meanAbsDiff": [
                 [
                     0.0,
-                    0.14184397163120568,
-                    0.14893617021276595,
-                    0.1773049645390071,
-                    0.2198581560283688
+                    0.14285714285714285,
+                    0.15,
+                    0.16428571428571428,
+                    0.22142857142857142
                 ],
                 [
-                    0.14184397163120568,
+                    0.14285714285714285,
                     0.0,
-                    0.14893617021276595,
-                    0.16312056737588654,
-                    0.14893617021276595
+                    0.15,
+                    0.15,
+                    0.15
                 ],
                 [
-                    0.14893617021276595,
-                    0.14893617021276595,
+                    0.15,
+                    0.15,
                     0.0,
-                    0.1276595744680851,
-                    0.15602836879432624
+                    0.11428571428571428,
+                    0.15714285714285714
                 ],
                 [
-                    0.1773049645390071,
-                    0.16312056737588654,
-                    0.1276595744680851,
+                    0.16428571428571428,
+                    0.15,
+                    0.11428571428571428,
                     0.0,
-                    0.1702127659574468
+                    0.15714285714285714
                 ],
                 [
-                    0.2198581560283688,
-                    0.14893617021276595,
-                    0.15602836879432624,
-                    0.1702127659574468,
+                    0.22142857142857142,
+                    0.15,
+                    0.15714285714285714,
+                    0.15714285714285714,
                     0.0
                 ]
             ],
             "quadraticKappa": [
                 [
                     1.0,
-                    0.9444131561162424,
-                    0.9542356377799416,
-                    0.9287082600428704,
-                    0.9050320448280411
+                    0.943658732896401,
+                    0.9535863735486533,
+                    0.9322489310065873,
+                    0.9038080126933756
                 ],
                 [
-                    0.9444131561162424,
+                    0.943658732896401,
                     1.0,
-                    0.9606846406280162,
-                    0.9472152569309553,
-                    0.9482912517903972
+                    0.9601587811213916,
+                    0.9508638225940463,
+                    0.9476594904206992
                 ],
                 [
-                    0.9542356377799416,
-                    0.9606846406280162,
+                    0.9535863735486533,
+                    0.9601587811213916,
                     1.0,
-                    0.9694262543909102,
-                    0.95019498134961
+                    0.9733149568200812,
+                    0.9495611822858873
                 ],
                 [
-                    0.9287082600428704,
-                    0.9472152569309553,
-                    0.9694262543909102,
+                    0.9322489310065873,
+                    0.9508638225940463,
+                    0.9733149568200812,
                     1.0,
-                    0.9369858804798682
+                    0.9405292893250075
                 ],
                 [
-                    0.9050320448280411,
-                    0.9482912517903972,
-                    0.95019498134961,
-                    0.9369858804798682,
+                    0.9038080126933756,
+                    0.9476594904206992,
+                    0.9495611822858873,
+                    0.9405292893250075,
                     1.0
                 ]
             ]
@@ -620,14 +618,11 @@
                 "judge": "x-ai/grok-4.3",
                 "label": "Grok 4.3",
                 "correctN": 50,
-                "subtleN": 50,
+                "subtleN": 49,
                 "unsupportedN": 50,
                 "unparsed": 0,
-                "subtleMissRate": 0.02,
-                "subtleMissRateAt5": 0.02,
-                "subtleNExcludingDisputed": 49,
-                "subtleMissRateExcludingDisputed": 0.0,
-                "subtleMissRateAt5ExcludingDisputed": 0.0,
+                "subtleMissRate": 0.0,
+                "subtleMissRateAt5": 0.0,
                 "subtleUnparsed": 0,
                 "subtleMissingCorrectness": 0,
                 "unsupportedMissRate": 0.0,
@@ -637,16 +632,16 @@
                     "integer": 0.0,
                     "decimal": 0.0,
                     "ordinal": 0.0,
-                    "entity_swap": 0.05555555555555555
+                    "entity_swap": 0.0
                 },
                 "meanFaithfulness": {
                     "correct": 4.72,
-                    "subtle_error": 1.24,
+                    "subtle_error": 1.163265306122449,
                     "unsupported": 1.0
                 },
                 "meanCorrectness": {
                     "correct": 4.72,
-                    "subtle_error": 1.08,
+                    "subtle_error": 1.0,
                     "unsupported": 1.0
                 }
             },
@@ -654,14 +649,11 @@
                 "judge": "openai/gpt-5.4-mini",
                 "label": "GPT-5.4 Mini",
                 "correctN": 50,
-                "subtleN": 50,
+                "subtleN": 49,
                 "unsupportedN": 50,
                 "unparsed": 0,
-                "subtleMissRate": 0.16,
-                "subtleMissRateAt5": 0.08,
-                "subtleNExcludingDisputed": 49,
-                "subtleMissRateExcludingDisputed": 0.14285714285714285,
-                "subtleMissRateAt5ExcludingDisputed": 0.061224489795918366,
+                "subtleMissRate": 0.14285714285714285,
+                "subtleMissRateAt5": 0.061224489795918366,
                 "subtleUnparsed": 0,
                 "subtleMissingCorrectness": 0,
                 "unsupportedMissRate": 0.0,
@@ -671,16 +663,16 @@
                     "integer": 0.2,
                     "decimal": 0.5,
                     "ordinal": 0.0,
-                    "entity_swap": 0.16666666666666666
+                    "entity_swap": 0.11764705882352941
                 },
                 "meanFaithfulness": {
                     "correct": 4.92,
-                    "subtle_error": 1.62,
+                    "subtle_error": 1.5510204081632653,
                     "unsupported": 1.0
                 },
                 "meanCorrectness": {
                     "correct": 4.9,
-                    "subtle_error": 1.62,
+                    "subtle_error": 1.5510204081632653,
                     "unsupported": 1.0
                 }
             },
@@ -688,14 +680,11 @@
                 "judge": "anthropic/claude-haiku-4.5",
                 "label": "Claude Haiku 4.5",
                 "correctN": 48,
-                "subtleN": 43,
+                "subtleN": 42,
                 "unsupportedN": 50,
                 "unparsed": 9,
-                "subtleMissRate": 0.06976744186046512,
-                "subtleMissRateAt5": 0.023255813953488372,
-                "subtleNExcludingDisputed": 42,
-                "subtleMissRateExcludingDisputed": 0.047619047619047616,
-                "subtleMissRateAt5ExcludingDisputed": 0.0,
+                "subtleMissRate": 0.047619047619047616,
+                "subtleMissRateAt5": 0.0,
                 "subtleUnparsed": 7,
                 "subtleMissingCorrectness": 7,
                 "unsupportedMissRate": 0.0,
@@ -705,16 +694,16 @@
                     "integer": 0.125,
                     "decimal": 0.0,
                     "ordinal": 0.0,
-                    "entity_swap": 0.0625
+                    "entity_swap": 0.0
                 },
                 "meanFaithfulness": {
                     "correct": 4.895833333333333,
-                    "subtle_error": 1.5116279069767442,
+                    "subtle_error": 1.4285714285714286,
                     "unsupported": 1.0
                 },
                 "meanCorrectness": {
                     "correct": 4.895833333333333,
-                    "subtle_error": 1.3255813953488371,
+                    "subtle_error": 1.2380952380952381,
                     "unsupported": 1.0
                 }
             },
@@ -722,14 +711,11 @@
                 "judge": "google/gemini-2.5-flash",
                 "label": "Gemini 2.5 Flash",
                 "correctN": 50,
-                "subtleN": 50,
+                "subtleN": 49,
                 "unsupportedN": 50,
                 "unparsed": 0,
-                "subtleMissRate": 0.14,
-                "subtleMissRateAt5": 0.02,
-                "subtleNExcludingDisputed": 49,
-                "subtleMissRateExcludingDisputed": 0.14285714285714285,
-                "subtleMissRateAt5ExcludingDisputed": 0.02040816326530612,
+                "subtleMissRate": 0.14285714285714285,
+                "subtleMissRateAt5": 0.02040816326530612,
                 "subtleUnparsed": 0,
                 "subtleMissingCorrectness": 0,
                 "unsupportedMissRate": 0.0,
@@ -743,12 +729,12 @@
                 },
                 "meanFaithfulness": {
                     "correct": 4.8,
-                    "subtle_error": 1.54,
+                    "subtle_error": 1.510204081632653,
                     "unsupported": 1.0
                 },
                 "meanCorrectness": {
                     "correct": 4.8,
-                    "subtle_error": 1.52,
+                    "subtle_error": 1.489795918367347,
                     "unsupported": 1.0
                 }
             },
@@ -756,14 +742,11 @@
                 "judge": "meta-llama/llama-3.3-70b-instruct",
                 "label": "Llama 3.3 70B",
                 "correctN": 50,
-                "subtleN": 50,
+                "subtleN": 49,
                 "unsupportedN": 50,
                 "unparsed": 0,
-                "subtleMissRate": 0.26,
-                "subtleMissRateAt5": 0.06,
-                "subtleNExcludingDisputed": 49,
-                "subtleMissRateExcludingDisputed": 0.24489795918367346,
-                "subtleMissRateAt5ExcludingDisputed": 0.04081632653061224,
+                "subtleMissRate": 0.24489795918367346,
+                "subtleMissRateAt5": 0.04081632653061224,
                 "subtleUnparsed": 0,
                 "subtleMissingCorrectness": 0,
                 "unsupportedMissRate": 0.0,
@@ -773,16 +756,16 @@
                     "integer": 0.6,
                     "decimal": 0.5,
                     "ordinal": 0.0,
-                    "entity_swap": 0.1111111111111111
+                    "entity_swap": 0.058823529411764705
                 },
                 "meanFaithfulness": {
                     "correct": 4.92,
-                    "subtle_error": 1.92,
+                    "subtle_error": 1.8571428571428572,
                     "unsupported": 1.0
                 },
                 "meanCorrectness": {
                     "correct": 4.9,
-                    "subtle_error": 1.92,
+                    "subtle_error": 1.8571428571428572,
                     "unsupported": 1.0
                 }
             }
@@ -791,7 +774,7 @@
         "disputed": [
             {
                 "itemId": "56dde3aa9a695914005b9661",
-                "reason": "Entity swap produced \"Monte Gargano\" for \"Whose shrine did the pilgrims go to in 1016?\" (gold: Archangel Michael). Monte Gargano is where that shrine is, so the planted answer is arguably acceptable rather than wrong."
+                "reason": "Entity swap produced \"Monte Gargano\" for \"Whose shrine did the pilgrims go to in 1016?\" (gold: Archangel Michael). Monte Gargano is where that shrine is, so the planted answer is acceptable rather than wrong."
             }
         ]
     },
@@ -799,7 +782,7 @@
         {
             "judge": "x-ai/grok-4.3",
             "label": "Grok 4.3",
-            "calls": 750,
+            "calls": 745,
             "unparsed": 1,
             "byReason": {
                 "unterminated_json": 1
@@ -815,7 +798,7 @@
         {
             "judge": "openai/gpt-5.4-mini",
             "label": "GPT-5.4 Mini",
-            "calls": 750,
+            "calls": 745,
             "unparsed": 0,
             "byReason": {},
             "byPrompt": {},
@@ -825,7 +808,7 @@
         {
             "judge": "anthropic/claude-haiku-4.5",
             "label": "Claude Haiku 4.5",
-            "calls": 750,
+            "calls": 745,
             "unparsed": 27,
             "byReason": {
                 "missing_correctness": 27
@@ -844,7 +827,7 @@
         {
             "judge": "google/gemini-2.5-flash",
             "label": "Gemini 2.5 Flash",
-            "calls": 750,
+            "calls": 745,
             "unparsed": 0,
             "byReason": {},
             "byPrompt": {},
@@ -854,7 +837,7 @@
         {
             "judge": "meta-llama/llama-3.3-70b-instruct",
             "label": "Llama 3.3 70B",
-            "calls": 750,
+            "calls": 745,
             "unparsed": 0,
             "byReason": {},
             "byPrompt": {},
