@@ -9,7 +9,7 @@ async function main() {
     root.textContent = "Could not load data/misses.json (" + error.message + "). Serve docs/ over HTTP.";
     return;
   }
-  const state = { judge: "", prompt: "", variant: "", only5: false, hideDisputed: false };
+  const state = { judge: "", prompt: "", variant: "", only5: false };
   const controls = document.querySelector("#controls");
   const values = (key) => [...new Set(payload.rows.map((r) => r[key]))].sort();
   controls.append(
@@ -17,7 +17,6 @@ async function main() {
     select("Prompt", values("prompt"), (v) => { state.prompt = v; draw(); }),
     select("Case", values("variant"), (v) => { state.variant = v; draw(); }),
     checkbox("Only perfect 5s", (v) => { state.only5 = v; draw(); }),
-    checkbox("Hide disputed", (v) => { state.hideDisputed = v; draw(); }),
   );
 
   function draw() {
@@ -25,13 +24,12 @@ async function main() {
     if (payload.simulated) {
       root.append(el("p", "banner", "These rows come from the dry-run simulator, not from the named models."));
     }
-    (payload.disputed || []).forEach((d) => root.append(el("p", "note", "Disputed item " + d.itemId + ": " + d.reason)));
+    (payload.disputed || []).forEach((d) => root.append(el("p", "note", "Excluded from the analysis (not actually wrong): item " + d.itemId + ". " + d.reason)));
     const rows = payload.rows.filter((r) =>
       (!state.judge || r.label === state.judge) &&
       (!state.prompt || r.prompt === state.prompt) &&
       (!state.variant || r.variant === state.variant) &&
-      (!state.only5 || r.missedAt5) &&
-      (!state.hideDisputed || !r.disputed));
+      (!state.only5 || r.missedAt5));
     root.append(el("p", "note", rows.length + " of " + payload.rows.length + " rows. " + payload.definition));
     root.append(summary(rows));
     const table = document.createElement("table");
@@ -44,11 +42,10 @@ async function main() {
         ? r.shownAnswer + " (passage from " + (r.donorTitle || "").replaceAll("_", " ") + ")"
         : r.shownAnswer + " (" + r.subtleKind + ")";
       const row = tr("td", [
-        r.title.replaceAll("_", " ") + (r.disputed ? " · disputed" : ""),
+        r.title.replaceAll("_", " "),
         r.question, r.goldAnswer, shown, r.label, r.prompt, String(r.repeat),
         r.faithfulness + " / " + r.correctness, r.rationale || "",
       ]);
-      if (r.disputed) row.className = "disputed";
       if (r.missedAt5) row.children[7].className = "five";
       body.append(row);
     });

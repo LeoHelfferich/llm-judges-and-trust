@@ -110,7 +110,7 @@ LICENSE                     MIT, code only
 config/experiment.json      judges, prices, repeats, cap
 data/items.json             50 items and their variants
 data/DATASOURCE.md          SQuAD citation and CC BY-SA 4.0
-data/disputed.json          planted cases that are arguably not wrong, reported with and without
+data/disputed.json          planted variants excluded because they are not actually wrong
 results/dry-run/            manifest, responses.jsonl, metrics, scores (simulator)
 results/runs/20261026T143236/  the paid run: same files, plus RESUME.md
 docs/                       static pages
@@ -165,7 +165,7 @@ Trial order is fixed: items in file order, then `correct` / `subtle_error` / `un
 - OpenRouter prices and the euro move. Refresh before a paid run. The cap is enforced in EUR using the pinned FX rate, while the API bills USD.
 - Parse failures are excluded from rates and counted separately, with a reason (`parse_failure` in `scores.csv`, `parseFailures` in `metrics.json`). A model that does not return JSON is a failure of compliance, not a miss.
 - The subtle-error miss rate is reported at two cutoffs: correctness ≥ 4 (the headline, `missThreshold`) and correctness = 5 only. A 4 means "minor error" in the rubric, so ≥ 4 counts a judge that noticed something but still passed the answer.
-- One planted case is listed in `data/disputed.json`: the entity swap turned "Archangel Michael" into "Monte Gargano", the place of his shrine, which is arguably an acceptable answer to "Whose shrine…?". It stays in the data. Every subtle rate is also reported without it.
+- One generated variant was excluded from the analysis because it was not actually wrong (`data/disputed.json`): the entity swap turned "Archangel Michael" into "Monte Gargano", the place of his shrine.
 - The dry-run charts are simulated. The published pages are not: they come from the paid run.
 - Claude Haiku 4.5 sometimes returned only `faithfulness` and left out `correctness` under the strict rubric (27 of its 450 strict calls, 9 of them in the first repeat). This happened mostly on answers it had already marked as weakly supported (faithfulness 2). Those rows count as parse failures, so its subtle-error miss rate is over 43 parsed items, not 50.
 - The paid run was resumed twice into the same directory after HTTP calls hung. Error rows were dropped so they would be retried. No completed trial was requested twice. See `results/runs/20261026T143236/RESUME.md`.

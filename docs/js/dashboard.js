@@ -263,10 +263,8 @@ function disputedNote(metrics) {
   const box = el("div", "note");
   if (!disputed.length) return box;
   box.append(el("p", null,
-    "Disputed: " + disputed.length + " planted case" + (disputed.length > 1 ? "s are" : " is") + " arguably not wrong. " +
-    disputed.map((d) => d.reason).join(" ") +
-    " Mean subtle miss with it: " + pct(h.meanSubtleMissRate) + " (≥ " + metrics.plantedErrors.missThreshold + "), " + pct(h.meanSubtleMissRateAt5) + " (= 5). " +
-    "Without it: " + pct(h.meanSubtleMissRateExcludingDisputed) + " (≥ " + metrics.plantedErrors.missThreshold + "), " + pct(h.meanSubtleMissRateAt5ExcludingDisputed) + " (= 5)."));
+    "Excluded: " + disputed.length + " planted variant" + (disputed.length > 1 ? "s were" : " was") + " left out of every metric because " + (disputed.length > 1 ? "they are" : "it is") + " not actually wrong. " +
+    disputed.map((d) => d.reason).join(" ")));
   return box;
 }
 
@@ -289,7 +287,7 @@ function parseNote(metrics) {
 
 function plantedTable(metrics) {
   const table = document.createElement("table");
-  table.append(row("thead", ["Judge", "n", "Subtle miss ≥ " + metrics.plantedErrors.missThreshold, "Subtle miss = 5", "Without disputed (≥ " + metrics.plantedErrors.missThreshold + " / = 5)", "Unparsed subtle", "Unsupported miss", "False reject", "Entity-swap miss", "Numeric miss"]));
+  table.append(row("thead", ["Judge", "n", "Subtle miss ≥ " + metrics.plantedErrors.missThreshold, "Subtle miss = 5", "Unparsed subtle", "Unsupported miss", "False reject", "Entity-swap miss", "Numeric miss"]));
   const body = document.createElement("tbody");
   metrics.plantedErrors.judges.forEach((judge) => {
     const kinds = judge.subtleMissRateByKind || {};
@@ -300,7 +298,6 @@ function plantedTable(metrics) {
       String(judge.subtleN),
       pct(judge.subtleMissRate),
       pct(judge.subtleMissRateAt5),
-      pct(judge.subtleMissRateExcludingDisputed) + " / " + pct(judge.subtleMissRateAt5ExcludingDisputed),
       judge.subtleUnparsed ? judge.subtleUnparsed + (judge.subtleMissingCorrectness ? " (no correctness)" : "") : "0",
       pct(judge.unsupportedMissRate),
       pct(judge.correctFalseRejectRate),
