@@ -15,47 +15,47 @@ import kotlin.io.path.readText
 
 class HashingTest {
     @Test
-    fun fnv1aMatchesTheKnownVector() {
+    fun `should match the known FNV-1a vector`() {
         assertEquals(1_335_831_723, Hashing.fnv1a("hello"))
     }
 }
 
 class VariantRulesTest {
     @Test
-    fun yearMovesByOneWhenTheNeighbourIsAbsent() {
+    fun `should move a year by one when the neighbour is absent`() {
         val (text, kind) = VariantRules.numericVariant("1884", "Nikola Tesla emigrated in 1884.")!!
         assertEquals("1885", text)
         assertEquals("year", kind)
     }
 
     @Test
-    fun yearSkipsANumberThatAlreadyAppears() {
+    fun `should skip a year that already appears in the passage`() {
         val (text, _) = VariantRules.numericVariant("1884", "In 1884 and again in 1885 he moved.")!!
         assertEquals("1883", text)
     }
 
     @Test
-    fun decadeStepsByTen() {
+    fun `should step a decade by ten`() {
         val (text, kind) = VariantRules.numericVariant("the 1960s", "It was discovered in the 1960s.")!!
         assertEquals("the 1970s", text)
         assertEquals("decade", kind)
     }
 
     @Test
-    fun ordinalKeepsARealSuffix() {
+    fun `should keep a real ordinal suffix`() {
         val (text, kind) = VariantRules.numericVariant("17th century", "Overcome in the 17th century.")!!
         assertEquals("18th century", text)
         assertEquals("ordinal", kind)
     }
 
     @Test
-    fun duplicatedOrdinalIsRejected() {
+    fun `should reject an ordinal edit that would duplicate a number`() {
         val (text, _) = VariantRules.numericVariant("10th and 11th centuries", "During the 10th and 11th centuries.")!!
         assertEquals("9th and 11th centuries", text)
     }
 
     @Test
-    fun decimalAndParenthetical() {
+    fun `should edit a decimal and leave a parenthetical number alone`() {
         assertEquals("20.9%", VariantRules.numericVariant("20.8%", "Oxygen is 20.8% of air.")!!.first)
         assertEquals(
             "1.6 m (4 ft 11 in)",
@@ -64,24 +64,24 @@ class VariantRulesTest {
     }
 
     @Test
-    fun commaNumberIncrements() {
+    fun `should increment a comma-formatted integer`() {
         assertEquals("1,345,597", VariantRules.numericVariant("1,345,596", "The population was 1,345,596.")!!.first)
     }
 
     @Test
-    fun verseReferencesAreNotPerturbed() {
+    fun `should leave verse references alone`() {
         assertNull(VariantRules.numericVariant("(Exodus 1: 15-19)", "See (Exodus 1: 15-19) for the story."))
     }
 
     @Test
-    fun entitySwapPicksAnotherNameAndSkipsGenericPhrases() {
+    fun `should swap a proper name and skip a generic phrase`() {
         val context = "Tesla worked for Thomas Edison before licensing patents to George Westinghouse in the United States."
         assertEquals("George Westinghouse", VariantRules.entityVariant("Thomas Edison", context))
         assertNull(VariantRules.entityVariant("Thomas Edison", "Thomas Edison and the United States patent office."))
     }
 
     @Test
-    fun donorSkipsPassagesThatContainTheAnswer() {
+    fun `should pick an unsupported donor that does not contain the answer`() {
         val dump = squad(
             article("Tesla", "Nikola Tesla emigrated in 1884 and worked in the city.", "1884"),
             article("Ships", "The harbour ledger listed 1884 vessels and repeated 1884 in the margin.", "1884"),
@@ -120,7 +120,7 @@ class VariantRulesTest {
 
 class ScoreParserTest {
     @Test
-    fun parsesBareJson() {
+    fun `should parse bare JSON scores`() {
         val parsed = ScoreParser.parse("""{"faithfulness": 4, "correctness": 2, "rationale": "The year is wrong."}""")
         assertEquals(4, parsed.faithfulness)
         assertEquals(2, parsed.correctness)
@@ -128,7 +128,7 @@ class ScoreParserTest {
     }
 
     @Test
-    fun parsesFencedJsonAndStringScores() {
+    fun `should parse fenced JSON and string scores`() {
         val parsed = ScoreParser.parse(
             """
             Sure.
@@ -142,14 +142,14 @@ class ScoreParserTest {
     }
 
     @Test
-    fun rejectsOutOfRangeAndMissingFields() {
+    fun `should reject out-of-range and missing scores`() {
         assertFalse(ScoreParser.parse("""{"faithfulness": 6, "correctness": 2}""").parsed)
         assertFalse(ScoreParser.parse("""{"correctness": 2}""").parsed)
         assertFalse(ScoreParser.parse("no json here").parsed)
     }
 
     @Test
-    fun namesWhyAReplyFailed() {
+    fun `should name why a reply failed`() {
         val claude = ScoreParser.parse("""{"faithfulness": 2, "rationale": "The context says 220, not 221."}""")
         assertFalse(claude.parsed)
         assertEquals(ParseFailure.MISSING_CORRECTNESS, claude.failure)
@@ -162,7 +162,7 @@ class ScoreParserTest {
     }
 
     @Test
-    fun ignoresBracesInsideTheRationaleString() {
+    fun `should ignore braces inside the rationale string`() {
         val parsed = ScoreParser.parse("""{"faithfulness": 3, "correctness": 3, "rationale": "He said {not this} was it."}""")
         assertEquals(3, parsed.faithfulness)
     }
@@ -170,13 +170,13 @@ class ScoreParserTest {
 
 class AgreementTest {
     @Test
-    fun identicalRatingsHaveKappaOne() {
+    fun `should give kappa 1 for identical ratings`() {
         val scores = intArrayOf(1, 2, 3, 4, 5)
         assertEquals(1.0, Agreement.quadraticWeightedKappa(scores, scores), 1e-9)
     }
 
     @Test
-    fun handComputedTwoCategoryCase() {
+    fun `should match the hand-computed two-category kappa`() {
         val kappa = Agreement.quadraticWeightedKappa(intArrayOf(1, 1, 2, 2), intArrayOf(1, 2, 2, 2), min = 1, max = 2)
         assertEquals(0.5, kappa, 1e-9)
     }
@@ -184,7 +184,7 @@ class AgreementTest {
 
 class OpenRouterContractTest {
     @Test
-    fun requestOmitsTemperatureWhenUnsupportedAndDisablesReasoningWhenSupported() {
+    fun `should omit temperature when unsupported and disable reasoning when supported`() {
         val grok = judge("x-ai/grok-4.3", temperature = true, reasoning = true)
         val plain = judge("example/plain", temperature = true, reasoning = false)
         val mini = judge("openai/gpt-5.4-mini", temperature = false, reasoning = true)
@@ -217,7 +217,7 @@ class OpenRouterContractTest {
     }
 
     @Test
-    fun parsesUsageCostAndListContent() {
+    fun `should parse usage cost and list content`() {
         val raw = parseCompletion(
             """
             {"choices":[{"message":{"content":[{"type":"text","text":"{\"faithfulness\":5,\"correctness\":4,\"rationale\":\"ok\"}"}]}}],
@@ -231,7 +231,7 @@ class OpenRouterContractTest {
     }
 
     @Test
-    fun reconcileTakesTheHigherPriceAndLiveParameterSupport() {
+    fun `should take the higher price and the live parameter support`() {
         val pinned = listOf(judge("x-ai/grok-4.3", temperature = true, reasoning = true, prompt = 1.0, completion = 2.0))
         val catalog = """
             {"data":[{"id":"x-ai/grok-4.3","pricing":{"prompt":"0.00000125","completion":"0.000002"},"supported_parameters":["temperature","max_tokens"]}]}
@@ -254,13 +254,13 @@ class OpenRouterContractTest {
 
 class CostAndBudgetTest {
     @Test
-    fun tokenEstimateIsCeilOfCharsOverFour() {
+    fun `should estimate tokens as ceil of characters over four`() {
         assertEquals(1, CostModel.estimateTokens("abcd"))
         assertEquals(2, CostModel.estimateTokens("abcde"))
     }
 
     @Test
-    fun guardStopsWhenTheNextChargeWouldCrossTheCap() {
+    fun `should stop the guard when the next charge would cross the cap`() {
         val guard = BudgetGuard(0.05)
         assertTrue(guard.canAfford(0.05))
         guard.commit(0.04)
@@ -269,7 +269,7 @@ class CostAndBudgetTest {
     }
 
     @Test
-    fun runnerRefusesBeforeAnyCallWhenTheMarginExceedsTheCap(@TempDir dir: Path) {
+    fun `should refuse the run before any call when the margin exceeds the cap`(@TempDir dir: Path) {
         val config = sampleConfig(capEur = 0.0000001)
         val calls = mutableListOf<String>()
         val judge = countingJudge(calls)
@@ -283,7 +283,7 @@ class CostAndBudgetTest {
     }
 
     @Test
-    fun runnerStopsOnceActualSpendCannotFitAnotherCeiling(@TempDir dir: Path) {
+    fun `should stop once actual spend cannot fit another ceiling`(@TempDir dir: Path) {
         val loose = sampleConfig(capEur = 1_000.0, completionUsdPerMillion = 1_000.0, maxTokens = 5_000, expectedTokens = 10)
         val ceiling = Planner.plan(loose, dataset().items).first().call.ceilingUsd()
         val config = loose.copy(capEur = ceiling * 1.2)
@@ -303,7 +303,7 @@ class CostAndBudgetTest {
 
 class PipelineTest {
     @Test
-    fun dryRunIsCachedAndAnalyzedWithoutAKey(@TempDir dir: Path) {
+    fun `should cache a dry run and analyze it without a key`(@TempDir dir: Path) {
         val config = sampleConfig(capEur = 100.0)
         val calls = mutableListOf<Int>()
         val judge = JudgeClient { request ->
@@ -330,7 +330,7 @@ class PipelineTest {
     }
 
     @Test
-    fun cliDryRunDoesNotNeedAKey(@TempDir dir: Path) {
+    fun `should run the dry-run CLI without a key`(@TempDir dir: Path) {
         val configPath = dir.resolve("experiment.json")
         val dataPath = dir.resolve("items.json")
         val config = sampleConfig(capEur = 100.0).copy(dataset = dataPath.toString())
@@ -346,7 +346,7 @@ class PipelineTest {
     }
 
     @Test
-    fun paidRunRefusesWithoutAKey(@TempDir dir: Path) {
+    fun `should refuse a paid run without a key`(@TempDir dir: Path) {
         val configPath = dir.resolve("experiment.json")
         val dataPath = dir.resolve("items.json")
         Files.writeString(configPath, Jsons.pretty.encodeToString(ExperimentConfig.serializer(), sampleConfig(100.0).copy(dataset = dataPath.toString())))
@@ -362,7 +362,7 @@ class PipelineTest {
 
 class CheckedInExperimentTest {
     @Test
-    fun datasetInvariantsAndLicense() {
+    fun `should keep the checked-in dataset invariants and license`() {
         val file = Jsons.pretty.decodeFromString(DatasetFile.serializer(), Path.of("data/items.json").readText())
         assertEquals("CC BY-SA 4.0", file.dataset.license)
         assertEquals(50, file.items.size)
@@ -392,7 +392,7 @@ class CheckedInExperimentTest {
     }
 
     @Test
-    fun publishedDataMatchesTheCachedResponses() {
+    fun `should match the published metrics to the cached responses`() {
         val published = Jsons.pretty.decodeFromString(Metrics.serializer(), Path.of("docs/data/metrics.json").readText())
         // docs/data is either the simulator output or a paid run under results/runs/<startedAt stamp>.
         val runDir = if (published.meta.simulated) {
@@ -421,7 +421,7 @@ class CheckedInExperimentTest {
     }
 
     @Test
-    fun fullRunStaysUnderTheTenEuroCap() {
+    fun `should keep the full run under the ten euro cap`() {
         val config = Jsons.pretty.decodeFromString(ExperimentConfig.serializer(), Path.of("config/experiment.json").readText())
         config.validate()
         val items = Jsons.pretty.decodeFromString(DatasetFile.serializer(), Path.of("data/items.json").readText()).items
@@ -533,7 +533,7 @@ class MissCutoffTest {
     )
 
     @Test
-    fun cutoffsDisputedAndUnparsedRows() {
+    fun `should apply the cutoffs, disputed items, and unparsed rows`() {
         val rows = listOf(
             row("a", "subtle_error", 2, 3),
             row("b", "subtle_error", 4, 4),
@@ -554,7 +554,7 @@ class MissCutoffTest {
     }
 
     @Test
-    fun missFileListsOnlyPlantedCasesAtTheThreshold() {
+    fun `should list only planted cases that meet the miss threshold`() {
         val item = EvalItem(
             id = "a", title = "A", question = "Q?", goldAnswer = "1712", subtleKind = "year", unsupportedDonorTitle = "B",
             variants = listOf(
