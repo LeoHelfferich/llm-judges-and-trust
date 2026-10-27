@@ -28,7 +28,7 @@ object Report {
     fun missesToCsv(rows: List<MissRow>): String {
         val header = listOf(
             "item_id", "title", "question", "gold_answer", "variant", "subtle_kind", "shown_answer", "donor_title",
-            "disputed", "judge", "label", "prompt", "repeat", "faithfulness", "correctness",
+            "judge", "label", "prompt", "repeat", "faithfulness", "correctness",
             "missed_at_4", "missed_at_5", "rationale",
         )
         return buildString {
@@ -37,7 +37,7 @@ object Report {
                 appendLine(
                     listOf(
                         row.itemId, row.title, row.question, row.goldAnswer, row.variant, row.subtleKind,
-                        row.shownAnswer, row.donorTitle ?: "", row.disputed.toString(), row.judge, row.label,
+                        row.shownAnswer, row.donorTitle ?: "", row.judge, row.label,
                         row.prompt, row.repeat.toString(), row.faithfulness.toString(), row.correctness.toString(),
                         row.missedAt4.toString(), row.missedAt5.toString(), row.rationale ?: "",
                     ).joinToString(",") { csv(it) },

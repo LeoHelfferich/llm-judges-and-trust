@@ -127,9 +127,7 @@ object Cli {
         println("Mean self-disagreement (faithfulness): ${pct(h.meanFaithfulnessSelfDisagreement)}")
         println("Mean pairwise kappa (faithfulness): ${num(h.meanPairwiseFaithfulnessKappa)}")
         println("Mean subtle-error miss rate: ${pct(h.meanSubtleMissRate)} (correctness >= ${manifest.missThreshold}), ${pct(h.meanSubtleMissRateAt5)} (== 5)")
-        if (disputed.isNotEmpty()) {
-            println("  without ${disputed.size} disputed item(s): ${pct(h.meanSubtleMissRateExcludingDisputed)} (>= ${manifest.missThreshold}), ${pct(h.meanSubtleMissRateAt5ExcludingDisputed)} (== 5)")
-        }
+        if (disputed.isNotEmpty()) println("Excluded ${disputed.size} planted variant(s) listed in $disputedPath")
         println("Missed planted cases (all prompts and repeats): ${analysis.misses.rows.size}")
         println("Mean unsupported miss rate: ${pct(h.meanUnsupportedMissRate)}")
         if (docs != null) println("Wrote charts data to $docs")

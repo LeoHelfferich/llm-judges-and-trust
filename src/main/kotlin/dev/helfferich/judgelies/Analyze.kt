@@ -101,9 +101,6 @@ data class PlantedJudge(
     val subtleMissRate: Double?,
     /** Same subtle slice, but only a perfect correctness of 5 counts as a miss. */
     val subtleMissRateAt5: Double? = null,
-    val subtleNExcludingDisputed: Int = 0,
-    val subtleMissRateExcludingDisputed: Double? = null,
-    val subtleMissRateAt5ExcludingDisputed: Double? = null,
     /** Subtle-error rows in this slice that did not parse (not counted in any subtle rate). */
     val subtleUnparsed: Int = 0,
     /** Of those, rows that gave a faithfulness score but no correctness. */
@@ -135,8 +132,6 @@ data class Headlines(
     val meanPairwiseFaithfulnessKappa: Double?,
     val meanSubtleMissRate: Double?,
     val meanSubtleMissRateAt5: Double? = null,
-    val meanSubtleMissRateExcludingDisputed: Double? = null,
-    val meanSubtleMissRateAt5ExcludingDisputed: Double? = null,
     val meanUnsupportedMissRate: Double?,
     val meanCorrectFalseRejectRate: Double?,
 )
@@ -211,7 +206,6 @@ data class MissRow(
     val subtleKind: String,
     val shownAnswer: String,
     val donorTitle: String?,
-    val disputed: Boolean,
     val judge: String,
     val label: String,
     val prompt: String,
@@ -308,7 +302,9 @@ object Analyzer {
         analyzedAt: String,
         disputed: List<DisputedItem> = emptyList(),
     ): Analysis {
-        val rows = scoreRows(items, manifest, cached)
+        // Excluded planted variants (data/disputed.json) are not actually wrong, so they are dropped before any metric.
+        val excluded = disputed.map { it.itemId }.toSet()
+        val rows = scoreRows(items, manifest, cached).filterNot { it.itemId in excluded && it.variant == "subtle_error" }
         val judges = manifest.judges
         val primary = manifest.primaryPrompt
         val consistency = selfConsistency(rows, judges, primary)
@@ -320,8 +316,6 @@ object Analyzer {
             meanPairwiseFaithfulnessKappa = meanOffDiagonal(inter.faithfulness.quadraticKappa),
             meanSubtleMissRate = meanOrNull(planted.judges.mapNotNull { it.subtleMissRate }),
             meanSubtleMissRateAt5 = meanOrNull(planted.judges.mapNotNull { it.subtleMissRateAt5 }),
-            meanSubtleMissRateExcludingDisputed = meanOrNull(planted.judges.mapNotNull { it.subtleMissRateExcludingDisputed }),
-            meanSubtleMissRateAt5ExcludingDisputed = meanOrNull(planted.judges.mapNotNull { it.subtleMissRateAt5ExcludingDisputed }),
             meanUnsupportedMissRate = meanOrNull(planted.judges.mapNotNull { it.unsupportedMissRate }),
             meanCorrectFalseRejectRate = meanOrNull(planted.judges.mapNotNull { it.correctFalseRejectRate }),
         )
@@ -433,7 +427,6 @@ object Analyzer {
         rejectAt: Int,
         disputed: List<DisputedItem> = emptyList(),
     ): PlantedErrors {
-        val disputedIds = disputed.map { it.itemId }.toSet()
         val slice = rows.filter { it.prompt == prompt && it.repeat == 0 }
         val perJudge = judges.map { judge ->
             val mine = slice.filter { it.judge == judge.id }
@@ -444,7 +437,6 @@ object Analyzer {
             val byKind = subtle.groupBy { it.subtleKind }.mapValues { (_, group) ->
                 subtleMissRate(group, missAt)!!
             }
-            val undisputed = subtle.filter { it.itemId !in disputedIds }
             val subtleFailed = mine.filter { it.variant == "subtle_error" && !it.parsed }
             PlantedJudge(
                 judge = judge.id,
@@ -455,9 +447,6 @@ object Analyzer {
                 unparsed = mine.count { !it.parsed },
                 subtleMissRate = subtleMissRate(subtle, missAt),
                 subtleMissRateAt5 = subtleMissRate(subtle, 5),
-                subtleNExcludingDisputed = undisputed.size,
-                subtleMissRateExcludingDisputed = subtleMissRate(undisputed, missAt),
-                subtleMissRateAt5ExcludingDisputed = subtleMissRate(undisputed, 5),
                 subtleUnparsed = subtleFailed.size,
                 subtleMissingCorrectness = subtleFailed.count { it.parseFailure == ParseFailure.MISSING_CORRECTNESS.wire },
                 unsupportedMissRate = if (unsupported.isEmpty()) null else rate(
@@ -524,7 +513,6 @@ object Analyzer {
         disputed: List<DisputedItem> = emptyList(),
     ): MissFile {
         val byId = items.associateBy { it.id }
-        val disputedIds = disputed.map { it.itemId }.toSet()
         val missed = rows.filter { row ->
             row.parsed && when (row.variant) {
                 "subtle_error" -> row.correctness!! >= missAt
@@ -544,7 +532,6 @@ object Analyzer {
                 subtleKind = if (subtle) item.subtleKind else "",
                 shownAnswer = if (subtle) item.variant(VariantKind.SUBTLE_ERROR).answer else item.variant(VariantKind.UNSUPPORTED).answer,
                 donorTitle = if (subtle) null else item.unsupportedDonorTitle,
-                disputed = row.itemId in disputedIds,
                 judge = row.judge,
                 label = row.label,
                 prompt = row.prompt,

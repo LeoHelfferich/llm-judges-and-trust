@@ -410,7 +410,8 @@ class CheckedInExperimentTest {
         val cache = ResponseCache(runDir.resolve("responses.jsonl")).also { it.load() }
         val disputed = Jsons.pretty.decodeFromString(DisputedFile.serializer(), Path.of("data/disputed.json").readText()).items
         val fresh = Analyzer.analyze(items, manifest, cache.rows(), "2026-01-01T00:00:00Z", disputed)
-        assertEquals(50 * 3 * 5 * 5, published.meta.nTrialsCompleted)
+        // The one excluded subtle variant (data/disputed.json) drops 5 prompt-repeats x 5 judges.
+        assertEquals(50 * 3 * 5 * 5 - disputed.size * 5 * 5, published.meta.nTrialsCompleted)
         assertEquals(fresh.misses.rows.size, Path.of("docs/data/misses.csv").readText().lines().count { it.isNotBlank() } - 1)
         assertEquals(fresh.metrics.headlines, published.headlines)
         assertEquals(
@@ -547,9 +548,6 @@ class MissCutoffTest {
         assertEquals(4, j.subtleN)
         assertEquals(3.0 / 4, j.subtleMissRate)
         assertEquals(2.0 / 4, j.subtleMissRateAt5)
-        assertEquals(3, j.subtleNExcludingDisputed)
-        assertEquals(2.0 / 3, j.subtleMissRateExcludingDisputed)
-        assertEquals(1.0 / 3, j.subtleMissRateAt5ExcludingDisputed)
         assertEquals(1, j.subtleUnparsed)
         assertEquals(1, j.subtleMissingCorrectness)
         assertNull(Analyzer.subtleMissRate(rows.filter { !it.parsed }, 4))
@@ -577,7 +575,6 @@ class MissCutoffTest {
         assertEquals("1713", subtle.shownAnswer)
         assertTrue(subtle.missedAt4)
         assertFalse(subtle.missedAt5)
-        assertTrue(subtle.disputed)
         assertTrue(misses.rows.single { it.variant == "unsupported" }.missedAt5)
     }
 }
