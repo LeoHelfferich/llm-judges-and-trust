@@ -138,18 +138,23 @@ curl -fsSL -o /tmp/dev-v1.1.json https://rajpurkar.github.io/SQuAD-explorer/data
 
 ## Layout
 
-Kotlin, Gradle Kotlin DSL, JUnit 5. No HTTP library beyond `java.net.http`. JSON is kotlinx.serialization.
+Kotlin, Gradle Kotlin DSL, JUnit 5. No HTTP library beyond `java.net.http`. JSON is kotlinx.serialization. Packages live under `dev.helfferich.judgelies`.
 
 | Piece | Where |
 | --- | --- |
-| CLI (`prepare`, `estimate`, `run`, `analyze`) | `Cli.kt` |
-| Variant generator | `VariantRules.kt` |
-| Rubrics | `Prompts.kt` |
-| Cost, cap, in-run guard | `Cost.kt` |
-| OpenRouter request, response, price reconcile | `OpenRouter.kt` |
-| Fake judge and HTTP judge | `Judges.kt` |
-| Trial order and cache | `Planner.kt`, `Runner.kt`, `Cache.kt` |
-| Metrics | `Analyze.kt` |
+| CLI (`prepare`, `estimate`, `run`, `analyze`) | `cli/Cli.kt` |
+| Checked-in questions, SQuAD dump, disputed items | `dataset/Dataset.kt` |
+| Variant generator | `dataset/VariantRules.kt` |
+| Judges, prices, cap | `config/ExperimentConfig.kt` |
+| Rubrics | `prompt/Prompts.kt` |
+| Score parsing and Cohen's κ | `scoring/` |
+| Cost estimate and in-run guard | `cost/CostModel.kt` |
+| OpenRouter request, response, price reconcile | `openrouter/OpenRouterApi.kt` |
+| Judge port, dry-run stand-in, HTTP judge | `judging/` |
+| Trial order | `planning/Planner.kt` |
+| Run loop and response cache | `run/` |
+| Metrics and the miss list | `analysis/` |
+| JSON and CSV for the pages | `report/Report.kt` |
 
 Trial order is fixed: items in file order, then `correct` / `subtle_error` / `unsupported`, then judges in config order, then prompts in `promptOrder`, then repeats `0..n-1`.
 

@@ -1,11 +1,29 @@
-package dev.helfferich.judgelies
+package dev.helfferich.judgelies.run
 
-import kotlinx.serialization.Serializable
 import java.nio.file.Files
 import java.nio.file.Path
 import java.time.Instant
+
 import kotlin.io.path.deleteIfExists
-import kotlin.io.path.exists
+import kotlinx.serialization.Serializable
+
+import dev.helfferich.judgelies.config.ExperimentConfig
+import dev.helfferich.judgelies.config.JudgeModel
+import dev.helfferich.judgelies.cost.BudgetGuard
+import dev.helfferich.judgelies.cost.BudgetRefused
+import dev.helfferich.judgelies.cost.CostEstimate
+import dev.helfferich.judgelies.cost.CostModel
+import dev.helfferich.judgelies.cost.formatEur
+import dev.helfferich.judgelies.dataset.DatasetFile
+import dev.helfferich.judgelies.dataset.VariantKind
+import dev.helfferich.judgelies.dataset.wire
+import dev.helfferich.judgelies.judging.JudgeClient
+import dev.helfferich.judgelies.judging.JudgeRequest
+import dev.helfferich.judgelies.openrouter.OpenRouterException
+import dev.helfferich.judgelies.planning.PlannedTrial
+import dev.helfferich.judgelies.planning.Planner
+import dev.helfferich.judgelies.prompt.Prompts
+import dev.helfferich.judgelies.support.Jsons
 
 @Serializable
 data class PromptDump(val system: String)
@@ -53,6 +71,10 @@ data class RunResult(
     val outputDir: Path,
 )
 
+/**
+ * Walks the plan once and appends every raw reply to the cache.
+ * A later run with the same cache skips calls that are already stored, and those skips cost nothing.
+ */
 class ExperimentRunner(
     private val clock: () -> Instant = Instant::now,
 ) {
@@ -104,6 +126,7 @@ class ExperimentRunner(
                 completed++
                 continue
             }
+            // Stop before sending. The only overshoot left is the single call already in flight.
             if (!budget.canAfford(trial.call.ceilingUsd())) {
                 stoppedEarly = true
                 stopReason = "Next call's max_tokens ceiling would exceed the ${config.capEur} EUR cap."

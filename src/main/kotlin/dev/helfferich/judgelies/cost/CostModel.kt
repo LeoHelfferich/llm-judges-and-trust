@@ -1,8 +1,12 @@
-package dev.helfferich.judgelies
+package dev.helfferich.judgelies.cost
 
-import kotlinx.serialization.Serializable
 import java.util.Locale
+
 import kotlin.math.ceil
+import kotlinx.serialization.Serializable
+
+import dev.helfferich.judgelies.config.ExperimentConfig
+import dev.helfferich.judgelies.config.JudgeModel
 
 @Serializable
 data class ModelCost(
@@ -49,9 +53,14 @@ data class PricedCall(
         inputTokens * model.promptUsdPerToken() + maxOutputTokens * model.completionUsdPerToken()
 }
 
+/**
+ * Pre-run estimate and the figures printed next to it.
+ * The gate is expected cost times the safety margin. The max-token ceiling is what stops a run between calls.
+ */
 object CostModel {
     const val STRESS_EXTRA_OUTPUT_TOKENS = 1000
 
+    /** Character count over four, rounded up. The safety margin exists because this is a rough count. */
     fun estimateTokens(text: String): Int = kotlin.math.max(1, (text.length + 3) / 4)
 
     fun estimate(config: ExperimentConfig, calls: List<PricedCall>): CostEstimate {
@@ -68,6 +77,7 @@ object CostModel {
         }
         val totalUsd = perModel.sumOf { it.usd }
         val ceilingUsd = calls.sumOf { it.ceilingUsd() }
+        // Not the gate. This is the bill if reasoning.effort=none is ignored and each reasoning call grows by 1000 output tokens.
         val stressUsd = calls.sumOf { call ->
             val extra = if (call.model.supportsReasoning) STRESS_EXTRA_OUTPUT_TOKENS else 0
             call.ceilingUsd() + extra * call.model.completionUsdPerToken()
@@ -92,6 +102,7 @@ object CostModel {
             capEur = config.capEur,
             safetyMargin = margin,
             eurPerUsd = rate,
+            // Enforced line. Ceiling and stress are printed so a reader can see them; they do not block the start.
             allowed = withMarginUsd * rate <= config.capEur,
         )
     }
@@ -133,6 +144,7 @@ object CostModel {
     private fun grouped(value: Long): String = String.format(Locale.US, "%,d", value)
 }
 
+/** Running spend. [canAfford] looks at the next call's max-token ceiling, which is the worst bill that call can post. */
 class BudgetGuard(val capUsd: Double) {
     var spentUsd: Double = 0.0
         private set

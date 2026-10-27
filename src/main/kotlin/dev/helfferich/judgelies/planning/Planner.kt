@@ -1,4 +1,13 @@
-package dev.helfferich.judgelies
+package dev.helfferich.judgelies.planning
+
+import dev.helfferich.judgelies.config.ExperimentConfig
+import dev.helfferich.judgelies.config.JudgeModel
+import dev.helfferich.judgelies.cost.CostModel
+import dev.helfferich.judgelies.cost.PricedCall
+import dev.helfferich.judgelies.dataset.EvalItem
+import dev.helfferich.judgelies.dataset.VariantKind
+import dev.helfferich.judgelies.dataset.wire
+import dev.helfferich.judgelies.prompt.Prompts
 
 data class PlannedTrial(
     val itemId: String,
@@ -15,6 +24,12 @@ data class PlannedTrial(
     val user: String,
     val call: PricedCall,
 ) {
+    /**
+     * Identity of one judge call.
+     * Temperature is recorded as `provider-default` when the model does not accept the parameter,
+     * so a later catalog that grows a temperature knob does not reuse those rows.
+     * The provider slug is part of the key so a route change misses the cache.
+     */
     fun cacheKey(promptHash: String, temperature: Double): String = listOf(
         judge.id,
         promptId,
@@ -28,6 +43,10 @@ data class PlannedTrial(
     ).joinToString("|")
 }
 
+/**
+ * Expands the config into one trial per item, variant, judge, prompt, and repeat.
+ * The order is part of the experiment: file order, then correct / subtle_error / unsupported, then judges, prompts, repeats.
+ */
 object Planner {
     fun plan(config: ExperimentConfig, items: List<EvalItem>): List<PlannedTrial> {
         config.validate()

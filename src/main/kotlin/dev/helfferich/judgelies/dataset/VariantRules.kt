@@ -1,7 +1,10 @@
-package dev.helfferich.judgelies
+package dev.helfferich.judgelies.dataset
 
 import java.util.Locale
+
 import kotlin.math.abs
+
+import dev.helfferich.judgelies.support.Hashing
 
 /**
  * Deterministic answer variants for the planted-error arm.
@@ -62,10 +65,15 @@ object VariantRules {
             .filter { match -> spans.none { span -> match.range.first in span } }
             .toList()
         if (matches.isEmpty()) return null
+        // The last year is the fact more often than an earlier one, which is often a citation.
+        // Parenthetical numbers were already dropped, so a unit conversion in parentheses is not the edit.
         val years = matches.filter { yearRe.matches(it.value) }
         val ordered = years.asReversed() + matches.filter { it !in years }
         for (match in ordered) {
             for ((text, kind) in candidates(answer, match)) {
+                // Keep the edit only when the new string is absent from the passage, does not
+                // duplicate a number inside the answer, and does not introduce a digit sequence
+                // the passage already contains.
                 if (text.equals(answer, ignoreCase = true)) continue
                 if (context.contains(text, ignoreCase = true)) continue
                 if (hasNewDuplicate(answer, text)) continue
@@ -242,6 +250,7 @@ object VariantRules {
     private fun findDonor(paragraphs: List<Para>, hit: RawHit): Para? {
         if (paragraphs.isEmpty()) return null
         val numbers = salientNumbers(hit.answer)
+        // Hash the question id so donors are spread through the corpus, not all taken from the first article.
         val start = Hashing.fnv1a(hit.id) % paragraphs.size
         for (offset in paragraphs.indices) {
             val para = paragraphs[(start + offset) % paragraphs.size]
@@ -260,6 +269,7 @@ object VariantRules {
         val used = mutableSetOf<String>()
         val picked = mutableListOf<String>()
         for (i in 0 until count) {
+            // Integer division, not half-even rounding, so the stride does not depend on the language runtime.
             val start = ((i.toLong() * (titles.size - 1)) / (count - 1)).toInt()
             for (offset in titles.indices) {
                 val title = titles[(start + offset) % titles.size]
@@ -344,6 +354,7 @@ object VariantRules {
 
     private fun parenthesisSpans(text: String): List<IntRange> {
         val spans = mutableListOf<IntRange>()
+        // Brace depth ignores braces inside strings, so a rationale may contain {curly}.
         var depth = 0
         var start = -1
         text.forEachIndexed { index, char ->

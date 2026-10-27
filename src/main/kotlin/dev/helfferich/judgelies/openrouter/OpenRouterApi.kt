@@ -1,16 +1,19 @@
-package dev.helfferich.judgelies
+package dev.helfferich.judgelies.openrouter
 
 import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.doubleOrNull
 import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
+
+import dev.helfferich.judgelies.config.JudgeModel
+import dev.helfferich.judgelies.scoring.readMessageContent
+import dev.helfferich.judgelies.support.Jsons
 
 @Serializable
 data class ChatMessage(val role: String, val content: String)
@@ -22,6 +25,7 @@ data class ReasoningControl(val effort: String)
 @Serializable
 data class ProviderPin(
     val only: List<String>,
+    // OpenRouter treats a missing allow_fallbacks as true. The false has to be on the wire or a pinned route can fall through.
     @EncodeDefault(EncodeDefault.Mode.ALWAYS)
     @SerialName("allow_fallbacks")
     val allowFallbacks: Boolean = false,
@@ -45,6 +49,11 @@ data class JudgeRaw(
     val rawJson: String,
 )
 
+/**
+ * Chat-completions body for one judge call.
+ * Temperature is omitted when the model does not advertise it, because those endpoints reject the field.
+ * Models that advertise reasoning are sent `effort: none`. Those tokens are billed as output.
+ */
 fun buildChatRequest(model: JudgeModel, temperature: Double?, maxTokens: Int, system: String, user: String): String {
     val request = ChatRequest(
         model = model.id,
@@ -96,6 +105,10 @@ data class CatalogPricing(
     val completion: String = "0",
 )
 
+/**
+ * Keeps the higher of the pinned price and the live price, so a stale pin cannot understate the gate.
+ * An empty `supported_parameters` list means the catalog said nothing, and the pin's flags stay.
+ */
 fun reconcilePrices(pinned: List<JudgeModel>, catalogJson: String): List<JudgeModel> {
     val catalog = Jsons.compact.decodeFromString(CatalogFile.serializer(), catalogJson)
     val byId = catalog.data.associateBy { it.id }

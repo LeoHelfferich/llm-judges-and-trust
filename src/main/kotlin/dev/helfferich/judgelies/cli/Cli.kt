@@ -1,4 +1,4 @@
-package dev.helfferich.judgelies
+package dev.helfferich.judgelies.cli
 
 import java.net.URI
 import java.net.http.HttpClient
@@ -7,8 +7,31 @@ import java.net.http.HttpResponse
 import java.nio.file.Files
 import java.nio.file.Path
 import java.time.Instant
+
 import kotlin.io.path.exists
 
+import dev.helfferich.judgelies.analysis.Analyzer
+import dev.helfferich.judgelies.config.ExperimentConfig
+import dev.helfferich.judgelies.cost.BudgetRefused
+import dev.helfferich.judgelies.cost.CostModel
+import dev.helfferich.judgelies.dataset.DatasetFile
+import dev.helfferich.judgelies.dataset.DisputedFile
+import dev.helfferich.judgelies.dataset.SquadDump
+import dev.helfferich.judgelies.dataset.VariantRules
+import dev.helfferich.judgelies.judging.OpenRouterJudge
+import dev.helfferich.judgelies.judging.SimulatedJudge
+import dev.helfferich.judgelies.openrouter.reconcilePrices
+import dev.helfferich.judgelies.planning.Planner
+import dev.helfferich.judgelies.report.Report
+import dev.helfferich.judgelies.run.ExperimentRunner
+import dev.helfferich.judgelies.run.ResponseCache
+import dev.helfferich.judgelies.run.RunManifest
+import dev.helfferich.judgelies.support.Jsons
+
+/**
+ * `prepare`, `estimate`, `run`, and `analyze`.
+ * Exit 0 finished, 1 bad arguments or a missing key, 2 the estimate is over the cap, 3 the run stopped early.
+ */
 object Cli {
     fun run(args: Array<String>, env: Map<String, String> = System.getenv(), clock: () -> Instant = Instant::now): Int {
         if (args.isEmpty() || args[0] == "help" || args[0] == "--help") {

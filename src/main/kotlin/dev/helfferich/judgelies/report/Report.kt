@@ -1,8 +1,17 @@
-package dev.helfferich.judgelies
+package dev.helfferich.judgelies.report
 
 import java.nio.file.Files
 import java.nio.file.Path
 
+import dev.helfferich.judgelies.analysis.Analysis
+import dev.helfferich.judgelies.analysis.ExampleFile
+import dev.helfferich.judgelies.analysis.Metrics
+import dev.helfferich.judgelies.analysis.MissFile
+import dev.helfferich.judgelies.analysis.MissRow
+import dev.helfferich.judgelies.analysis.ScoreRow
+import dev.helfferich.judgelies.support.Jsons
+
+/** Writes metrics, examples, scores, and misses. The same bytes are copied into `docs/data` when that directory is passed. */
 object Report {
     fun write(runDir: Path, docsData: Path?, analysis: Analysis) {
         Files.createDirectories(runDir)

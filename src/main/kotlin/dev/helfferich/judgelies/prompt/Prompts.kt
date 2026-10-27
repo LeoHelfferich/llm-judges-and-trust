@@ -1,4 +1,6 @@
-package dev.helfferich.judgelies
+package dev.helfferich.judgelies.prompt
+
+import dev.helfferich.judgelies.support.Hashing
 
 object Prompts {
     data class Spec(val id: String, val system: String)
@@ -51,6 +53,7 @@ object Prompts {
         Answer: $answer
     """.trimIndent()
 
+    /** Rubric text plus the user-template version. A wording change must miss the old cache. */
     fun hash(): String = Hashing.sha256Prefix(all.joinToString("\n---\n") { it.id + "\n" + it.system + "\n" + USER_MARK })
 
     private const val USER_MARK = "user-v1"

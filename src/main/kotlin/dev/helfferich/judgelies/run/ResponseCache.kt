@@ -1,10 +1,13 @@
-package dev.helfferich.judgelies
+package dev.helfferich.judgelies.run
 
-import kotlinx.serialization.Serializable
 import java.nio.file.Files
 import java.nio.file.Path
+
 import kotlin.io.path.exists
 import kotlin.io.path.readLines
+import kotlinx.serialization.Serializable
+
+import dev.helfferich.judgelies.support.Jsons
 
 @Serializable
 data class CachedTrial(
@@ -26,6 +29,7 @@ data class CachedTrial(
     val createdAt: String,
 )
 
+/** Append-only JSONL of raw replies. A key that is already stored is not written again. */
 class ResponseCache(private val file: Path) {
     private val byKey = linkedMapOf<String, CachedTrial>()
 
