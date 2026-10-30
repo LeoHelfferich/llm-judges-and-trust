@@ -1,0 +1,848 @@
+{
+    "meta": {
+        "schemaVersion": 1,
+        "mode": "openrouter",
+        "simulated": false,
+        "startedAt": "2026-10-26T14:32:36.722347477Z",
+        "finishedAt": "2026-10-26T17:14:04.200637987Z",
+        "analyzedAt": "2026-10-27T11:10:35.732159644Z",
+        "dataset": "SQuAD 1.1 dev subset",
+        "datasetLicense": "CC BY-SA 4.0",
+        "nItems": 50,
+        "nTrialsPlanned": 3750,
+        "nTrialsCompleted": 3725,
+        "nParsed": 3697,
+        "temperature": 0.0,
+        "seedSent": false,
+        "primaryPrompt": "strict",
+        "promptOrder": [
+            "strict",
+            "concise",
+            "cot"
+        ],
+        "repeats": {
+            "strict": 3,
+            "concise": 1,
+            "cot": 1
+        },
+        "missThreshold": 4,
+        "falseRejectAtOrBelow": 2,
+        "judges": [
+            {
+                "id": "x-ai/grok-4.3",
+                "label": "Grok 4.3",
+                "vendor": "xAI",
+                "promptUsdPerMillion": 1.25,
+                "completionUsdPerMillion": 2.5,
+                "supportsTemperature": true,
+                "supportsReasoning": true
+            },
+            {
+                "id": "openai/gpt-5.4-mini",
+                "label": "GPT-5.4 Mini",
+                "vendor": "OpenAI",
+                "promptUsdPerMillion": 0.75,
+                "completionUsdPerMillion": 4.5,
+                "supportsTemperature": false,
+                "supportsReasoning": true
+            },
+            {
+                "id": "anthropic/claude-haiku-4.5",
+                "label": "Claude Haiku 4.5",
+                "vendor": "Anthropic",
+                "promptUsdPerMillion": 1.0,
+                "completionUsdPerMillion": 5.0,
+                "supportsTemperature": true,
+                "supportsReasoning": true
+            },
+            {
+                "id": "google/gemini-2.5-flash",
+                "label": "Gemini 2.5 Flash",
+                "vendor": "Google",
+                "promptUsdPerMillion": 0.3,
+                "completionUsdPerMillion": 2.5,
+                "supportsTemperature": true,
+                "supportsReasoning": true
+            },
+            {
+                "id": "meta-llama/llama-3.3-70b-instruct",
+                "label": "Llama 3.3 70B",
+                "vendor": "Meta",
+                "promptUsdPerMillion": 0.1,
+                "completionUsdPerMillion": 0.32,
+                "supportsTemperature": true,
+                "supportsReasoning": false,
+                "providerOnly": "deepinfra"
+            }
+        ],
+        "capEur": 10.0,
+        "safetyMargin": 1.5,
+        "eurPerUsd": 0.89342,
+        "fxAsOf": "2026-10-23",
+        "pricingAsOf": "2026-10-26",
+        "estimatedCostUsd": 1.9714664,
+        "estimatedCostEur": 1.761347511088,
+        "estimatedCostEurWithMargin": 2.642021266632,
+        "billedCostUsd": 1.47481989,
+        "stoppedEarly": false,
+        "promptHash": "3b781b568255"
+    },
+    "headlines": {
+        "meanFaithfulnessSelfDisagreement": 0.016107382550335572,
+        "meanPairwiseFaithfulnessKappa": 0.928274906266456,
+        "meanSubtleMissRate": 0.11564625850340135,
+        "meanSubtleMissRateAt5": 0.024489795918367346,
+        "meanUnsupportedMissRate": 0.0,
+        "meanCorrectFalseRejectRate": 0.028000000000000004
+    },
+    "selfConsistency": {
+        "prompt": "strict",
+        "judges": [
+            {
+                "judge": "x-ai/grok-4.3",
+                "label": "Grok 4.3",
+                "nGroups": 149,
+                "faithfulness": {
+                    "pctNotIdentical": 0.013422818791946308,
+                    "meanRange": 0.03355704697986577,
+                    "rangeHistogram": [
+                        147,
+                        1,
+                        0,
+                        0,
+                        1
+                    ]
+                },
+                "correctness": {
+                    "pctNotIdentical": 0.006711409395973154,
+                    "meanRange": 0.006711409395973154,
+                    "rangeHistogram": [
+                        148,
+                        1,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            {
+                "judge": "openai/gpt-5.4-mini",
+                "label": "GPT-5.4 Mini",
+                "nGroups": 149,
+                "faithfulness": {
+                    "pctNotIdentical": 0.06040268456375839,
+                    "meanRange": 0.12751677852348994,
+                    "rangeHistogram": [
+                        140,
+                        4,
+                        0,
+                        5,
+                        0
+                    ]
+                },
+                "correctness": {
+                    "pctNotIdentical": 0.0738255033557047,
+                    "meanRange": 0.10067114093959731,
+                    "rangeHistogram": [
+                        138,
+                        8,
+                        2,
+                        1,
+                        0
+                    ]
+                }
+            },
+            {
+                "judge": "anthropic/claude-haiku-4.5",
+                "label": "Claude Haiku 4.5",
+                "nGroups": 140,
+                "faithfulness": {
+                    "pctNotIdentical": 0.0,
+                    "meanRange": 0.0,
+                    "rangeHistogram": [
+                        140,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "correctness": {
+                    "pctNotIdentical": 0.0,
+                    "meanRange": 0.0,
+                    "rangeHistogram": [
+                        140,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            {
+                "judge": "google/gemini-2.5-flash",
+                "label": "Gemini 2.5 Flash",
+                "nGroups": 149,
+                "faithfulness": {
+                    "pctNotIdentical": 0.0,
+                    "meanRange": 0.0,
+                    "rangeHistogram": [
+                        149,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "correctness": {
+                    "pctNotIdentical": 0.0,
+                    "meanRange": 0.0,
+                    "rangeHistogram": [
+                        149,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            {
+                "judge": "meta-llama/llama-3.3-70b-instruct",
+                "label": "Llama 3.3 70B",
+                "nGroups": 149,
+                "faithfulness": {
+                    "pctNotIdentical": 0.006711409395973154,
+                    "meanRange": 0.013422818791946308,
+                    "rangeHistogram": [
+                        148,
+                        0,
+                        1,
+                        0,
+                        0
+                    ]
+                },
+                "correctness": {
+                    "pctNotIdentical": 0.006711409395973154,
+                    "meanRange": 0.013422818791946308,
+                    "rangeHistogram": [
+                        148,
+                        0,
+                        1,
+                        0,
+                        0
+                    ]
+                }
+            }
+        ]
+    },
+    "promptSensitivity": {
+        "baseline": "strict",
+        "comparisons": [
+            {
+                "prompt": "concise",
+                "judges": [
+                    {
+                        "judge": "x-ai/grok-4.3",
+                        "label": "Grok 4.3",
+                        "n": 149,
+                        "meanDeltaFaithfulness": 0.19463087248322147,
+                        "meanDeltaCorrectness": 0.12751677852348994,
+                        "pctFaithfulnessChanged": 0.10738255033557047,
+                        "pctFaithfulnessShiftAtLeast2": 0.053691275167785234,
+                        "pctCorrectnessChanged": 0.10067114093959731,
+                        "pctCorrectnessShiftAtLeast2": 0.03355704697986577
+                    },
+                    {
+                        "judge": "openai/gpt-5.4-mini",
+                        "label": "GPT-5.4 Mini",
+                        "n": 149,
+                        "meanDeltaFaithfulness": 0.21476510067114093,
+                        "meanDeltaCorrectness": 0.1342281879194631,
+                        "pctFaithfulnessChanged": 0.1342281879194631,
+                        "pctFaithfulnessShiftAtLeast2": 0.053691275167785234,
+                        "pctCorrectnessChanged": 0.12080536912751678,
+                        "pctCorrectnessShiftAtLeast2": 0.04697986577181208
+                    },
+                    {
+                        "judge": "anthropic/claude-haiku-4.5",
+                        "label": "Claude Haiku 4.5",
+                        "n": 140,
+                        "meanDeltaFaithfulness": 0.05714285714285714,
+                        "meanDeltaCorrectness": 0.0,
+                        "pctFaithfulnessChanged": 0.07857142857142857,
+                        "pctFaithfulnessShiftAtLeast2": 0.02142857142857143,
+                        "pctCorrectnessChanged": 0.07857142857142857,
+                        "pctCorrectnessShiftAtLeast2": 0.007142857142857143
+                    },
+                    {
+                        "judge": "google/gemini-2.5-flash",
+                        "label": "Gemini 2.5 Flash",
+                        "n": 149,
+                        "meanDeltaFaithfulness": 0.11409395973154363,
+                        "meanDeltaCorrectness": 0.06711409395973154,
+                        "pctFaithfulnessChanged": 0.12751677852348994,
+                        "pctFaithfulnessShiftAtLeast2": 0.06040268456375839,
+                        "pctCorrectnessChanged": 0.12080536912751678,
+                        "pctCorrectnessShiftAtLeast2": 0.03355704697986577
+                    },
+                    {
+                        "judge": "meta-llama/llama-3.3-70b-instruct",
+                        "label": "Llama 3.3 70B",
+                        "n": 149,
+                        "meanDeltaFaithfulness": 0.348993288590604,
+                        "meanDeltaCorrectness": 0.33557046979865773,
+                        "pctFaithfulnessChanged": 0.20134228187919462,
+                        "pctFaithfulnessShiftAtLeast2": 0.08053691275167785,
+                        "pctCorrectnessChanged": 0.21476510067114093,
+                        "pctCorrectnessShiftAtLeast2": 0.08053691275167785
+                    }
+                ]
+            },
+            {
+                "prompt": "cot",
+                "judges": [
+                    {
+                        "judge": "x-ai/grok-4.3",
+                        "label": "Grok 4.3",
+                        "n": 149,
+                        "meanDeltaFaithfulness": 0.020134228187919462,
+                        "meanDeltaCorrectness": 0.06711409395973154,
+                        "pctFaithfulnessChanged": 0.053691275167785234,
+                        "pctFaithfulnessShiftAtLeast2": 0.020134228187919462,
+                        "pctCorrectnessChanged": 0.04697986577181208,
+                        "pctCorrectnessShiftAtLeast2": 0.020134228187919462
+                    },
+                    {
+                        "judge": "openai/gpt-5.4-mini",
+                        "label": "GPT-5.4 Mini",
+                        "n": 149,
+                        "meanDeltaFaithfulness": -0.006711409395973154,
+                        "meanDeltaCorrectness": -0.040268456375838924,
+                        "pctFaithfulnessChanged": 0.087248322147651,
+                        "pctFaithfulnessShiftAtLeast2": 0.026845637583892617,
+                        "pctCorrectnessChanged": 0.09395973154362416,
+                        "pctCorrectnessShiftAtLeast2": 0.020134228187919462
+                    },
+                    {
+                        "judge": "anthropic/claude-haiku-4.5",
+                        "label": "Claude Haiku 4.5",
+                        "n": 140,
+                        "meanDeltaFaithfulness": -0.12142857142857143,
+                        "meanDeltaCorrectness": -0.08571428571428572,
+                        "pctFaithfulnessChanged": 0.08571428571428572,
+                        "pctFaithfulnessShiftAtLeast2": 0.03571428571428571,
+                        "pctCorrectnessChanged": 0.07142857142857142,
+                        "pctCorrectnessShiftAtLeast2": 0.02857142857142857
+                    },
+                    {
+                        "judge": "google/gemini-2.5-flash",
+                        "label": "Gemini 2.5 Flash",
+                        "n": 149,
+                        "meanDeltaFaithfulness": -0.006711409395973154,
+                        "meanDeltaCorrectness": -0.013422818791946308,
+                        "pctFaithfulnessChanged": 0.09395973154362416,
+                        "pctFaithfulnessShiftAtLeast2": 0.040268456375838924,
+                        "pctCorrectnessChanged": 0.087248322147651,
+                        "pctCorrectnessShiftAtLeast2": 0.03355704697986577
+                    },
+                    {
+                        "judge": "meta-llama/llama-3.3-70b-instruct",
+                        "label": "Llama 3.3 70B",
+                        "n": 149,
+                        "meanDeltaFaithfulness": -0.14093959731543623,
+                        "meanDeltaCorrectness": -0.14093959731543623,
+                        "pctFaithfulnessChanged": 0.06711409395973154,
+                        "pctFaithfulnessShiftAtLeast2": 0.040268456375838924,
+                        "pctCorrectnessChanged": 0.06711409395973154,
+                        "pctCorrectnessShiftAtLeast2": 0.040268456375838924
+                    }
+                ]
+            }
+        ]
+    },
+    "interJudge": {
+        "prompt": "strict",
+        "repeat": 0,
+        "nItems": 140,
+        "judges": [
+            "x-ai/grok-4.3",
+            "openai/gpt-5.4-mini",
+            "anthropic/claude-haiku-4.5",
+            "google/gemini-2.5-flash",
+            "meta-llama/llama-3.3-70b-instruct"
+        ],
+        "labels": [
+            "Grok 4.3",
+            "GPT-5.4 Mini",
+            "Claude Haiku 4.5",
+            "Gemini 2.5 Flash",
+            "Llama 3.3 70B"
+        ],
+        "faithfulness": {
+            "exactAgreement": [
+                [
+                    1.0,
+                    0.95,
+                    0.8928571428571429,
+                    0.9285714285714286,
+                    0.9214285714285714
+                ],
+                [
+                    0.95,
+                    1.0,
+                    0.8857142857142857,
+                    0.9357142857142857,
+                    0.95
+                ],
+                [
+                    0.8928571428571429,
+                    0.8857142857142857,
+                    1.0,
+                    0.9142857142857143,
+                    0.8928571428571429
+                ],
+                [
+                    0.9285714285714286,
+                    0.9357142857142857,
+                    0.9142857142857143,
+                    1.0,
+                    0.9285714285714286
+                ],
+                [
+                    0.9214285714285714,
+                    0.95,
+                    0.8928571428571429,
+                    0.9285714285714286,
+                    1.0
+                ]
+            ],
+            "meanAbsDiff": [
+                [
+                    0.0,
+                    0.15714285714285714,
+                    0.22142857142857142,
+                    0.2,
+                    0.20714285714285716
+                ],
+                [
+                    0.15714285714285714,
+                    0.0,
+                    0.20714285714285716,
+                    0.15714285714285714,
+                    0.1357142857142857
+                ],
+                [
+                    0.22142857142857142,
+                    0.20714285714285716,
+                    0.0,
+                    0.12142857142857143,
+                    0.21428571428571427
+                ],
+                [
+                    0.2,
+                    0.15714285714285714,
+                    0.12142857142857143,
+                    0.0,
+                    0.16428571428571428
+                ],
+                [
+                    0.20714285714285716,
+                    0.1357142857142857,
+                    0.21428571428571427,
+                    0.16428571428571428,
+                    0.0
+                ]
+            ],
+            "quadraticKappa": [
+                [
+                    1.0,
+                    0.9247737556561086,
+                    0.91366802089379,
+                    0.9097938144329897,
+                    0.9120553359683794
+                ],
+                [
+                    0.9247737556561086,
+                    1.0,
+                    0.9229669858510791,
+                    0.9348671967518186,
+                    0.946320515323053
+                ],
+                [
+                    0.91366802089379,
+                    0.9229669858510791,
+                    1.0,
+                    0.9665798611111112,
+                    0.9178768152228343
+                ],
+                [
+                    0.9097938144329897,
+                    0.9348671967518186,
+                    0.9665798611111112,
+                    1.0,
+                    0.9338467614533965
+                ],
+                [
+                    0.9120553359683794,
+                    0.946320515323053,
+                    0.9178768152228343,
+                    0.9338467614533965,
+                    1.0
+                ]
+            ]
+        },
+        "correctness": {
+            "exactAgreement": [
+                [
+                    1.0,
+                    0.9357142857142857,
+                    0.9071428571428571,
+                    0.9357142857142857,
+                    0.9214285714285714
+                ],
+                [
+                    0.9357142857142857,
+                    1.0,
+                    0.8928571428571429,
+                    0.9214285714285714,
+                    0.9285714285714286
+                ],
+                [
+                    0.9071428571428571,
+                    0.8928571428571429,
+                    1.0,
+                    0.9142857142857143,
+                    0.9071428571428571
+                ],
+                [
+                    0.9357142857142857,
+                    0.9214285714285714,
+                    0.9142857142857143,
+                    1.0,
+                    0.9285714285714286
+                ],
+                [
+                    0.9214285714285714,
+                    0.9285714285714286,
+                    0.9071428571428571,
+                    0.9285714285714286,
+                    1.0
+                ]
+            ],
+            "meanAbsDiff": [
+                [
+                    0.0,
+                    0.14285714285714285,
+                    0.15,
+                    0.16428571428571428,
+                    0.22142857142857142
+                ],
+                [
+                    0.14285714285714285,
+                    0.0,
+                    0.15,
+                    0.15,
+                    0.15
+                ],
+                [
+                    0.15,
+                    0.15,
+                    0.0,
+                    0.11428571428571428,
+                    0.15714285714285714
+                ],
+                [
+                    0.16428571428571428,
+                    0.15,
+                    0.11428571428571428,
+                    0.0,
+                    0.15714285714285714
+                ],
+                [
+                    0.22142857142857142,
+                    0.15,
+                    0.15714285714285714,
+                    0.15714285714285714,
+                    0.0
+                ]
+            ],
+            "quadraticKappa": [
+                [
+                    1.0,
+                    0.943658732896401,
+                    0.9535863735486533,
+                    0.9322489310065873,
+                    0.9038080126933756
+                ],
+                [
+                    0.943658732896401,
+                    1.0,
+                    0.9601587811213916,
+                    0.9508638225940463,
+                    0.9476594904206992
+                ],
+                [
+                    0.9535863735486533,
+                    0.9601587811213916,
+                    1.0,
+                    0.9733149568200812,
+                    0.9495611822858873
+                ],
+                [
+                    0.9322489310065873,
+                    0.9508638225940463,
+                    0.9733149568200812,
+                    1.0,
+                    0.9405292893250075
+                ],
+                [
+                    0.9038080126933756,
+                    0.9476594904206992,
+                    0.9495611822858873,
+                    0.9405292893250075,
+                    1.0
+                ]
+            ]
+        }
+    },
+    "plantedErrors": {
+        "prompt": "strict",
+        "repeat": 0,
+        "missThreshold": 4,
+        "falseRejectAtOrBelow": 2,
+        "subtleMiss": "correctness >= 4 on a subtly wrong answer",
+        "unsupportedMiss": "faithfulness >= 4 on a correct answer paired with an unrelated passage",
+        "correctFalseReject": "faithfulness or correctness <= 2 on the gold answer in its own passage",
+        "judges": [
+            {
+                "judge": "x-ai/grok-4.3",
+                "label": "Grok 4.3",
+                "correctN": 50,
+                "subtleN": 49,
+                "unsupportedN": 50,
+                "unparsed": 0,
+                "subtleMissRate": 0.0,
+                "subtleMissRateAt5": 0.0,
+                "subtleUnparsed": 0,
+                "subtleMissingCorrectness": 0,
+                "unsupportedMissRate": 0.0,
+                "correctFalseRejectRate": 0.08,
+                "subtleMissRateByKind": {
+                    "year": 0.0,
+                    "integer": 0.0,
+                    "decimal": 0.0,
+                    "ordinal": 0.0,
+                    "entity_swap": 0.0
+                },
+                "meanFaithfulness": {
+                    "correct": 4.72,
+                    "subtle_error": 1.163265306122449,
+                    "unsupported": 1.0
+                },
+                "meanCorrectness": {
+                    "correct": 4.72,
+                    "subtle_error": 1.0,
+                    "unsupported": 1.0
+                }
+            },
+            {
+                "judge": "openai/gpt-5.4-mini",
+                "label": "GPT-5.4 Mini",
+                "correctN": 50,
+                "subtleN": 49,
+                "unsupportedN": 50,
+                "unparsed": 0,
+                "subtleMissRate": 0.14285714285714285,
+                "subtleMissRateAt5": 0.061224489795918366,
+                "subtleUnparsed": 0,
+                "subtleMissingCorrectness": 0,
+                "unsupportedMissRate": 0.0,
+                "correctFalseRejectRate": 0.02,
+                "subtleMissRateByKind": {
+                    "year": 0.10526315789473684,
+                    "integer": 0.2,
+                    "decimal": 0.5,
+                    "ordinal": 0.0,
+                    "entity_swap": 0.11764705882352941
+                },
+                "meanFaithfulness": {
+                    "correct": 4.92,
+                    "subtle_error": 1.5510204081632653,
+                    "unsupported": 1.0
+                },
+                "meanCorrectness": {
+                    "correct": 4.9,
+                    "subtle_error": 1.5510204081632653,
+                    "unsupported": 1.0
+                }
+            },
+            {
+                "judge": "anthropic/claude-haiku-4.5",
+                "label": "Claude Haiku 4.5",
+                "correctN": 48,
+                "subtleN": 42,
+                "unsupportedN": 50,
+                "unparsed": 9,
+                "subtleMissRate": 0.047619047619047616,
+                "subtleMissRateAt5": 0.0,
+                "subtleUnparsed": 7,
+                "subtleMissingCorrectness": 7,
+                "unsupportedMissRate": 0.0,
+                "correctFalseRejectRate": 0.0,
+                "subtleMissRateByKind": {
+                    "year": 0.0625,
+                    "integer": 0.125,
+                    "decimal": 0.0,
+                    "ordinal": 0.0,
+                    "entity_swap": 0.0
+                },
+                "meanFaithfulness": {
+                    "correct": 4.895833333333333,
+                    "subtle_error": 1.4285714285714286,
+                    "unsupported": 1.0
+                },
+                "meanCorrectness": {
+                    "correct": 4.895833333333333,
+                    "subtle_error": 1.2380952380952381,
+                    "unsupported": 1.0
+                }
+            },
+            {
+                "judge": "google/gemini-2.5-flash",
+                "label": "Gemini 2.5 Flash",
+                "correctN": 50,
+                "subtleN": 49,
+                "unsupportedN": 50,
+                "unparsed": 0,
+                "subtleMissRate": 0.14285714285714285,
+                "subtleMissRateAt5": 0.02040816326530612,
+                "subtleUnparsed": 0,
+                "subtleMissingCorrectness": 0,
+                "unsupportedMissRate": 0.0,
+                "correctFalseRejectRate": 0.02,
+                "subtleMissRateByKind": {
+                    "year": 0.21052631578947367,
+                    "integer": 0.3,
+                    "decimal": 0.0,
+                    "ordinal": 0.0,
+                    "entity_swap": 0.0
+                },
+                "meanFaithfulness": {
+                    "correct": 4.8,
+                    "subtle_error": 1.510204081632653,
+                    "unsupported": 1.0
+                },
+                "meanCorrectness": {
+                    "correct": 4.8,
+                    "subtle_error": 1.489795918367347,
+                    "unsupported": 1.0
+                }
+            },
+            {
+                "judge": "meta-llama/llama-3.3-70b-instruct",
+                "label": "Llama 3.3 70B",
+                "correctN": 50,
+                "subtleN": 49,
+                "unsupportedN": 50,
+                "unparsed": 0,
+                "subtleMissRate": 0.24489795918367346,
+                "subtleMissRateAt5": 0.04081632653061224,
+                "subtleUnparsed": 0,
+                "subtleMissingCorrectness": 0,
+                "unsupportedMissRate": 0.0,
+                "correctFalseRejectRate": 0.02,
+                "subtleMissRateByKind": {
+                    "year": 0.21052631578947367,
+                    "integer": 0.6,
+                    "decimal": 0.5,
+                    "ordinal": 0.0,
+                    "entity_swap": 0.058823529411764705
+                },
+                "meanFaithfulness": {
+                    "correct": 4.92,
+                    "subtle_error": 1.8571428571428572,
+                    "unsupported": 1.0
+                },
+                "meanCorrectness": {
+                    "correct": 4.9,
+                    "subtle_error": 1.8571428571428572,
+                    "unsupported": 1.0
+                }
+            }
+        ],
+        "subtleMissAt5": "correctness == 5 on a subtly wrong answer",
+        "disputed": [
+            {
+                "itemId": "56dde3aa9a695914005b9661",
+                "reason": "Entity swap produced \"Monte Gargano\" for \"Whose shrine did the pilgrims go to in 1016?\" (gold: Archangel Michael). Monte Gargano is where that shrine is, so the planted answer is acceptable rather than wrong."
+            }
+        ]
+    },
+    "parseFailures": [
+        {
+            "judge": "x-ai/grok-4.3",
+            "label": "Grok 4.3",
+            "calls": 745,
+            "unparsed": 1,
+            "byReason": {
+                "unterminated_json": 1
+            },
+            "byPrompt": {
+                "strict": 1
+            },
+            "byVariant": {
+                "correct": 1
+            },
+            "missingCorrectnessFaithfulness": {}
+        },
+        {
+            "judge": "openai/gpt-5.4-mini",
+            "label": "GPT-5.4 Mini",
+            "calls": 745,
+            "unparsed": 0,
+            "byReason": {},
+            "byPrompt": {},
+            "byVariant": {},
+            "missingCorrectnessFaithfulness": {}
+        },
+        {
+            "judge": "anthropic/claude-haiku-4.5",
+            "label": "Claude Haiku 4.5",
+            "calls": 745,
+            "unparsed": 27,
+            "byReason": {
+                "missing_correctness": 27
+            },
+            "byPrompt": {
+                "strict": 27
+            },
+            "byVariant": {
+                "correct": 6,
+                "subtle_error": 21
+            },
+            "missingCorrectnessFaithfulness": {
+                "2": 27
+            }
+        },
+        {
+            "judge": "google/gemini-2.5-flash",
+            "label": "Gemini 2.5 Flash",
+            "calls": 745,
+            "unparsed": 0,
+            "byReason": {},
+            "byPrompt": {},
+            "byVariant": {},
+            "missingCorrectnessFaithfulness": {}
+        },
+        {
+            "judge": "meta-llama/llama-3.3-70b-instruct",
+            "label": "Llama 3.3 70B",
+            "calls": 745,
+            "unparsed": 0,
+            "byReason": {},
+            "byPrompt": {},
+            "byVariant": {},
+            "missingCorrectnessFaithfulness": {}
+        }
+    ]
+}

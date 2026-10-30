@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Who judges the judge? — how often the score moves</title>
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="index.html">JUDGE DRIFT</a>
+      <nav>
+        <a href="index.html">Results</a>
+        <a href="examples.html">Cases</a>
+        <a href="misses.html">Misses</a>
+        <a href="method.html">Method</a>
+        <a href="https://github.com/LeoHelfferich/llm-judges-and-trust">GitHub</a>
+      </nav>
+    </header>
+    <p class="kicker">Notes for “Who judges the judge?”</p>
+    <h1>How often does a RAG judge disagree with itself?</h1>
+    <p class="lede">Same question, same passage, same answer, scored again. Then a different rubric. Then a different model. Then an answer that is wrong on purpose. This page reads the experiment’s result files and draws what moved.</p>
+    <div id="report">
+      <p class="note">Loading <span class="mono">data/metrics.json</span>…</p>
+    </div>
+    <footer>
+      Code is MIT. Questions, answers, and passages are CC BY-SA 4.0. Model outputs are published for reproducibility and are not under either license. Judges are called through OpenRouter. Definitions and the runbook are in the <a href="https://github.com/LeoHelfferich/llm-judges-and-trust#readme">repository README</a>.
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

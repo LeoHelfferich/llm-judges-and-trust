@@ -1,0 +1,10 @@
+The files under results/ are published so the experiment can be reproduced.
+
+Model completions, including responses.jsonl and the rationales in the miss
+lists, are not covered by the MIT license (../LICENSE) and are not relicensed
+under CC BY-SA 4.0. Copyright in those completions is unsettled, so this
+repository does not grant it.
+
+Where a file quotes a SQuAD question, answer, or Wikipedia passage, that
+quotation stays under CC BY-SA 4.0. See ../data/LICENSE. The scope of the MIT license is
+listed in ../NOTICE.

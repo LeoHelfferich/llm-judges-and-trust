@@ -1,0 +1,37 @@
+Creative Commons Attribution-ShareAlike 4.0 International
+
+This license applies to the SQuAD 1.1 subset in this repository and to every
+reproduction of its questions, answers, or passages, including:
+
+- data/items.json
+- data/disputed.json
+- data/DATASOURCE.md
+- questions, answers, and passages copied under docs/data/ and results/
+
+Copyright in the passages belongs to their Wikipedia authors. The questions
+and answers come from SQuAD 1.1 (Rajpurkar, Zhang, Lopyrev, and Liang, 2016;
+https://rajpurkar.github.io/SQuAD-explorer/dataset/dev-v1.1.json). The
+adaptation is by Leo Helfferich, 2026. Citation and the regenerate command
+are in data/DATASOURCE.md.
+
+Changes in this adaptation:
+
+- A 50-question subset of the SQuAD 1.1 development set, passages of 480–1400
+  characters.
+- For each item, a subtle_error answer: a deterministic numeric edit, or a
+  multi-word proper name swapped for another name in the same passage.
+- For each item, an unsupported passage: a paragraph from a different article
+  that does not contain the gold answer or its salient numbers.
+- One planted variant noted in data/disputed.json, because the entity swap
+  was not actually wrong.
+
+Share an adaptation under CC BY-SA 4.0, keep this attribution, and say what
+you changed.
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+International License. To view a copy of this license, visit
+https://creativecommons.org/licenses/by-sa/4.0/ or send a letter to
+Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+Model completions stored next to these passages are not licensed under
+CC BY-SA 4.0. See results/NOTICE.

@@ -1,0 +1,211 @@
+:root {
+  --paper: #f3efe6;
+  --ink: #1c1915;
+  --muted: #5e584e;
+  --line: #ddd4c4;
+  --rust: #8f3418;
+  --card: #fffaf3;
+  --green: #1e4a40;
+  --banner: #f6e2c4;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  line-height: 1.5;
+}
+
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 20px 72px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 10px;
+  margin-bottom: 28px;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  font-size: 14px;
+}
+
+.brand {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+nav { display: flex; gap: 16px; }
+
+nav a { color: var(--rust); text-decoration: none; }
+nav a:hover { text-decoration: underline; }
+
+.kicker {
+  margin: 0 0 8px;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rust);
+}
+
+h1 {
+  margin: 0 0 12px;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  margin: 0 0 8px;
+  font-weight: 500;
+  font-size: 26px;
+}
+
+h3 { font-weight: 500; font-size: 18px; margin: 18px 0 6px; }
+
+.lede { font-size: 19px; max-width: 42em; margin: 0; }
+
+.banner {
+  background: var(--banner);
+  border: 1px solid #e2c48a;
+  padding: 12px 14px;
+  margin: 18px 0 0;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 22px 0 4px;
+}
+
+.stat {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 14px 14px 12px;
+}
+
+.stat b {
+  display: block;
+  font-size: 28px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+}
+
+.stat span {
+  display: block;
+  margin-top: 4px;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+section { margin-top: 40px; }
+
+.note { color: var(--muted); max-width: 46em; }
+
+.chart {
+  position: relative;
+  height: 280px;
+  margin: 12px 0 8px;
+}
+
+.scroller {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+th, td {
+  border-bottom: 1px solid var(--line);
+  padding: 7px 8px;
+  text-align: right;
+  vertical-align: top;
+}
+
+th:first-child, td:first-child { text-align: left; }
+
+th { font-weight: 600; color: var(--muted); }
+
+.heat td, .heat th { text-align: center; padding: 10px 6px; }
+.heat td { font-variant-numeric: tabular-nums; }
+
+.case {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 16px 16px 8px;
+  margin: 16px 0;
+}
+
+.case h2 { font-size: 22px; }
+
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pair div { border-top: 1px solid var(--line); padding-top: 8px; }
+.pair .wrong { color: var(--rust); }
+
+details { margin: 10px 0 14px; }
+summary { cursor: pointer; color: var(--green); }
+
+.passage {
+  white-space: pre-wrap;
+  font-size: 15px;
+  background: var(--paper);
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+}
+
+footer {
+  margin-top: 48px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  font-size: 13px;
+}
+
+code, .mono { font-family: "IBM Plex Mono", "SFMono-Regular", ui-monospace, monospace; font-size: 0.92em; }
+
+a { color: var(--rust); }
+
+.error {
+  background: #f8d7d2;
+  border: 1px solid #e2b2aa;
+  padding: 12px 14px;
+}
+
+@media (max-width: 720px) {
+  .stats { grid-template-columns: 1fr 1fr; }
+  .pair { grid-template-columns: 1fr; }
+  h1 { font-size: 32px; }
+  .top { flex-direction: column; align-items: flex-start; }
+  .chart { height: 380px; }
+}
+
+.wrap.wide { max-width: 1240px; }
+.controls { display: flex; flex-wrap: wrap; gap: 18px; margin: 20px 0 8px; font-family: "Avenir Next", "Segoe UI", sans-serif; font-size: 14px; }
+.controls select { margin-left: 4px; }
+table.misses { font-size: 13px; }
+table.misses td { vertical-align: top; }
+table.misses td:last-child { min-width: 260px; color: var(--muted); }
+table.misses tr.disputed td { background: var(--banner); }
+table.misses td.five { color: var(--rust); font-weight: 600; }
+table.misses th, table.misses td { text-align: left; }
+table.misses td:nth-child(5), table.misses td:nth-child(8) { white-space: nowrap; }

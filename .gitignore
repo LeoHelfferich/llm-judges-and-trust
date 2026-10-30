@@ -1,0 +1,15 @@
+.gradle/
+build/
+.kotlin/
+out/
+*.iml
+.idea/
+.DS_Store
+
+# Simulated output from `run --dry-run`
+results/dry-run/
+
+# Local secrets and machine config
+.env
+*.env
+local.properties

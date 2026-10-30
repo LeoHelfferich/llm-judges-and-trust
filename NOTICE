@@ -1,0 +1,25 @@
+Who judges the judge?
+Copyright (c) 2026 Leo Helfferich
+
+Which license covers what
+-------------------------
+
+LICENSE (MIT) covers the program and the documentation written for it:
+
+- src/
+- the Gradle build: build.gradle.kts, settings.gradle.kts, gradle.properties,
+  gradle/, gradlew, gradlew.bat
+- config/experiment.json
+- docs/js/, docs/css/, and docs/*.html
+- README.md
+
+MIT does not cover the SQuAD subset, or reproductions of its questions,
+answers, or passages. Those are CC BY-SA 4.0. See data/LICENSE and
+docs/data/NOTICE.
+
+MIT does not cover model outputs under results/ (responses.jsonl, rationales,
+scores). Copyright in model completions is unsettled, so this repository does
+not grant it. See results/NOTICE.
+
+Where a file mixes the two (for example a rationale that quotes a passage),
+the quoted SQuAD or Wikipedia text stays under CC BY-SA 4.0.
